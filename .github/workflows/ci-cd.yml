@@ -1,4 +1,4 @@
-name: ci
+name: S3 Sync and CloudFront Invalidate
 
 on:
   push:
