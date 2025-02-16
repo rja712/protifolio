@@ -1,27 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ankit Raj - Portfolio</title>
+    <meta name="description" content="Ankit Raj - Software Engineer specializing in Java, Spring Boot, and AWS">
+    <meta name="keywords" content="Software Engineer, Java Developer, Spring Boot, AWS, Full Stack Developer">
+    <meta name="author" content="Ankit Raj">
+    <title>Ankit Raj - Software Engineer Portfolio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <div class="container">
+    <main class="container">
         <header>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" checked />
+                    <div class="slider round"></div>
+                </label>
+                <span class="theme-label">Light Mode</span>
+            </div>
             <h1 id="quirky-name">Ankit Raj</h1>
-            <p>Software Engineer | Java | Spring Boot | AWS</p>
-            <p id="greeting"></p> <!-- Dynamic Greeting -->
+            <p class="title">Software Engineer | Java | Spring Boot | AWS</p>
         </header>
-        
-        <section class="section">
+
+        <section class="section" id="about">
             <h2>About Me</h2>
-            <p>Seasoned software engineer with 5+ years of experience developing SaaS software, strong analytical skills, and great product sense.</p>
+            <p>Seasoned software engineer with 5+ years of experience developing SaaS software, strong analytical
+                skills, and great product sense.</p>
         </section>
 
-        <section class="section">
-            <h2>Skills</h2>
-            <ul>
+        <section class="section" id="skills">
+            <h2>Technical Skills</h2>
+            <ul aria-label="Technical skills list">
                 <li>Java, Spring Boot, Spring WebFlux</li>
                 <li>Hibernate, jOOQ, JDBC</li>
                 <li>MySQL, MongoDB, PostgreSQL</li>
@@ -30,25 +42,116 @@
             </ul>
         </section>
 
-        <section class="section">
-            <h2>Experience</h2>
-            <h3>Senior Software Engineer - LeadSquared</h3>
-            <p>Developed scalable microservices for email processing, notifications, and customer engagement.</p>
-            <h3>Software Engineer - HighRadius</h3>
-            <p>Worked on invoicing, cash reconciliation, and payment automation features.</p>
+        <section class="section" id="experience">
+            <h2>Professional Experience</h2>
+            <div class="timeline" role="list">
+                <article class="experience" role="listitem">
+                    <div class="logo">
+                        <img src="https://www.leadsquared.com/wp-content/uploads/2023/12/340-x-156-300x138-1.png"
+                            alt="LeadSquared" loading="lazy">
+                    </div>
+                    <div class="details">
+                        <h3>Senior Software Engineer</h3>
+                        <p><strong>LeadSquared</strong> · Full-time</p>
+                        <p>Mar 2023 - Present · Bengaluru, India</p>
+                        <p>Building Service CRM, ticketing, and helpdesk software to streamline clients' customer
+                            support process.</p>
+                        <ul class="skills-list">
+                            <li>Spring Boot</li>
+                            <li>Java</li>
+                            <li>Spring WebFlux</li>
+                            <li>MySQL</li>
+                            <li>MongoDB</li>
+                            <li>Redis</li>
+                            <li>AWS</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="experience" role="listitem">
+                    <div class="logo">
+                        <img src="https://cdn.highradius.com/wp-content/uploads/2024/06/HighRadius-Updated.svg" 
+                             alt="HighRadius company logo"
+                             loading="lazy">
+                    </div>
+                    <div class="details">
+                        <h3>Software Engineer 2</h3>
+                        <p><strong>HighRadius</strong> · Full-time</p>
+                        <p>Jan 2022 - Feb 2023 · Bhubaneswar, India · On-site</p>
+                        <p>Implemented Electronic Invoicing, Cash Application, and RadiusOne to automate clients' account receivables processes.</p>
+                        <p><strong>Skills:</strong> Java · Spring · Hibernate</p>
+                    </div>
+                </article>
+
+                <article class="experience" role="listitem">
+                    <div class="logo">
+                        <img src="https://cdn.highradius.com/wp-content/uploads/2024/06/HighRadius-Updated.svg" 
+                             alt="HighRadius company logo"
+                             loading="lazy">
+                    </div>
+                    <div class="details">
+                        <h3>Software Engineer 1</h3>
+                        <p><strong>HighRadius</strong> · Full-time</p>
+                        <p>Aug 2021 - Dec 2021 · Bhubaneswar, India</p>
+                    </div>
+                </article>
+
+                <article class="experience" role="listitem">
+                    <div class="logo">
+                        <img src="https://cdn.highradius.com/wp-content/uploads/2024/06/HighRadius-Updated.svg" 
+                             alt="HighRadius company logo"
+                             loading="lazy">
+                    </div>
+                    <div class="details">
+                        <h3>Associate Software Engineer</h3>
+                        <p><strong>HighRadius</strong> · Full-time</p>
+                        <p>Sep 2020 - Jul 2021 · Bhubaneswar, India</p>
+                    </div>
+                </article>
+
+                <article class="experience" role="listitem">
+                    <div class="logo">
+                        <img src="https://cdn.highradius.com/wp-content/uploads/2024/06/HighRadius-Updated.svg" 
+                             alt="HighRadius company logo"
+                             loading="lazy">
+                    </div>
+                    <div class="details">
+                        <h3>Software Engineer Intern</h3>
+                        <p><strong>HighRadius</strong> · Internship</p>
+                        <p>May 2019 - Aug 2020 · Bhubaneswar, India</p>
+                    </div>
+                </article>
+            </div>
         </section>
 
-        <section class="section">
+        <section class="section" id="education">
             <h2>Education</h2>
-            <p>B.Tech in Computer Science & Engineering - KIIT University</p>
+            <article class="education-item">
+                <h3>B.Tech in Computer Science & Engineering</h3>
+                <p>KIIT University</p>
+            </article>
         </section>
 
-        <section class="section contact">
-            <h2>Contact</h2>
-            <p>Email: <a href="mailto:ankitraj.secondary@gmail.com">ankitraj.secondary@gmail.com</a></p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/rja-ankit/" target="_blank">linkedin.com/in/rja-ankit</a></p>
+        <section class="section contact" id="contact">
+            <h2>Contact Information</h2>
+            <ul class="contact-list">
+                <li>
+                    <strong>Email:</strong>
+                    <a href="mailto:ankitraj.secondary@gmail.com" aria-label="Send email to Ankit">
+                        ankitraj.secondary@gmail.com
+                    </a>
+                </li>
+                <li>
+                    <strong>LinkedIn:</strong>
+                    <a href="https://www.linkedin.com/in/rja-ankit/" target="_blank" rel="noopener noreferrer"
+                        aria-label="Visit LinkedIn profile (opens in new tab)">
+                        linkedin.com/in/rja-ankit
+                    </a>
+                </li>
+            </ul>
         </section>
-    </div>
-    <script src="script.js"></script>
+    </main>
+    <script src="script.js" defer></script>
 </body>
+
 </html>
