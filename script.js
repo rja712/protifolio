@@ -1,32 +1,43 @@
 document.addEventListener("DOMContentLoaded", function() {
-    console.log("Portfolio loaded successfully!");
-    
     const toggleSwitch = document.querySelector('#checkbox');
-    const themeLabel = document.querySelector('.theme-label');
     
-    // Check for saved theme preference, default to light if none exists
+    // Check for saved theme preference, default to 'light' if none found
     const currentTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', currentTheme);
-    
-    // Set initial state
-    if (currentTheme === 'light') {
-        toggleSwitch.checked = true;
-        themeLabel.textContent = 'Light Mode';
-    } else {
-        toggleSwitch.checked = false;
-        themeLabel.textContent = 'Dark Mode';
-    }
+    toggleSwitch.checked = currentTheme === 'light';
     
     // Handle theme switch
     toggleSwitch.addEventListener('change', function(e) {
-        if (e.target.checked) {
-            document.documentElement.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
-            themeLabel.textContent = 'Light Mode';
-        } else {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-            themeLabel.textContent = 'Dark Mode';
-        }
+        const theme = e.target.checked ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Scroll reveal animations
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => {
+        section.style.opacity = 0;
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'all 0.6s ease-out';
+        observer.observe(section);
     });
 });

@@ -9,106 +9,129 @@
     <meta name="author" content="Ankit Raj">
     <title>Ankit Raj - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
+    <!-- Add theme switch at the top right -->
     <div class="theme-switch-wrapper">
         <label class="theme-switch" for="checkbox">
-            <input type="checkbox" id="checkbox" checked />
+            <input type="checkbox" id="checkbox" />
             <div class="slider"></div>
         </label>
-        <span class="theme-label">Light Mode</span>
     </div>
 
-    <main class="container">
-        <div class="profile-header">
-            <div class="profile-background"></div>
-            <div class="profile-info">
-                <div class="profile-image">
-                    <!-- Add your profile image here -->
-                    <img src="profile-placeholder.jpg" alt="Ankit Raj" />
+    <section id="home" class="hero section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hi, I'm Ankit Raj</h1>
+                <h2>Software Engineer</h2>
+                <p>5+ years of experience in building scalable and efficient software solutions</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn primary">Get in Touch</a>
+                    <a href="#experience" class="btn secondary">View Work</a>
                 </div>
-                <div class="profile-details">
-                    <h1>Ankit Raj</h1>
-                    <h2 class="headline">Software Engineer | Java | Spring Boot | AWS</h2>
-                    <p class="location">Bengaluru, India</p>
+            </div>
+            <div class="hero-image">
+                <img src="images/profile_pic.png" alt="Ankit Raj">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>Seasoned software engineer with 5+ years of experience developing SaaS software, strong analytical
+                    skills, and great product sense.</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">20+</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Happy Clients</span>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <section class="section" id="about">
-            <h2>About</h2>
-            <div class="card-content">
-                <p>Seasoned software engineer with 5+ years of experience developing SaaS software, strong analytical
-                    skills, and great product sense.</p>
-            </div>
-        </section>
-
-        <section class="section" id="experience">
-            <h2>Experience</h2>
-            <div class="card-content">
-                <div class="experience-item">
-                    <div class="company-logo">
-                        <img src="https://www.leadsquared.com/wp-content/uploads/2023/12/340-x-156-300x138-1.png"
-                            alt="LeadSquared" />
-                    </div>
-                    <div class="experience-details">
-                        <h3>Senior Software Engineer</h3>
-                        <div class="company-name">LeadSquared</div>
-                        <div class="date-location">
-                            <span>Mar 2023 - Present</span>
-                            <span>·</span>
-                            <span>Bengaluru, India</span>
-                        </div>
-                        <p class="description">Building Service CRM, ticketing, and helpdesk software to streamline clients' customer
-                            support process.</p>
-                        <div class="skills-tags">
-                            <span>Spring Boot</span>
-                            <span>Java</span>
-                            <span>Spring WebFlux</span>
-                            <span>MySQL</span>
-                            <span>MongoDB</span>
-                        </div>
-                    </div>
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-item">
+                <div class="company-logo">
+                    <img src="https://www.leadsquared.com/wp-content/uploads/2023/12/340-x-156-300x138-1.png"
+                        alt="LeadSquared" />
                 </div>
-                <!-- Repeat similar structure for other experiences -->
-            </div>
-        </section>
-
-        <section class="section" id="skills">
-            <h2>Skills</h2>
-            <div class="card-content">
-                <div class="skills-grid">
-                    <div class="skill-item">
-                        <span class="skill-name">Java</span>
-                        <div class="endorsement-count">15 endorsements</div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Spring Boot</span>
-                        <div class="endorsement-count">12 endorsements</div>
-                    </div>
-                    <!-- Add more skills as needed -->
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="education">
-            <h2>Education</h2>
-            <div class="card-content">
-                <div class="education-item">
-                    <div class="school-logo">
-                        <img src="kiit-logo.jpg" alt="KIIT University" />
-                    </div>
-                    <div class="education-details">
-                        <h3>KIIT University</h3>
-                        <p>B.Tech in Computer Science & Engineering</p>
-                        <div class="date-location">2016 - 2020</div>
+                <div class="experience-details">
+                    <h3>Senior Software Engineer</h3>
+                    <div class="company-name">LeadSquared</div>
+                    <div class="date-location">Mar 2023 - Present · Bengaluru, India</div>
+                    <p class="description">Building Service CRM, ticketing, and helpdesk software to streamline clients' customer support process.</p>
+                    <div class="skills-tags">
+                        <span>Spring Boot</span>
+                        <span>Java</span>
+                        <span>Spring WebFlux</span>
+                        <span>MySQL</span>
+                        <span>MongoDB</span>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
-    <script src="script.js" defer></script>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <i class="fab fa-java"></i>
+                    <span class="skill-name">Java</span>
+                    <div class="skill-level" data-level="90"></div>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-leaf"></i>
+                    <span class="skill-name">Spring Boot</span>
+                    <div class="skill-level" data-level="85"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:your.email@example.com">your.email@example.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Ankit Raj. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
