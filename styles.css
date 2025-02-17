@@ -114,7 +114,7 @@ h2.headline {
     padding-bottom: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    min-height: 55vh;
+   
     width: 100%;
 }
 
@@ -365,7 +365,7 @@ input:checked + .slider:before {
 }
 
 .hero-text {
-    padding-left: 4rem;
+    padding-bottom: 4rem;
 }
 
 .hero-text h1 {
@@ -383,6 +383,14 @@ input:checked + .slider:before {
     font-size: 1.2rem;
     margin: 0 0 1rem 0;
     color: var(--text-secondary);
+}
+
+.hero-text p em, /* For existing italic text */
+.hero-text p.footnote { /* New class for small italic text */
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--accent-color);
+    opacity: 0.8;
 }
 
 .hero-image {
@@ -488,9 +496,29 @@ input:checked + .slider:before {
 }
 
 .stats {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three equal columns */
     gap: 2rem;
     margin-bottom: 0;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
 }
 
 /* Responsive Design */
@@ -526,6 +554,14 @@ input:checked + .slider:before {
     .hero-image {
         margin-right: 2rem;
     }
+    
+    .stats {
+        gap: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 1.6rem;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -552,9 +588,12 @@ input:checked + .slider:before {
     }
     
     .stats {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
+        grid-template-columns: 1fr; /* Stack on mobile */
+        gap: 1.5rem;
+    }
+    
+    .stat-item {
+        text-align: left;
     }
     
     .section {
