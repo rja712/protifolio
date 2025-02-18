@@ -124,6 +124,14 @@ h2.headline {
     color: var(--text-primary);
 }
 
+.sub-section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--accent-color);
+}
+
+
 .card-content {
     padding: 24px;
 }
@@ -677,4 +685,28 @@ input:checked + .slider:before {
 [data-theme="dark"] .btn.secondary {
     border: 2px solid var(--accent-color);
     color: var(--accent-color);
+}
+
+.philosophy-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.philosophy-item {
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.philosophy-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.philosophy-item p {
+    font-weight: normal;
+    line-height: 1.5;
+    color: var(--text-color);
 }
