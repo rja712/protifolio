@@ -734,7 +734,6 @@ input:checked + .slider:before {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    max-width: 800px;
     padding: 0;
 }
 
@@ -742,7 +741,7 @@ input:checked + .slider:before {
     position: relative;
     padding: 4px 0;
     display: flex;
-    flex-direction: column;  /* Stack children vertically */
+    flex-direction: column;  
     margin: 0;
 }
 
