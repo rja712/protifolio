@@ -14,8 +14,8 @@
 [data-theme="dark"] {
     --bg-primary: #2b2b2b;     /* Dark gray */
     --bg-secondary: #000000;   /* Absolute black */
-    --text-primary: #f0f0f0;   /* Soft white */
-    --text-secondary: #bfbfbf; /* Light gray */
+    --text-primary: #ffffff;   /* Soft white */
+    --text-secondary: #f0f0f0; /* Light gray */
     --accent-color: #ffb6c1;   /* Pastel pink */
     --border-color: #4a4a4a;   /* Medium gray */
 }
