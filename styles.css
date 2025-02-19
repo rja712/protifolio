@@ -30,73 +30,23 @@ body {
 }
 
 .container {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 20px;
 }
 
-.profile-header {
-    margin-bottom: 16px;
-    background: var(--bg-primary);
-    border-radius: 8px;
-    box-shadow: 0 0 0 1px var(--border-color);
-    overflow: hidden;
-}
-
-.profile-background {
-    height: 200px;
-    background: linear-gradient(to right, var(--accent-color), #0073b1);
-}
-
-.profile-info {
-    padding: 0 24px 24px;
-    margin-top: -128px;
-    position: relative;
-}
-
-.profile-image {
-    width: 152px;
-    height: 152px;
-    border: 2px solid var(--bg-primary);
-    border-radius: 5%;
-    overflow: hidden;
-    margin-bottom: 16px;
-    position: relative;
-    background: var(--bg-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.profile-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 5%;
-    min-width: 100%;
-    min-height: 100%;
-}
-
-.profile-details h1 {
-    font-size: 24px;
-    line-height: 30px;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin: 0 0 4px;
-}
-
-h2.headline {
-    font-size: 16px;
-    line-height: 20px;
-    font-weight: 400;
-    color: var(--text-secondary);
-    margin: 0 0 8px;
-}
-
-.location {
-    font-size: 14px;
-    line-height: 18px;
-    color: var(--text-secondary);
+.profile-header,
+.profile-background,
+.profile-info,
+.profile-image,
+.profile-details,
+.education-item,
+.school-logo,
+.education-details,
+.nav-content,
+.nav-links {
+    display: none;
 }
 
 .section {
@@ -119,9 +69,10 @@ h2.headline {
 }
 
 .section-title {
+    text-align: center;
+    margin-bottom: 40px;
     font-size: 2rem;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
+    color: #333;
 }
 
 .sub-section-title {
@@ -136,58 +87,116 @@ h2.headline {
     padding: 24px;
 }
 
-.experience-item {
-    display: flex;
-    gap: 16px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--border-color);
+.experience-timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 20px 20px 140px;
 }
 
-.experience-item:last-child {
-    padding-bottom: 0;
-    border-bottom: none;
+.experience-timeline::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: var(--accent-color);
+    opacity: 0.3;
+    top: 0;
+    bottom: 0;
+    left: 60px;
+}
+
+.experience-item {
+    position: relative;
+    margin: 3rem 0;
+    padding-left: 45px;
+    transition: transform 0.3s ease;
+}
+
+.experience-item:hover {
+    transform: translateX(10px);
+}
+
+.experience-item::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    left: -48px;
+    top: 5px;
+    border: 4px solid var(--bg-primary);
+    box-shadow: 0 0 0 2px var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.experience-item:hover::before {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 3px var(--accent-color);
 }
 
 .company-logo {
-    width: 48px;
-    height: 48px;
-    flex-shrink: 0;
+    position: absolute;
+    width: 100px;
+    height: 75px;  /* 4:3 ratio */
+    left: -125px;
+    top: -10px;
+    background: #ffffff ;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px var(--card-shadow);
+    transition: all 0.3s ease;
+    text-decoration: none; 
+}
+
+.company-logo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px var(--card-shadow);
+    cursor: pointer;
 }
 
 .company-logo img {
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
-    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.experience-details {
+    transition: all 0.3s ease;
 }
 
 .experience-details h3 {
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 1.25rem;
     font-weight: 600;
+    margin: 0 0 8px 0;
     color: var(--text-primary);
-    margin: 0 0 4px;
+    transition: color 0.3s ease;
+}
+
+.experience-item:hover .experience-details h3 {
+    color: var(--accent-color);
 }
 
 .company-name {
-    font-size: 14px;
-    line-height: 18px;
-    color: var(--text-secondary);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--accent-color);
     margin-bottom: 4px;
 }
 
 .date-location {
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 0.9rem;
     color: var(--text-secondary);
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 
 .description {
-    font-size: 14px;
-    line-height: 20px;
     color: var(--text-primary);
-    margin: 8px 0;
+    line-height: 1.6;
 }
 
 .skills-tags {
@@ -274,32 +283,6 @@ h2.headline {
     color: var(--text-secondary);
 }
 
-.education-item {
-    display: flex;
-    gap: 16px;
-}
-
-.school-logo {
-    width: 48px;
-    height: 48px;
-    flex-shrink: 0;
-}
-
-.school-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 8px;
-}
-
-.education-details h3 {
-    font-size: 16px;
-    line-height: 20px;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin: 0 0 4px;
-}
-
 .theme-switch-wrapper {
     position: fixed;
     top: 20px;
@@ -367,34 +350,6 @@ input:checked + .slider:before {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     height: 60px;
-}
-
-.nav-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 2rem;
-    height: 100%;
-}
-
-.nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links a {
-    color: var(--text-primary);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: var(--accent-color);
 }
 
 .hero-content {
@@ -513,10 +468,6 @@ input:checked + .slider:before {
 }
 
 @media (max-width: 768px) {
-    .profile-info {
-        margin-top: -64px;
-    }
-
     .skills-grid {
         grid-template-columns: 1fr;
     }
@@ -527,6 +478,33 @@ input:checked + .slider:before {
     
     .nav-links {
         gap: 1rem;
+    }
+
+    .experience-timeline {
+        padding-left: 80px;
+    }
+
+    .experience-timeline::before {
+        left: 40px;
+    }
+
+    .company-logo {
+        width: 70px;
+        height: 52.5px; /* Maintaining 4:3 ratio */
+        left: -85px;
+        padding: 8px;
+    }
+
+    .experience-item::before {
+        left: -38px;
+    }
+
+    .experience-item {
+        padding-left: 20px;
+    }
+    
+    .experience-item:hover {
+        transform: translateX(5px);
     }
 }
 
@@ -660,6 +638,16 @@ input:checked + .slider:before {
     .skills-grid {
         grid-template-columns: 1fr;
     }
+    
+    .company-logo {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 16px;
+    }
+    
+    .experience-details {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 576px) {
@@ -770,4 +758,119 @@ input:checked + .slider:before {
     text-align: justify;
     text-justify: inter-word;
     hyphens: auto;
+}
+
+/* Education Section */
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 0 1rem;
+}
+
+.education-card {
+    background: var(--bg-primary);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+    box-shadow: none;
+}
+
+.education-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Degree Card Specific */
+.education-card.degree {
+    border: 2px solid var(--accent-color);
+}
+
+.education-card.degree .card-header {
+    background: var(--bg-secondary);
+}
+
+.education-card.degree .institution-logo {
+    padding: 8px;
+}
+
+.education-card.degree .institution {
+    color: var(--accent-color);
+}
+
+/* Certification Card Specific Styling */
+.education-card.certification .card-header {
+    background: var(--bg-secondary);
+}
+
+.education-card.certification .institution {
+    color: var(--text-secondary);
+}
+
+.card-header {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+/* Logo/Icon sizing */
+.institution-logo,
+.cert-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.cert-icon {
+    font-size: 60px;  /* Match the size of logos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.card-body h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.institution {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-details {
+    margin-top: 0.5rem;
+}
+
+.date-location {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.description {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 992px) {
+    .education-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
 }
