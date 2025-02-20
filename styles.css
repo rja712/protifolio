@@ -12,12 +12,18 @@
 }
 
 [data-theme="dark"] {
-    --bg-primary: #2b2b2b;     /* Dark gray */
-    --bg-secondary: #000000;   /* Absolute black */
-    --text-primary: #ffffff;   /* Soft white */
-    --text-secondary: #fbd3d3; /* Light gray */
-    --accent-color: #fe758a;   /* Pastel pink */
-    --border-color: #4a4a4a;   /* Medium gray */
+    --bg-primary: #2b2b2b;
+    /* Dark gray */
+    --bg-secondary: #000000;
+    /* Absolute black */
+    --text-primary: #ffffff;
+    /* Soft white */
+    --text-secondary: #e5d6d9;
+    /* Light gray */
+    --accent-color: #fe758a;
+    /* Pastel pink */
+    --border-color: #4a4a4a;
+    /* Medium gray */
 }
 
 body {
@@ -64,7 +70,7 @@ body {
     padding-bottom: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-   
+
     width: 100%;
 }
 
@@ -72,7 +78,7 @@ body {
     text-align: center;
     margin-bottom: 40px;
     font-size: 2rem;
-    color: #333;
+    color: var(--text-primary);
 }
 
 .sub-section-title {
@@ -138,10 +144,11 @@ body {
 .company-logo {
     position: absolute;
     width: 100px;
-    height: 75px;  /* 4:3 ratio */
+    height: 75px;
+    /* 4:3 ratio */
     left: -125px;
     top: -10px;
-    background: #ffffff ;
+    background: #ffffff;
     border-radius: 12px;
     padding: 12px;
     display: flex;
@@ -149,7 +156,7 @@ body {
     justify-content: center;
     box-shadow: 0 4px 12px var(--card-shadow);
     transition: all 0.3s ease;
-    text-decoration: none; 
+    text-decoration: none;
 }
 
 .company-logo:hover {
@@ -195,8 +202,14 @@ body {
 }
 
 .description {
-    color: var(--text-primary);
-    line-height: 1.6;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    line-height: 1.4;
+    margin-top: 8px;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
 }
 
 .skills-tags {
@@ -327,11 +340,11 @@ body {
     border-radius: 50%;
 }
 
-input:checked + .slider {
+input:checked+.slider {
     background-color: var(--accent-color);
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
     transform: translateX(20px);
 }
 
@@ -383,8 +396,10 @@ input:checked + .slider:before {
     color: var(--text-secondary);
 }
 
-.hero-text p em, /* For existing italic text */
-.hero-text p.footnote { /* New class for small italic text */
+.hero-text p em,
+/* For existing italic text */
+.hero-text p.footnote {
+    /* New class for small italic text */
     font-size: 1rem;
     font-style: italic;
     color: var(--accent-color);
@@ -443,8 +458,15 @@ input:checked + .slider:before {
 
 /* New animations and transitions */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .section {
@@ -475,7 +497,7 @@ input:checked + .slider:before {
     .hero-content {
         grid-template-columns: 1fr;
     }
-    
+
     .nav-links {
         gap: 1rem;
     }
@@ -490,7 +512,8 @@ input:checked + .slider:before {
 
     .company-logo {
         width: 70px;
-        height: 52.5px; /* Maintaining 4:3 ratio */
+        height: 52.5px;
+        /* Maintaining 4:3 ratio */
         left: -85px;
         padding: 8px;
     }
@@ -502,7 +525,7 @@ input:checked + .slider:before {
     .experience-item {
         padding-left: 20px;
     }
-    
+
     .experience-item:hover {
         transform: translateX(5px);
     }
@@ -518,7 +541,8 @@ input:checked + .slider:before {
 
 .stats {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+    grid-template-columns: repeat(3, 1fr);
+    /* Three equal columns */
     gap: 2rem;
     margin-bottom: 0;
 }
@@ -555,11 +579,11 @@ input:checked + .slider:before {
     .container {
         max-width: 960px;
     }
-    
+
     .hero-text h1 {
         font-size: 2.5rem;
     }
-    
+
     .hero-text h2 {
         font-size: 1.8rem;
     }
@@ -569,25 +593,25 @@ input:checked + .slider:before {
     .container {
         max-width: 720px;
     }
-    
+
     .hero-content {
         gap: 2rem;
         padding-left: 2rem;
         padding-right: 2rem;
     }
-    
+
     .hero-text {
         padding-left: 2rem;
     }
-    
+
     .hero-image {
         margin-right: 2rem;
     }
-    
+
     .stats {
         gap: 1.5rem;
     }
-    
+
     .stat-number {
         font-size: 1.6rem;
     }
@@ -597,54 +621,55 @@ input:checked + .slider:before {
     .container {
         max-width: 540px;
     }
-    
+
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 2rem;
         padding: 2rem 1rem;
     }
-    
+
     .hero-text {
         padding-left: 1rem;
         padding-right: 1rem;
         order: 2;
     }
-    
+
     .hero-image {
         margin: 0 auto;
         order: 1;
     }
-    
+
     .stats {
-        grid-template-columns: 1fr; /* Stack on mobile */
+        grid-template-columns: 1fr;
+        /* Stack on mobile */
         gap: 1.5rem;
     }
-    
+
     .stat-item {
         text-align: left;
     }
-    
+
     .section {
         padding: 2rem 1rem;
     }
-    
+
     .experience-item {
         flex-direction: column;
         align-items: center;
         text-align: center;
     }
-    
+
     .skills-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .company-logo {
         width: 60px;
         height: 60px;
         margin-bottom: 16px;
     }
-    
+
     .experience-details {
         width: 100%;
     }
@@ -654,31 +679,31 @@ input:checked + .slider:before {
     .container {
         padding: 0 1rem;
     }
-    
+
     .hero-text h1 {
         font-size: 2rem;
     }
-    
+
     .hero-text h2 {
         font-size: 1.5rem;
     }
-    
+
     .hero-text p {
         font-size: 1rem;
     }
-    
+
     .hero-image {
         width: 180px;
         height: 180px;
     }
-    
+
     .btn {
         display: block;
         margin: 1rem auto;
         width: 80%;
         text-align: center;
     }
-    
+
     .section-title {
         font-size: 1.8rem;
     }
@@ -689,7 +714,7 @@ input:checked + .slider:before {
     .container {
         max-width: 1320px;
     }
-    
+
     .hero-content {
         max-width: 1320px;
     }
@@ -701,7 +726,7 @@ input:checked + .slider:before {
         width: 150px;
         height: 150px;
     }
-    
+
     .hero-text h1 {
         font-size: 1.8rem;
     }
@@ -710,7 +735,8 @@ input:checked + .slider:before {
 /* Update button styles for dark theme */
 [data-theme="dark"] .btn.primary {
     background: var(--accent-color);
-    color: #2b2b2b; /* Dark text for better contrast on pink */
+    color: #2b2b2b;
+    /* Dark text for better contrast on pink */
 }
 
 [data-theme="dark"] .btn.secondary {
@@ -729,7 +755,7 @@ input:checked + .slider:before {
     position: relative;
     padding: 4px 0;
     display: flex;
-    flex-direction: column;  
+    flex-direction: column;
     margin: 0;
 }
 
@@ -744,7 +770,8 @@ input:checked + .slider:before {
 
 .philosophy-item h3 {
     color: var(--accent-color);
-    margin: 0 0 4px 20px;  /* Added bottom margin and left padding for bullet */
+    margin: 0 0 4px 20px;
+    /* Added bottom margin and left padding for bullet */
     font-size: 1.1rem;
 }
 
@@ -760,106 +787,125 @@ input:checked + .slider:before {
     hyphens: auto;
 }
 
-/* Education Section */
+/* Education Section Styling */
 .education-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    padding: 0 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    align-items: stretch;
 }
 
 .education-card {
-    background: var(--bg-primary);
-    border-radius: 8px;
-    transition: transform 0.3s ease;
+    height: 100%;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    border: 2px solid var(--border-color);
-    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .education-card:hover {
     transform: translateY(-5px);
-}
-
-/* Degree Card Specific */
-.education-card.degree {
-    border: 2px solid var(--accent-color);
-}
-
-.education-card.degree .card-header {
-    background: var(--bg-secondary);
-}
-
-.education-card.degree .institution-logo {
-    padding: 8px;
-}
-
-.education-card.degree .institution {
-    color: var(--accent-color);
-}
-
-/* Certification Card Specific Styling */
-.education-card.certification .card-header {
-    background: var(--bg-secondary);
-}
-
-.education-card.certification .institution {
-    color: var(--text-secondary);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent-color);
 }
 
 .card-header {
-    height: 100px;
+    padding: 1rem;
+    height: 120px;
+    /* Set fixed height for logo area */
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1.5rem;
 }
 
-/* Logo/Icon sizing */
-.institution-logo,
-.cert-icon {
-    width: 60px;
-    height: 60px;
+.logo-container {
+    width: 80px;
+    /* Set fixed width for logos */
+    height: 80px;
+    /* Set fixed height for logos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.institution-logo {
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
 }
 
-.cert-icon {
-    font-size: 60px;  /* Match the size of logos */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
+/* Common styles for all card bodies */
 .card-body {
-    padding: 1rem;
+    flex: 1;
+    padding: 1.5rem;
+    /* Increased from 1rem to 1.5rem */
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-secondary);
 }
 
+/* All text elements in all cards */
+.card-body h3,
+.card-body .degree-specialization,
+.card-body .institution,
+.card-body .organization,
+.card-body .certification-name,
+.meta-info span {
+    margin: 0;
+    line-height: 2;
+    /* Increased from 1.8 to 2 for more breathing room */
+    display: block;
+}
+
+/* Main titles for all cards */
 .card-body h3 {
+    font-size: 1.4rem;
+}
+
+/* Secondary text for all cards */
+.card-body .degree-specialization,
+.card-body .organization,
+.card-body .certification-name {
     font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 0.5rem;
 }
 
-.institution {
+/* Meta info for all cards */
+.meta-info {
+    margin: 0;
+}
+
+.meta-info span {
     font-size: 0.9rem;
-    margin-bottom: 0.5rem;
 }
 
-.card-details {
-    margin-top: 0.5rem;
+/* Ensure bachelor card text remains white */
+.card-body.bachelor {
+    background: var(--accent-color);
+    color: var(--bg-secondary);
 }
 
-.date-location {
+/* Certifications Grid */
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.cert-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+}
+
+.cert-badge {
+    background: var(--accent-color);
+    color: var(--bg-primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
     font-size: 0.8rem;
-    color: var(--text-secondary);
-    margin-bottom: 0.25rem;
-}
-
-.description {
-    font-size: 0.9rem;
-    color: var(--text-primary);
-    line-height: 1.4;
 }
 
 /* Responsive Design */
@@ -869,8 +915,63 @@ input:checked + .slider:before {
     }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
     .education-grid {
         grid-template-columns: 1fr;
+        max-width: 400px;
+        /* Limit width on mobile */
     }
+
+    .education-card .card-header {
+        padding: 1.25rem;
+        height: 80px;
+    }
+
+    .education-card .institution-logo {
+        max-height: 50px;
+    }
+}
+
+/* Add border only to the Bachelor card */
+.education-card:has(.bachelor) {
+    border: 1px solid var(--accent-color);
+}
+
+.card-body.bachelor {
+    background: var(--accent-color);
+    color: var(--bg-primary);
+}
+
+/* Base styles for all education cards */
+.education-card {
+    height: 100%;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Bachelor card border */
+.education-card:has(.bachelor) {
+    border: 1px solid var(--accent-color);
+}
+
+/* Other cards border */
+.education-card:not(:has(.bachelor)) {
+    border: 1px solid var(--bg-secondary);
+}
+
+/* Rest of the styles remain the same */
+.card-body {
+    flex: 1;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body.bachelor {
+    background: var(--accent-color);
+    color: var(--bg-primary);
 }
