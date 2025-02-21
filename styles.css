@@ -174,7 +174,15 @@ body {
 
 .experience-details {
     transition: all 0.3s ease;
+    padding: 1rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
+
+.experience-details:hover {
+    border: 1px solid var(--accent-color);
+}
+
 
 .experience-details h3 {
     font-size: 1.25rem;
@@ -974,4 +982,50 @@ input:checked+.slider:before {
 .card-body.bachelor {
     background: var(--accent-color);
     color: var(--bg-primary);
+}
+
+.company-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.meta-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.role-company {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.role-company:hover {
+    color: var(--accent-color);
+    cursor: pointer;
+}
+
+.role-company .separator {
+    margin: 0 4px;
+}
+
+.meta-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.meta-right i {
+    font-size: 1rem;
+    color: var(--text-secondary);
 }
