@@ -1029,3 +1029,180 @@ input:checked+.slider:before {
     font-size: 1rem;
     color: var(--text-secondary);
 }
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.achievement-category {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.achievement-category h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.achievement-list {
+    list-style: none;
+    padding: 0;
+}
+
+.achievement-list li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.achievement-list li:before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+}
+
+.category-footer {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+.achievement-section {
+    margin-bottom: 1.5rem;
+    padding: 1.2rem;
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    box-shadow: 0 2px 10px var(--card-shadow);
+    transition: all 0.3s ease;
+}
+
+.achievement-section:hover {
+    transform: translateY(-5px);
+    border: 1px solid var(--accent-color);
+}
+
+.achievement-section .section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.achievement-points {
+    margin: 0.8rem 0;
+}
+
+.achievement-point {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+}
+
+.achievement-point::before {
+    content: "⦿";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+.section-footer {
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    text-align: right;
+    border-top: 1px solid var(--border-color);
+    padding-top: 0.5rem;
+}
+
+.key-achievements {
+    margin-top: 1rem;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.achievement-section {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.achievement-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent-color);
+    opacity: 0.5;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.achievement-points {
+    margin: 0.5rem 0;
+}
+
+.achievement-point {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.4rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    font-size: 0.9rem;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+}
+
+.achievement-point::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    opacity: 0.7;
+}
+
+.section-footer {
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+    .achievement-point {
+        text-align: left;
+        hyphens: none;
+    }
+}
