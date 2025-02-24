@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap');
 
 :root {
-    /* Light theme (default) */
+
     --bg-primary: #ffffff;
     --bg-secondary: #f3f2ef;
     --text-primary: #000000;
@@ -13,17 +13,17 @@
 
 [data-theme="dark"] {
     --bg-primary: #2b2b2b;
-    /* Dark gray */
+
     --bg-secondary: #000000;
-    /* Absolute black */
+
     --text-primary: #ffffff;
-    /* Soft white */
+
     --text-secondary: #e5d6d9;
-    /* Light gray */
+
     --accent-color: #fe758a;
-    /* Pastel pink */
+
     --border-color: #4a4a4a;
-    /* Medium gray */
+
 }
 
 body {
@@ -42,19 +42,6 @@ body {
     padding: 0 20px;
 }
 
-.profile-header,
-.profile-background,
-.profile-info,
-.profile-image,
-.profile-details,
-.education-item,
-.school-logo,
-.education-details,
-.nav-content,
-.nav-links {
-    display: none;
-}
-
 .section {
     padding: 1.5rem 0;
     background: var(--bg-primary);
@@ -63,7 +50,7 @@ body {
     box-shadow: 0 0 0 1px var(--border-color);
 }
 
-/* Special case for the first section (hero) */
+
 .hero.section {
     margin-top: 0;
     padding-top: 0;
@@ -75,10 +62,28 @@ body {
 }
 
 .section-title {
-    text-align: center;
-    margin-bottom: 40px;
     font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
     color: var(--text-primary);
+    font-weight: 700;
+    width: 100%;
+    position: relative;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--accent-color);
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
 }
 
 .sub-section-title {
@@ -86,6 +91,8 @@ body {
     font-weight: 600;
     margin-bottom: 0.5rem;
     color: var(--text-secondary);
+    text-align: left;
+    align-self: flex-start;
 }
 
 
@@ -145,7 +152,7 @@ body {
     position: absolute;
     width: 100px;
     height: 75px;
-    /* 4:3 ratio */
+
     left: -125px;
     top: -10px;
     background: #ffffff;
@@ -299,11 +306,6 @@ body {
     font-weight: 500;
 }
 
-.endorsement-count {
-    font-size: 14px;
-    color: var(--text-secondary);
-}
-
 .theme-switch-wrapper {
     position: fixed;
     top: 20px;
@@ -362,16 +364,6 @@ input:checked+.slider:before {
     color: var(--text-primary);
 }
 
-/* New styles for enhanced layout */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: var(--bg-primary);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    height: 60px;
-}
 
 .hero-content {
     display: grid;
@@ -405,9 +397,9 @@ input:checked+.slider:before {
 }
 
 .hero-text p em,
-/* For existing italic text */
+
 .hero-text p.footnote {
-    /* New class for small italic text */
+
     font-size: 1rem;
     font-style: italic;
     color: var(--accent-color);
@@ -464,7 +456,7 @@ input:checked+.slider:before {
     color: var(--accent-color);
 }
 
-/* New animations and transitions */
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -506,10 +498,6 @@ input:checked+.slider:before {
         grid-template-columns: 1fr;
     }
 
-    .nav-links {
-        gap: 1rem;
-    }
-
     .experience-timeline {
         padding-left: 80px;
     }
@@ -521,7 +509,7 @@ input:checked+.slider:before {
     .company-logo {
         width: 70px;
         height: 52.5px;
-        /* Maintaining 4:3 ratio */
+
         left: -85px;
         padding: 8px;
     }
@@ -550,9 +538,9 @@ input:checked+.slider:before {
 .stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* Three equal columns */
     gap: 2rem;
-    margin-bottom: 0;
+    margin-bottom: 2rem;
+    width: 100%;
 }
 
 .stat-item {
@@ -560,9 +548,14 @@ input:checked+.slider:before {
     flex-direction: column;
     align-items: flex-start;
     background: var(--bg-secondary);
-    padding: 1.5rem;
+    padding: 2rem;
     border-radius: 8px;
     transition: transform 0.3s ease;
+    height: auto;
+    min-height: 180px;
+    margin-bottom: 1rem;
+    overflow: visible;
+    box-sizing: border-box;
 }
 
 .stat-item:hover {
@@ -573,16 +566,22 @@ input:checked+.slider:before {
     font-size: 1.8rem;
     font-weight: 600;
     color: var(--accent-color);
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
 }
 
 .stat-label {
     font-size: 0.9rem;
     color: var(--text-primary);
-    line-height: 1.4;
+    line-height: 1.8;
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    padding-bottom: 1rem;
 }
 
-/* Responsive Design */
+
 @media screen and (max-width: 1200px) {
     .container {
         max-width: 960px;
@@ -650,7 +649,7 @@ input:checked+.slider:before {
 
     .stats {
         grid-template-columns: 1fr;
-        /* Stack on mobile */
+
         gap: 1.5rem;
     }
 
@@ -680,6 +679,55 @@ input:checked+.slider:before {
 
     .experience-details {
         width: 100%;
+    }
+
+    .section-title,
+    .section-title h2 {
+        font-size: 2.5rem;
+    }
+
+    .experience-timeline {
+        padding-left: 80px;
+    }
+
+    .experience-timeline::before {
+        left: 40px;
+    }
+
+    .company-logo {
+        width: 70px;
+        height: 52.5px;
+        left: -85px;
+        padding: 8px;
+    }
+
+    .experience-item::before {
+        left: -38px;
+    }
+
+    .experience-item {
+        padding-left: 20px;
+    }
+
+    .experience-item:hover {
+        transform: translateX(5px);
+    }
+
+    .experience-details {
+        padding: 0.8rem;
+    }
+
+    .role-company {
+        font-size: 1.1rem;
+    }
+
+    .description {
+        font-size: 0.85rem;
+    }
+
+    .achievement-points li {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
     }
 }
 
@@ -712,12 +760,13 @@ input:checked+.slider:before {
         text-align: center;
     }
 
-    .section-title {
-        font-size: 1.8rem;
+    .section-title,
+    .section-title h2 {
+        font-size: 2rem;
     }
 }
 
-/* Fix for ultra-wide screens */
+
 @media screen and (min-width: 1400px) {
     .container {
         max-width: 1320px;
@@ -728,7 +777,7 @@ input:checked+.slider:before {
     }
 }
 
-/* Fix for very small screens */
+
 @media screen and (max-width: 360px) {
     .hero-image {
         width: 150px;
@@ -740,11 +789,11 @@ input:checked+.slider:before {
     }
 }
 
-/* Update button styles for dark theme */
+
 [data-theme="dark"] .btn.primary {
     background: var(--accent-color);
     color: #2b2b2b;
-    /* Dark text for better contrast on pink */
+
 }
 
 [data-theme="dark"] .btn.secondary {
@@ -779,7 +828,7 @@ input:checked+.slider:before {
 .philosophy-item h3 {
     color: var(--accent-color);
     margin: 0 0 4px 20px;
-    /* Added bottom margin and left padding for bullet */
+
     font-size: 1.1rem;
 }
 
@@ -795,7 +844,7 @@ input:checked+.slider:before {
     hyphens: auto;
 }
 
-/* Education Section Styling */
+
 .education-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -823,7 +872,7 @@ input:checked+.slider:before {
 .card-header {
     padding: 1rem;
     height: 120px;
-    /* Set fixed height for logo area */
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -831,9 +880,9 @@ input:checked+.slider:before {
 
 .logo-container {
     width: 80px;
-    /* Set fixed width for logos */
+
     height: 80px;
-    /* Set fixed height for logos */
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -845,17 +894,17 @@ input:checked+.slider:before {
     object-fit: contain;
 }
 
-/* Common styles for all card bodies */
+
 .card-body {
     flex: 1;
     padding: 1.5rem;
-    /* Increased from 1rem to 1.5rem */
+
     display: flex;
     flex-direction: column;
     background: var(--bg-secondary);
 }
 
-/* All text elements in all cards */
+
 .card-body h3,
 .card-body .degree-specialization,
 .card-body .institution,
@@ -864,23 +913,23 @@ input:checked+.slider:before {
 .meta-info span {
     margin: 0;
     line-height: 2;
-    /* Increased from 1.8 to 2 for more breathing room */
+
     display: block;
 }
 
-/* Main titles for all cards */
+
 .card-body h3 {
     font-size: 1.4rem;
 }
 
-/* Secondary text for all cards */
+
 .card-body .degree-specialization,
 .card-body .organization,
 .card-body .certification-name {
     font-size: 1.1rem;
 }
 
-/* Meta info for all cards */
+
 .meta-info {
     margin: 0;
 }
@@ -889,13 +938,13 @@ input:checked+.slider:before {
     font-size: 0.9rem;
 }
 
-/* Ensure bachelor card text remains white */
+
 .card-body.bachelor {
     background: var(--accent-color);
     color: var(--bg-secondary);
 }
 
-/* Certifications Grid */
+
 .certifications-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -916,7 +965,7 @@ input:checked+.slider:before {
     font-size: 0.8rem;
 }
 
-/* Responsive Design */
+
 @media screen and (max-width: 992px) {
     .education-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -927,7 +976,7 @@ input:checked+.slider:before {
     .education-grid {
         grid-template-columns: 1fr;
         max-width: 400px;
-        /* Limit width on mobile */
+
     }
 
     .education-card .card-header {
@@ -940,7 +989,7 @@ input:checked+.slider:before {
     }
 }
 
-/* Add border only to the Bachelor card */
+
 .education-card:has(.bachelor) {
     border: 1px solid var(--accent-color);
 }
@@ -950,7 +999,7 @@ input:checked+.slider:before {
     color: var(--bg-primary);
 }
 
-/* Base styles for all education cards */
+
 .education-card {
     height: 100%;
     background: var(--card-bg);
@@ -961,17 +1010,17 @@ input:checked+.slider:before {
     flex-direction: column;
 }
 
-/* Bachelor card border */
+
 .education-card:has(.bachelor) {
     border: 1px solid var(--accent-color);
 }
 
-/* Other cards border */
+
 .education-card:not(:has(.bachelor)) {
     border: 1px solid var(--bg-secondary);
 }
 
-/* Rest of the styles remain the same */
+
 .card-body {
     flex: 1;
     padding: 1.2rem;
@@ -1076,18 +1125,11 @@ input:checked+.slider:before {
 }
 
 .achievement-section {
-    margin-bottom: 1.5rem;
-    padding: 1.2rem;
-    background: var(--bg-secondary);
+    margin-bottom: 1rem;
+    padding: 1rem;
     border-radius: 16px;
-    box-shadow: 0 2px 10px var(--card-shadow);
-    transition: all 0.3s ease;
 }
 
-.achievement-section:hover {
-    transform: translateY(-5px);
-    border: 1px solid var(--accent-color);
-}
 
 .achievement-section .section-title {
     font-size: 1.25rem;
@@ -1097,13 +1139,13 @@ input:checked+.slider:before {
 }
 
 .achievement-points {
-    margin: 0.8rem 0;
+    margin: 0.5rem 0;
 }
 
 .achievement-point {
     position: relative;
     padding-left: 1.5rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     color: var(--text-secondary);
     line-height: 1.6;
     text-align: justify;
@@ -1118,14 +1160,24 @@ input:checked+.slider:before {
     color: var(--accent-color);
 }
 
+.section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    text-align: left;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
 .section-footer {
-    font-style: italic;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-top: 1rem;
-    text-align: right;
-    border-top: 1px solid var(--border-color);
-    padding-top: 0.5rem;
+    text-align: left;
+    width: 100%;
 }
 
 .key-achievements {
@@ -1138,17 +1190,6 @@ input:checked+.slider:before {
     position: relative;
     padding-left: 1rem;
     margin-bottom: 0.75rem;
-}
-
-.achievement-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 3px;
-    height: 100%;
-    background: var(--accent-color);
-    opacity: 0.5;
 }
 
 .section-header {
@@ -1205,4 +1246,65 @@ input:checked+.slider:before {
         text-align: left;
         hyphens: none;
     }
+}
+
+@media screen and (max-width: 480px) {
+
+    .section-title,
+    .section-title h2 {
+        font-size: 2rem;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .experience-timeline {
+        padding-left: 60px;
+    }
+
+    .company-logo {
+        width: 50px;
+        height: 37.5px;
+        left: -65px;
+        padding: 6px;
+    }
+
+    .experience-timeline::before {
+        left: 30px;
+    }
+
+    .experience-item::before {
+        left: -28px;
+    }
+
+    .experience-details {
+        padding: 0.6rem;
+    }
+
+    .role-company {
+        font-size: 1rem;
+    }
+
+
+    .date-location {
+        font-size: 0.8rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+
+
+    .meta-info {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+
+
+.experience-timeline,
+.company-logo,
+.experience-details,
+.experience-item {
+    transition: all 0.3s ease;
 }
