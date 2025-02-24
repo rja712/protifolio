@@ -1242,64 +1242,65 @@ input:checked+.slider:before {
     transition: all 0.3s ease;
 }
 
-.skill-tag {
-    display: inline-block;
-    padding: 0.3rem 0.6rem;
-    margin: 0.2rem;
-    color: var(--accent-color);
-    background: var(--bg-secondary);
-    border-radius: 16px;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-   
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 1rem;
 }
 
-.skill-tag:hover {
-    transform: translateY(-2px);
-    color: var(--text-primary);
+.skill-category {
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+}
 
+.category-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    font-weight: 600;
 }
 
 .skill-tags-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 0.5rem;
+    gap: 0.5rem;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .skill-tag {
-        font-size: 0.8rem;
-        padding: 0.3rem 0.6rem;
-    }
-
-    .skill-tags-container {
-        justify-content: center;
-    }
-}
-
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-}
-
-.category-title {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+.skill-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.8rem;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    font-size: 0.9rem;
     color: var(--text-primary);
-    font-weight: 600;
+    transition: transform 0.2s ease;
+    margin-bottom: 0.5rem;
+}
+
+.skill-tag i {
+    font-size: 1rem;
+    color: var(--accent-color);
+}
+
+.skill-tag:hover {
+    transform: translateY(-2px);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .skills-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 1.5rem;
     }
-
-    .skill-category {
-        padding: 0.75rem;
+    
+    .skill-tag {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.7rem;
     }
 }
