@@ -143,7 +143,6 @@ h2.section-title {
 }
 
 .experience-item {
-    margin-bottom: 3rem;
     padding: 2rem;
     background: var(--card-bg);
     border-radius: 12px;
@@ -153,19 +152,37 @@ h2.section-title {
 .experience-header {
     display: flex;
     gap: 2rem;
-    margin-bottom: 2rem;
 }
 
 .company-logo-wrapper {
     flex-shrink: 0;
-    width: 200px;
-    /* Adjust based on your logo size */
+    width: 160px;
+    height: 60px;
+}
+
+.company-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff !important;
+    padding: 0.75rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 100%;
 }
 
 .company-logo img {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 100%;
+    max-height: 40px;
     object-fit: contain;
+    object-position: center;
+}
+
+[data-theme="dark"] .company-logo {
+    background: #ffffff !important;
+    border: 1px solid var(--border-color);
 }
 
 .experience-content {
@@ -205,32 +222,68 @@ h2.section-title {
 
 .achievements-row {
     display: flex;
-    gap: 2rem;
-    margin-top: 2rem;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .achievement-section {
-    flex: 1;
-    background: var(--card-bg-secondary);
-    padding: 1.5rem;
-    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.achievement-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px var(--card-shadow);
 }
 
 .achievement-header {
+    font-size: 1.2rem;
     font-weight: 600;
-    margin-bottom: 1rem;
     color: var(--text-primary);
+    margin-bottom: 0.5rem;
 }
 
 .achievement-points {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+   
 }
 
 .achievement-point {
-    color: var(--text-secondary);
-    line-height: 1.4;
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+}
+
+.achievement-point strong {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.achievement-point a {
+    color: var(--accent-color);
+    text-decoration: underline;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-underline-offset: 2px;
+}
+
+.achievement-point a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+[data-theme="dark"] .achievement-point a {
+    color: var(--accent-color);
+}
+
+[data-theme="dark"] .achievement-point a:hover {
+    opacity: 0.8;
 }
 
 /* Responsive Design */
@@ -242,7 +295,6 @@ h2.section-title {
 
     .company-logo-wrapper {
         width: 150px;
-        margin: 0 auto;
     }
 
     .top-row {
@@ -269,6 +321,15 @@ h2.section-title {
         flex-direction: column;
         align-items: center;
         gap: 0.5rem;
+    }
+
+    .company-logo-wrapper {
+        width: 120px;
+        height: 45px;
+    }
+    
+    .company-logo img {
+        max-height: 30px;
     }
 }
 
@@ -990,20 +1051,12 @@ input:checked+.slider:before {
     display: flex;
     align-items: center;
     gap: 4px;
-    color: var(--text-primary);
+    color: var(--accent-color);
     transition: color 0.3s ease;
     font-size: 1.25rem;
     font-weight: 600;
 }
 
-.role-company:hover {
-    color: var(--accent-color);
-    cursor: pointer;
-}
-
-.role-company .separator {
-    margin: 0 4px;
-}
 
 .meta-right {
     display: flex;
@@ -1084,7 +1137,7 @@ input:checked+.slider:before {
     position: relative;
     padding-left: 1.5rem;
     margin-bottom: 0.5rem;
-    color: var(--text-secondary);
+    color: var(--text-primary);
     line-height: 1.6;
     text-align: justify;
     text-justify: inter-word;
@@ -1151,7 +1204,7 @@ input:checked+.slider:before {
     position: relative;
     padding-left: 1rem;
     margin-bottom: 0.4rem;
-    color: var(--text-secondary);
+    color: var(--text-primary);
     line-height: 1.4;
     font-size: 0.9rem;
     text-align: justify;
