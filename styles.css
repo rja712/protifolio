@@ -151,38 +151,32 @@ h2.section-title {
 
 .experience-header {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
+    margin-bottom: 1rem;
 }
 
 .company-logo-wrapper {
     flex-shrink: 0;
-    width: 160px;
-    height: 60px;
+    width: 200px;
+    height: 100px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    border-radius: 8px;
 }
 
 .company-logo {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #ffffff !important;
-    padding: 0.75rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    height: 100%;
 }
 
 .company-logo img {
-    width: auto;
-    height: 100%;
-    max-height: 40px;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
-    object-position: center;
-}
-
-[data-theme="dark"] .company-logo {
-    background: #ffffff !important;
-    border: 1px solid var(--border-color);
+    object-position: left;
 }
 
 .experience-content {
@@ -204,29 +198,43 @@ h2.section-title {
 
 .meta-info {
     display: flex;
-    gap: 1.5rem;
-    color: var(--text-secondary);
+    align-items: center;
+    gap: 2rem;
 }
 
 .meta-info span {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    color: #ffffff;
+    font-size: 0.9rem;
+    letter-spacing: 0.3px;
+}
+
+.meta-info i {
+    margin-right: 8px;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.card-body:not(.bachelor) .meta-info span {
+    color: var(--text-secondary);
 }
 
 .description {
     color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .achievements-row {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 0.5rem;
 }
 
 .achievement-section {
+    padding: 1.5rem;
+    border-radius: 8px;
     transition: all 0.3s ease;
 }
 
@@ -239,13 +247,13 @@ h2.section-title {
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .achievement-points {
     display: flex;
     flex-direction: column;
-   
+    gap: 1rem;
 }
 
 .achievement-point {
@@ -312,24 +320,36 @@ h2.section-title {
     }
 
     .achievements-row {
-        flex-direction: column;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 }
 
 @media (max-width: 768px) {
     .meta-info {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
+        gap: 1.5rem;
     }
 
     .company-logo-wrapper {
-        width: 120px;
-        height: 45px;
+        width: 200px;
+        height: 80px;
+        padding: 15px;
     }
     
     .company-logo img {
         max-height: 30px;
+    }
+
+    .achievements-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .achievement-section {
+        padding: 1.25rem;
+    }
+    
+    .achievement-header {
+        font-size: 1.1rem;
     }
 }
 
@@ -507,9 +527,27 @@ input:checked+.slider:before {
     gap: 1rem;
 }
 
+.contact-item i {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    width: 24px;  /* Fixed width for alignment */
+    text-align: center;
+}
+
 .contact-item a {
     color: var(--text-primary);
     text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: var(--accent-color);
+}
+
+/* Format phone number nicely */
+.contact-item:first-child a {
+    font-family: monospace;  /* Better spacing for numbers */
+    letter-spacing: 0.5px;
 }
 
 @media (max-width: 768px) {
@@ -893,9 +931,7 @@ input:checked+.slider:before {
 
 .logo-container {
     width: 80px;
-
     height: 80px;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1356,4 +1392,8 @@ input:checked+.slider:before {
         font-size: 0.85rem;
         padding: 0.4rem 0.7rem;
     }
+}
+
+.card-details {
+    margin-top: 1rem;
 }
