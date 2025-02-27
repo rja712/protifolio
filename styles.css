@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600&display=swap');
 
 :root {
     --bg-primary: #ffffff;       /* White for a clean background */
@@ -11,6 +11,11 @@
     --section-gap: 8px;
     --container-padding: 16px;   /* Converted to px for consistency */
     --border-radius: 8px;
+    /* Font size system */
+    --font-xl: 24px;    /* For main headings */
+    --font-lg: 18px;    /* For subheadings */
+    --font-md: 16px;    /* For body text */
+    --font-sm: 14px;    /* For secondary text */
 }
 
 [data-theme="dark"] {
@@ -28,7 +33,7 @@ body {
     padding: 0;
     background-color: var(--bg-secondary);
     color: var(--text-primary);
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     font-size: 16px;
     line-height: 1.6;
     width: 100%;
@@ -67,7 +72,7 @@ body {
 }
 
 h2.section-title {
-    font-size: 28px;
+    font-size: var(--font-xl);
     text-align: center;
     margin: 2rem 0;
     color: var(--accent-primary);
@@ -99,6 +104,10 @@ h2.section-title {
     :root {
         --section-gap: 0.25rem;
         --container-padding: 0.75rem;
+        --font-xl: 20px;
+        --font-lg: 16px;
+        --font-md: 14px;
+        --font-sm: 12px;
     }
 
     .section {
@@ -115,7 +124,7 @@ h2.section-title {
     }
 
     h2.section-title {
-        font-size: 32px;
+        font-size: var(--font-xl);
         margin: 1rem 0;
     }
 
@@ -203,7 +212,7 @@ h2.section-title {
 }
 
 .role-company {
-    font-size: 20px;
+    font-size: var(--font-lg);
     font-weight: 600;
     color: var(--text-primary);
 }
@@ -212,7 +221,7 @@ h2.section-title {
     display: flex;
     gap: 1.5rem;
     color: var(--text-secondary);
-    font-size: 14px;
+    font-size: var(--font-sm);
     margin-top: 0.5rem;
 }
 
@@ -225,10 +234,6 @@ h2.section-title {
 .meta-info i {
     color: var(--accent-primary);
     font-size: 14px;
-}
-
-.card-body:not(.bachelor) .meta-info span {
-    color: var(--text-secondary);
 }
 
 .description {
@@ -964,7 +969,7 @@ input:checked + .slider:before {
 }
 
 .edu-degree {
-    font-size: 18px;
+    font-size: var(--font-lg);
     font-weight: 600;
     color: var(--text-primary);
     line-height: 1.2;
@@ -973,14 +978,14 @@ input:checked + .slider:before {
 
 .edu-branch {
     color: var(--accent-primary);
-    font-size: 15px;
+    font-size: var(--font-md);
     line-height: 1.2;
     margin: 0;
 }
 
 .edu-school {
     color: var(--text-secondary);
-    font-size: 14px;
+    font-size: var(--font-sm);
     line-height: 1.2;
     margin: 0;
 }
@@ -996,7 +1001,7 @@ input:checked + .slider:before {
 .edu-year, .edu-grade {
     display: block;
     color: var(--text-secondary);
-    font-size: 14px;
+    font-size: var(--font-sm);
     line-height: 1.2;
 }
 
@@ -1156,7 +1161,7 @@ input:checked + .slider:before {
     gap: 4px;
     color: var(--accent-primary);
     transition: color 0.3s ease;
-    font-size: 20px;
+    font-size: var(--font-lg);
     font-weight: 600;
 }
 
@@ -1166,7 +1171,7 @@ input:checked + .slider:before {
     align-items: center;
     gap: 8px;
     color: var(--text-secondary);
-    font-size: 14px;
+    font-size: var(--font-sm);
 }
 
 .meta-right i {
@@ -1270,7 +1275,7 @@ input:checked + .slider:before {
     margin-bottom: 0.4rem;
     color: var(--text-primary);
     line-height: 1.4;
-    font-size: 16px;
+    font-size: var(--font-md);
     text-align: justify;
     text-justify: inter-word;
     hyphens: auto;
@@ -1482,7 +1487,7 @@ input:checked + .slider:before {
 }
 
 .edu-degree {
-    font-size: 18px;
+    font-size: var(--font-lg);
     font-weight: 600;
     color: var(--text-primary);
     line-height: 1.2;
@@ -1491,14 +1496,14 @@ input:checked + .slider:before {
 
 .edu-branch {
     color: var(--accent-primary);
-    font-size: 15px;
+    font-size: var(--font-md);
     line-height: 1.2;
     margin: 0;
 }
 
 .edu-school {
     color: var(--text-secondary);
-    font-size: 14px;
+    font-size: var(--font-sm);
     line-height: 1.2;
     margin: 0;
 }
@@ -1514,7 +1519,7 @@ input:checked + .slider:before {
 .edu-year, .edu-grade {
     display: block;
     color: var(--text-secondary);
-    font-size: 14px;
+    font-size: var(--font-sm);
     line-height: 1.2;
 }
 
@@ -1578,14 +1583,16 @@ input:checked + .slider:before {
 }
 
 .cert-card:hover {
-    transform: translateY(-4px);
+    transform: none;  /* Remove the jumping effect */
+    box-shadow: 0 4px 12px var(--card-shadow);  /* Subtle shadow increase */
+    transition: box-shadow 0.3s ease;
 }
 
 .cert-header {
     display: flex;
     align-items: center;
-    gap: calc(var(--section-gap) * 2);
-    margin-bottom: 1rem;
+    gap: 12px;
+    margin-bottom: 8px;
 }
 
 .cert-logo-wrapper {
@@ -1610,20 +1617,20 @@ input:checked + .slider:before {
 }
 
 .cert-name {
-    font-size: 18px;
+    font-size: var(--font-lg);
     font-weight: 600;
     color: var(--text-primary);
     margin: 0;
 }
 
 .cert-issuer {
-    font-size: 14px;
+    font-size: var(--font-sm);
     color: var(--accent-primary);
     margin: 0;
 }
 
 .cert-date {
-    font-size: 14px;
+    font-size: var(--font-sm);
     color: var(--text-secondary);
     display: flex;
     align-items: center;
@@ -1631,39 +1638,36 @@ input:checked + .slider:before {
 }
 
 .projects-container {
-    display: flex;
-    flex-direction: column;
-    gap: calc(var(--section-gap) * 3);
-    padding: var(--container-padding);
-    background: var(--card-bg);
-    border-radius: var(--border-radius);
-    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 8px;
+    margin-top: 8px;
 }
 
 .project-item {
-    position: relative;
-    padding: var(--container-padding);
-    background: var(--card-bg);
-    border-left: 3px solid var(--accent-primary);
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item:hover {
+    background-color: var(--bg-secondary);  /* Subtle background change */
+    box-shadow: 0 2px 8px var(--card-shadow);  /* Light shadow */
 }
 
 .project-item:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    bottom: -0.75rem;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: var(--bg-secondary);
+    display: none;
 }
 
 .project-title {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 1.1rem;
+    font-size: var(--font-md);
     color: var(--text-primary);
-    margin-bottom: 0.75rem;
+    margin-bottom: 6px;
+    margin-top: 0;
 }
 
 .project-points {
@@ -1689,13 +1693,17 @@ input:checked + .slider:before {
         width: 80px;
         height: 80px;
     }
+
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
 }
 
 .nextleap-logo-wrapper {
     background: none; /* No background */
     padding: 0;       /* No padding */
-    width: 80px;      /* Consistent width */
-    height: 80px;     /* Consistent height */
+    width: 70px;      /* Consistent width */
+    height: 70px;     /* Consistent height */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1708,3 +1716,28 @@ input:checked + .slider:before {
     max-height: 100%;
     object-fit: cover; /* Ensure the image covers the area */
 }
+
+/* Add these styles at the end of your CSS file */
+footer .container {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+footer .container p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.project-title a {
+    color: var(--accent-primary);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+/* Smooth transition for all hover effects */
+.cert-card, .project-item {
+    transition: all 0.3s ease;
+}
+
