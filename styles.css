@@ -1,16 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap');
 
 :root {
-    --bg-primary: #ffffff;
-    --bg-secondary: #f3f2ef;
-    --text-primary: #000000;
-    --text-secondary: #666666;
-    --accent-color: #0a66c2;
-    --border-color: #e0e0e0;
-    --card-shadow: rgba(0, 0, 0, 0.08);
-    --section-gap: 1rem;
-    --container-padding: 1rem;
+    --bg-primary: #ffffff;       /* White for a clean background */
+    --bg-secondary: #f4f4f9;     /* Light gray for subtle contrast */
+    --text-primary: #333333;     /* Dark gray for primary text */
+    --text-secondary: #555555;   /* Medium gray for secondary text */
+    --accent-primary: #0056b3;   /* Blue for a professional accent */
+    --accent-secondary: #7aaedc; /* Lighter blue for secondary accents */
+    --card-shadow: #0000001a;    /* Slightly darker shadow for depth */
+    --section-gap: 8px;
+    --container-padding: 16px;   /* Converted to px for consistency */
     --border-radius: 8px;
+}
+
+[data-theme="dark"] {
+    --bg-primary: #3a3a3a;       /* Softer dark gray for primary background */
+    --bg-secondary: #2e2e2e;     /* Slightly lighter gray for secondary background */
+    --text-primary: #ffffff;     /* Softer light gray for primary text */
+    --text-secondary: #d7dbda;   /* Softer medium gray for secondary text */
+    --accent-primary: #1fd1d1;   /* Teal for a professional accent */
+    --accent-secondary: #9ffefe; /* Lighter teal for secondary accents */
+    --card-shadow: #00000033;    /* Softer shadow for dark mode */
 }
 
 body {
@@ -19,6 +29,7 @@ body {
     background-color: var(--bg-secondary);
     color: var(--text-primary);
     font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
     line-height: 1.6;
     width: 100%;
     max-width: 100vw;
@@ -33,13 +44,12 @@ body {
 }
 
 .section {
-    width: 100%;
-    padding: 2rem var(--container-padding);
+    margin: 8px 0;
+    padding: 16px;
     background: var(--bg-primary);
-    margin: var(--section-gap) 0;
-    border-radius: var(--border-radius);
-    box-shadow: 0 0 0 1px var(--border-color);
-    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--card-shadow);
+    border: 1px solid var(--bg-secondary);
 }
 
 .section:first-child {
@@ -52,15 +62,15 @@ body {
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 16px;
     box-sizing: border-box;
 }
 
 h2.section-title {
-    font-size: 2.5rem;
+    font-size: 40px;
     text-align: center;
     margin: 2rem 0;
-    color: var(--accent-color);
+    color: var(--accent-primary);
     font-weight: 600;
     width: 100%;
     display: flex;
@@ -68,6 +78,8 @@ h2.section-title {
     align-items: center;
     line-height: 1.2;
     position: relative;
+    margin-top: 0;
+    padding-top: 8px;
 }
 
 .section-title::after {
@@ -85,31 +97,31 @@ h2.section-title {
 
 @media screen and (max-width: 768px) {
     :root {
-        --section-gap: 0.5rem;
+        --section-gap: 0.25rem;
         --container-padding: 0.75rem;
     }
 
     .section {
-        padding: 1.5rem var(--container-padding);
+        padding: 12px;
+        margin: 4px 0;
+    }
+
+    .section:first-child {
+        margin-top: 0;
+    }
+
+    .section:last-child {
+        margin-bottom: 0;
     }
 
     h2.section-title {
-        font-size: 2rem;
+        font-size: 32px;
         margin: 1rem 0;
     }
 
     .section-content {
         padding: 1rem var(--container-padding);
     }
-}
-
-[data-theme="dark"] {
-    --bg-primary: #2b2b2b;
-    --bg-secondary: #000000;
-    --text-primary: #ffffff;
-    --text-secondary: #e5d6d9;
-    --accent-color: #fe758a;
-    --border-color: #4a4a4a;
 }
 
 .hero.section {
@@ -123,7 +135,7 @@ h2.section-title {
 }
 
 .sub-section-title {
-    font-size: 1.5rem;
+    font-size: 24px;
     font-weight: 600;
     margin-bottom: 0.5rem;
     color: var(--text-secondary);
@@ -143,10 +155,10 @@ h2.section-title {
 }
 
 .experience-item {
-    padding: 2rem;
-    background: var(--card-bg);
-    border-radius: 12px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 32px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    border: 1px solid var(--accent-secondary);
 }
 
 .experience-header {
@@ -189,7 +201,7 @@ h2.section-title {
 }
 
 .role-company {
-    font-size: 1.25rem;
+    font-size: 20px;
     font-weight: 600;
     color: var(--text-primary);
 }
@@ -198,7 +210,7 @@ h2.section-title {
     display: flex;
     gap: 1.5rem;
     color: var(--text-secondary);
-    font-size: 0.85rem;
+    font-size: 14px;
     margin-top: 0.5rem;
 }
 
@@ -209,8 +221,8 @@ h2.section-title {
 }
 
 .meta-info i {
-    color: var(--accent-color);
-    font-size: 0.9rem;
+    color: var(--accent-primary);
+    font-size: 14px;
 }
 
 .card-body:not(.bachelor) .meta-info span {
@@ -225,23 +237,21 @@ h2.section-title {
 .achievements-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 0.5rem;
+    gap: 16px;
+    margin-top: 16px;
 }
 
 .achievement-section {
-    padding: 1.5rem;
+    padding: 16px;
     border-radius: 8px;
-    transition: all 0.3s ease;
 }
 
-.achievement-section:hover {
-    transform: translateY(-5px);
+.experience-item:hover {
     box-shadow: 0 4px 12px var(--card-shadow);
 }
 
 .achievement-header {
-    font-size: 1.2rem;
+    font-size: 19px;
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 1rem;
@@ -250,7 +260,7 @@ h2.section-title {
 .achievement-points {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 8px;
 }
 
 .achievement-point {
@@ -265,12 +275,12 @@ h2.section-title {
 }
 
 .achievement-point strong {
-    color: var(--accent-color);
+    color: var(--accent-primary);
     font-weight: 600;
 }
 
 .achievement-point a {
-    color: var(--accent-color);
+    color: var(--accent-primary);
     text-decoration: underline;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -282,15 +292,6 @@ h2.section-title {
     text-decoration: underline;
     text-underline-offset: 3px;
 }
-
-[data-theme="dark"] .achievement-point a {
-    color: var(--accent-color);
-}
-
-[data-theme="dark"] .achievement-point a:hover {
-    opacity: 0.8;
-}
-
 /* Responsive Design */
 @media (max-width: 1024px) {
     .experience-header {
@@ -345,14 +346,19 @@ h2.section-title {
 
     .achievements-row {
         grid-template-columns: 1fr;
+        gap: 8px;
     }
     
     .achievement-section {
-        padding: 1.25rem;
+        padding: 12px;
     }
     
     .achievement-header {
-        font-size: 1.1rem;
+        font-size: 14px;
+    }
+
+    .experience-item {
+        margin-bottom: 8px;
     }
 }
 
@@ -384,7 +390,7 @@ h2.section-title {
     right: 0;
     bottom: 0;
     background-color: var(--bg-secondary);
-    transition: .4s;
+    transition: 0.4s;
     border-radius: 34px;
 }
 
@@ -395,17 +401,22 @@ h2.section-title {
     width: 16px;
     left: 4px;
     bottom: 4px;
-    background-color: var(--bg-primary);
-    transition: .4s;
+    background-color: var(--text-primary);
+    transition: 0.4s;
     border-radius: 50%;
 }
 
-input:checked+.slider {
-    background-color: var(--accent-color);
+input:checked + .slider {
+    background-color: var(--accent-primary);
 }
 
-input:checked+.slider:before {
+input:checked + .slider:before {
     transform: translateX(20px);
+    background-color: var(--bg-primary);
+}
+
+[data-theme="dark"] .slider:before {
+    background-color: var(--accent-primary);
 }
 
 .theme-label {
@@ -417,7 +428,7 @@ input:checked+.slider:before {
 .hero-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: calc(var(--section-gap) * 4);
     align-items: center;
     padding-top: 2rem;
     max-width: 1200px;
@@ -429,27 +440,27 @@ input:checked+.slider:before {
 }
 
 .hero-text h1 {
-    font-size: 3rem;
+    font-size: 48px;
     margin: 0 0 1rem 0;
 }
 
 .hero-text h2 {
-    font-size: 2rem;
+    font-size: 32px;
     margin: 0 0 0.5rem 0;
     color: var(--text-secondary);
 }
 
 .hero-text p {
-    font-size: 1.2rem;
+    font-size: 19px;
     margin: 0 0 1rem 0;
     color: var(--text-secondary);
 }
 
 .hero-text p em,
 .hero-text p.footnote {
-    font-size: 1rem;
+    font-size: 16px;
     font-style: italic;
-    color: var(--accent-color);
+    color: var(--accent-primary);
     opacity: 0.8;
 }
 
@@ -459,11 +470,16 @@ input:checked+.slider:before {
     margin: 0 auto;
     border-radius: 50%;
     overflow: hidden;
-    border: 2px solid var(--accent-color);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--accent-primary);
     position: relative;
     justify-self: center;
-    margin-right: 4rem;
+    margin-right: 64px;
+    transition: all 300ms ease;
+}
+
+.hero-image:hover {
+    transform: scale(1.1);
+    border: 2px solid var(--accent-primary);
 }
 
 .hero-image img {
@@ -486,7 +502,7 @@ input:checked+.slider:before {
 .btn {
     display: inline-block;
     padding: 0.8rem 1.5rem;
-    border-radius: 50px;
+    border-radius: var(--border-radius);
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s;
@@ -494,13 +510,13 @@ input:checked+.slider:before {
 }
 
 .btn.primary {
-    background: var(--accent-color);
-    color: white;
+    background: var(--accent-primary);
+    color: var(--bg-primary);
 }
 
 .btn.secondary {
-    border: 2px solid var(--accent-color);
-    color: var(--accent-color);
+    border: 2px solid var(--accent-primary);
+    color: var(--accent-primary);
 }
 
 @keyframes fadeIn {
@@ -521,17 +537,17 @@ input:checked+.slider:before {
 
 .contact-info {
     display: grid;
-    gap: 1rem;
+    gap: calc(var(--section-gap) * 2);
 }
 
 .contact-item {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: calc(var(--section-gap) * 2);
 }
 
 .contact-item i {
-    color: var(--accent-color);
+    color: var(--accent-primary);
     font-size: 1.2rem;
     width: 24px;  /* Fixed width for alignment */
     text-align: center;
@@ -544,7 +560,7 @@ input:checked+.slider:before {
 }
 
 .contact-item a:hover {
-    color: var(--accent-color);
+    color: var(--accent-primary);
 }
 
 /* Format phone number nicely */
@@ -581,11 +597,15 @@ input:checked+.slider:before {
     }
 
     .experience-item {
-        padding-left: 20px;
+        padding: 12px;
     }
 
     .experience-item:hover {
         transform: translateX(5px);
+    }
+
+    .hero-image {
+        margin-right: 0;
     }
 }
 
@@ -600,8 +620,8 @@ input:checked+.slider:before {
 .stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-bottom: 2rem;
+    gap: calc(var(--section-gap) * 4);
+    margin-bottom: calc(var(--section-gap) * 4);
     width: 100%;
 }
 
@@ -610,7 +630,7 @@ input:checked+.slider:before {
     flex-direction: column;
     align-items: flex-start;
     background: var(--bg-secondary);
-    padding: 2rem;
+    padding: 32px;
     border-radius: 8px;
     transition: transform 0.3s ease;
     height: auto;
@@ -625,15 +645,15 @@ input:checked+.slider:before {
 }
 
 .stat-number {
-    font-size: 1.8rem;
+    font-size: 29px;
     font-weight: 600;
-    color: var(--accent-color);
+    color: var(--accent-primary);
     margin-bottom: 1rem;
     width: 100%;
 }
 
 .stat-label {
-    font-size: 0.9rem;
+    font-size: 14px;
     color: var(--text-primary);
     line-height: 1.8;
     width: 100%;
@@ -649,11 +669,11 @@ input:checked+.slider:before {
     }
 
     .hero-text h1 {
-        font-size: 2.5rem;
+        font-size: 40px;
     }
 
     .hero-text h2 {
-        font-size: 1.8rem;
+        font-size: 29px;
     }
 }
 
@@ -663,7 +683,7 @@ input:checked+.slider:before {
     }
 
     .hero-content {
-        gap: 2rem;
+        gap: calc(var(--section-gap) * 4);
         padding-left: 2rem;
         padding-right: 2rem;
     }
@@ -677,11 +697,11 @@ input:checked+.slider:before {
     }
 
     .stats {
-        gap: 1.5rem;
+        gap: calc(var(--section-gap) * 3);
     }
 
     .stat-number {
-        font-size: 1.6rem;
+        font-size: 26px;
     }
 }
 
@@ -693,7 +713,7 @@ input:checked+.slider:before {
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 2rem;
+        gap: calc(var(--section-gap) * 8);
         padding: 2rem 1rem;
     }
 
@@ -711,7 +731,7 @@ input:checked+.slider:before {
     .stats {
         grid-template-columns: 1fr;
 
-        gap: 1.5rem;
+        gap: calc(var(--section-gap) * 6);
     }
 
     .stat-item {
@@ -719,7 +739,7 @@ input:checked+.slider:before {
     }
 
     .section {
-        padding: 2rem 1rem;
+        padding: 12px;
     }
 
     .experience-item {
@@ -742,8 +762,8 @@ input:checked+.slider:before {
         width: 100%;
     }
 
-    h2.section-title {
-        font-size: 2.5rem;
+    .section-title {
+        font-size: 32px;
     }
 
     .experience-timeline {
@@ -766,7 +786,7 @@ input:checked+.slider:before {
     }
 
     .experience-item {
-        padding-left: 20px;
+        padding: 12px;
     }
 
     .experience-item:hover {
@@ -778,15 +798,15 @@ input:checked+.slider:before {
     }
 
     .role-company {
-        font-size: 1.1rem;
+        font-size: 18px;
     }
 
     .description {
-        font-size: 0.85rem;
+        font-size: 14px;
     }
 
     .achievement-points li {
-        font-size: 0.9rem;
+        font-size: 14px;
         margin-bottom: 0.5rem;
     }
 }
@@ -797,15 +817,15 @@ input:checked+.slider:before {
     }
 
     .hero-text h1 {
-        font-size: 2rem;
+        font-size: 32px;
     }
 
     .hero-text h2 {
-        font-size: 1.5rem;
+        font-size: 24px;
     }
 
     .hero-text p {
-        font-size: 1rem;
+        font-size: 16px;
     }
 
     .hero-image {
@@ -820,7 +840,7 @@ input:checked+.slider:before {
         text-align: center;
     }
 
-    h2.section-title {
+    .section-title {
         font-size: 2rem;
     }
 }
@@ -847,25 +867,25 @@ input:checked+.slider:before {
 }
 
 [data-theme="dark"] .btn.primary {
-    background: var(--accent-color);
+    background: var(--accent-primary);
     color: #2b2b2b;
 }
 
 [data-theme="dark"] .btn.secondary {
-    border: 2px solid var(--accent-color);
-    color: var(--accent-color);
+    border: 2px solid var(--accent-primary);
+    color: var(--accent-primary);
 }
 
 .philosophy-content {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: calc(var(--section-gap) * 2);
     padding: 0;
 }
 
 .philosophy-item {
     position: relative;
-    padding: 4px 0;
+    padding: 16px 0;
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -873,7 +893,7 @@ input:checked+.slider:before {
 
 .philosophy-item::before {
     content: "⦿";
-    color: var(--accent-color);
+    color: var(--accent-primary);
     position: absolute;
     left: 0;
     font-size: 1.1rem;
@@ -881,7 +901,7 @@ input:checked+.slider:before {
 }
 
 .philosophy-item h3 {
-    color: var(--accent-color);
+    color: var(--accent-primary);
     margin: 0 0 4px 20px;
 
     font-size: 1.1rem;
@@ -902,18 +922,15 @@ input:checked+.slider:before {
 .education-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: calc(var(--section-gap) * 4);
     align-items: stretch;
 }
 
 .edu-card {
-    background: var(--bg-primary);
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    padding: 1rem 2rem;
+    background: var(--bg-secondary);
+    padding: 16px 32px;
     display: flex;
     align-items: center;
-    gap: 2.5rem;
     min-height: 100px;
 }
 
@@ -924,9 +941,9 @@ input:checked+.slider:before {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
+    padding: 16px;
     border-radius: 8px;
-    padding: 0.5rem;
 }
 
 .edu-logo {
@@ -939,11 +956,11 @@ input:checked+.slider:before {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: calc(var(--section-gap) * 0.5);
 }
 
 .edu-degree {
-    font-size: 1.1rem;
+    font-size: 18px;
     font-weight: 600;
     color: var(--text-primary);
     line-height: 1.2;
@@ -951,15 +968,15 @@ input:checked+.slider:before {
 }
 
 .edu-branch {
-    color: var(--accent-color);
-    font-size: 0.95rem;
+    color: var(--accent-primary);
+    font-size: 15px;
     line-height: 1.2;
     margin: 0;
 }
 
 .edu-school {
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 14px;
     line-height: 1.2;
     margin: 0;
 }
@@ -969,20 +986,20 @@ input:checked+.slider:before {
     text-align: right;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--section-gap);
 }
 
 .edu-year, .edu-grade {
     display: block;
     color: var(--text-secondary);
-    font-size: 0.85rem;
+    font-size: 14px;
     line-height: 1.2;
 }
 
 .edu-meta i {
-    color: var(--accent-color);
+    color: var(--accent-primary);
     margin-right: 0.5rem;
-    font-size: 0.9rem;
+    font-size: 14px;
 }
 
 /* Mobile styles */
@@ -991,8 +1008,8 @@ input:checked+.slider:before {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        padding: 1.5rem 1rem;
-        gap: 1.25rem;
+        padding: 12px;
+        gap: calc(var(--section-gap) * 5);
     }
 
     .edu-logo-wrapper {
@@ -1042,11 +1059,11 @@ input:checked+.slider:before {
 
 .cert-icon {
     font-size: 2.5rem;
-    color: var(--accent-color);
+    color: var(--accent-primary);
 }
 
 .cert-badge {
-    background: var(--accent-color);
+    background: var(--accent-primary);
     color: var(--bg-primary);
     padding: 0.25rem 0.75rem;
     border-radius: 12px;
@@ -1077,18 +1094,18 @@ input:checked+.slider:before {
 }
 
 .education-card:has(.bachelor) {
-    border: 1px solid var(--accent-color);
+    border: 1px solid var(--accent-primary);
 }
 
 .card-body.bachelor {
-    background: var(--accent-color);
+    background: var(--accent-primary);
     color: var(--bg-primary);
 }
 
 .education-card {
     height: 100%;
-    background: var(--card-bg);
-    border-radius: 12px;
+    background: var(--bg-primary);
+    border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     display: flex;
@@ -1096,7 +1113,7 @@ input:checked+.slider:before {
 }
 
 .education-card:has(.bachelor) {
-    border: 1px solid var(--accent-color);
+    border: 1px solid var(--accent-primary);
 }
 
 .education-card:not(:has(.bachelor)) {
@@ -1111,7 +1128,7 @@ input:checked+.slider:before {
 }
 
 .card-body.bachelor {
-    background: var(--accent-color);
+    background: var(--accent-primary);
     color: var(--bg-primary);
 }
 
@@ -1133,9 +1150,9 @@ input:checked+.slider:before {
     display: flex;
     align-items: center;
     gap: 4px;
-    color: var(--accent-color);
+    color: var(--accent-primary);
     transition: color 0.3s ease;
-    font-size: 1.25rem;
+    font-size: 20px;
     font-weight: 600;
 }
 
@@ -1145,11 +1162,11 @@ input:checked+.slider:before {
     align-items: center;
     gap: 8px;
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 14px;
 }
 
 .meta-right i {
-    font-size: 1rem;
+    font-size: 14px;
     color: var(--text-secondary);
 }
 
@@ -1161,14 +1178,14 @@ input:checked+.slider:before {
 }
 
 .achievement-category {
-    background: var(--card-bg);
+    background: var(--bg-primary);
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .achievement-category h3 {
-    color: var(--primary-color);
+    color: var(--accent-primary);
     margin-bottom: 1rem;
 }
 
@@ -1185,52 +1202,13 @@ input:checked+.slider:before {
 
 .achievement-list li:before {
     content: "•";
-    color: var(--primary-color);
+    color: var(--accent-primary);
     position: absolute;
     left: 0;
 }
 
 .category-footer {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-color);
-    font-style: italic;
-    color: var(--text-muted);
-}
-
-.achievement-section {
-    margin-bottom: 1rem;
-    padding: 1rem;
-    border-radius: 16px;
-}
-
-.achievement-section .section-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--accent-color);
-    margin-bottom: 1rem;
-}
-
-.achievement-points {
-    margin: 0.5rem 0;
-}
-
-.achievement-point {
-    position: relative;
-    padding-left: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-primary);
-    line-height: 1.6;
-    text-align: justify;
-    text-justify: inter-word;
-    hyphens: auto;
-}
-
-.achievement-point::before {
-    content: "⦿";
-    position: absolute;
-    left: 0;
-    color: var(--accent-color);
+    color: var(--accent-primary);
 }
 
 .section-header {
@@ -1275,7 +1253,7 @@ input:checked+.slider:before {
 .section-title {
     font-size: 1rem;
     font-weight: 600;
-    color: var(--accent-color);
+    color: var(--accent-primary);
 }
 
 .achievement-points {
@@ -1288,7 +1266,7 @@ input:checked+.slider:before {
     margin-bottom: 0.4rem;
     color: var(--text-primary);
     line-height: 1.4;
-    font-size: 0.9rem;
+    font-size: 16px;
     text-align: justify;
     text-justify: inter-word;
     hyphens: auto;
@@ -1302,7 +1280,7 @@ input:checked+.slider:before {
     transform: translateY(-50%);
     width: 4px;
     height: 4px;
-    background: var(--accent-color);
+    background: var(--accent-primary);
     border-radius: 50%;
     opacity: 0.7;
 }
@@ -1380,8 +1358,8 @@ input:checked+.slider:before {
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin-top: 1rem;
+    gap: calc(var(--section-gap) * 4);
+    margin-top: calc(var(--section-gap) * 2);
 }
 
 .skill-category {
@@ -1407,7 +1385,7 @@ input:checked+.slider:before {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem 0.8rem;
+    padding: 8px 12px;
     background: var(--bg-secondary);
     border-radius: 8px;
     font-size: 0.9rem;
@@ -1418,7 +1396,7 @@ input:checked+.slider:before {
 
 .skill-tag i {
     font-size: 1rem;
-    color: var(--accent-color);
+    color: var(--accent-primary);
 }
 
 .skill-tag:hover {
@@ -1431,7 +1409,7 @@ input:checked+.slider:before {
 @media (max-width: 768px) {
     .skills-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: calc(var(--section-gap) * 6);
     }
     
     .skill-tag {
@@ -1457,20 +1435,20 @@ input:checked+.slider:before {
 
 .edu-title {
     text-align: center;
-    color: var(--accent-color);
+    color: var(--accent-primary);
     font-size: 2rem;
     margin-bottom: 2rem;
     font-weight: 600;
 }
 
 .edu-card {
-    background: var(--bg-primary);
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    padding: 1rem 2rem;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--card-shadow);
+    padding: 16px 32px;
     display: flex;
     align-items: center;
-    gap: 2.5rem;
+    gap: calc(var(--section-gap) * 5);
     min-height: 100px;
 }
 
@@ -1481,9 +1459,9 @@ input:checked+.slider:before {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
+    padding: 16px;
     border-radius: 8px;
-    padding: 0.5rem;
 }
 
 .edu-logo {
@@ -1496,11 +1474,11 @@ input:checked+.slider:before {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: calc(var(--section-gap) * 0.5);
 }
 
 .edu-degree {
-    font-size: 1.1rem;
+    font-size: 18px;
     font-weight: 600;
     color: var(--text-primary);
     line-height: 1.2;
@@ -1508,15 +1486,15 @@ input:checked+.slider:before {
 }
 
 .edu-branch {
-    color: var(--accent-color);
-    font-size: 0.95rem;
+    color: var(--accent-primary);
+    font-size: 15px;
     line-height: 1.2;
     margin: 0;
 }
 
 .edu-school {
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 14px;
     line-height: 1.2;
     margin: 0;
 }
@@ -1526,20 +1504,20 @@ input:checked+.slider:before {
     text-align: right;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--section-gap);
 }
 
 .edu-year, .edu-grade {
     display: block;
     color: var(--text-secondary);
-    font-size: 0.85rem;
+    font-size: 14px;
     line-height: 1.2;
 }
 
 .edu-meta i {
-    color: var(--accent-color);
+    color: var(--accent-primary);
     margin-right: 0.5rem;
-    font-size: 0.9rem;
+    font-size: 14px;
 }
 
 /* Education Section Media Queries */
@@ -1549,8 +1527,8 @@ input:checked+.slider:before {
     }
 
     .edu-card {
-        padding: 1rem;
-        gap: 1.5rem;
+        padding: var(--container-padding);
+        gap: calc(var(--section-gap) * 5);
     }
 
     .edu-logo-wrapper {
@@ -1574,7 +1552,7 @@ input:checked+.slider:before {
 
 .cert-title {
     text-align: center;
-    color: var(--accent-color);
+    color: var(--accent-primary);
     font-size: 2rem;
     margin-bottom: 2.5rem;
     font-weight: 600;
@@ -1583,15 +1561,15 @@ input:checked+.slider:before {
 .cert-cards {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: calc(var(--section-gap) * 3);
     width: 100%; /* Full width of container */
 }
 
 .cert-card {
     background: var(--bg-primary);
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px var(--card-shadow);
+    padding: var(--container-padding) calc(var(--container-padding) * 1.5);
     width: 100%;
 }
 
@@ -1602,7 +1580,7 @@ input:checked+.slider:before {
 .cert-header {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: calc(var(--section-gap) * 2);
     margin-bottom: 1rem;
 }
 
@@ -1611,8 +1589,8 @@ input:checked+.slider:before {
     width: 50px;
     height: 50px;
     background: var(--bg-secondary);
-    border-radius: 8px;
-    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    padding: calc(var(--container-padding) * 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1627,24 +1605,24 @@ input:checked+.slider:before {
 .cert-info {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: calc(var(--section-gap) * 0.5);
 }
 
 .cert-name {
-    font-size: 1.1rem;
+    font-size: 18px;
     font-weight: 600;
     color: var(--text-primary);
     margin: 0;
 }
 
 .cert-issuer {
-    font-size: 0.9rem;
-    color: var(--accent-color);
+    font-size: 14px;
+    color: var(--accent-primary);
     margin: 0;
 }
 
 .cert-date {
-    font-size: 0.85rem;
+    font-size: 14px;
     color: var(--text-secondary);
     display: flex;
     align-items: center;
@@ -1654,18 +1632,18 @@ input:checked+.slider:before {
 .projects-container {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    padding: 1rem;
+    gap: calc(var(--section-gap) * 3);
+    padding: var(--container-padding);
     background: var(--card-bg);
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     margin-top: 1rem;
 }
 
 .project-item {
     position: relative;
-    padding: 1rem;
+    padding: var(--container-padding);
     background: var(--card-bg);
-    border-left: 3px solid var(--accent-color);
+    border-left: 3px solid var(--accent-primary);
 }
 
 .project-item:not(:last-child)::after {
@@ -1675,7 +1653,7 @@ input:checked+.slider:before {
     left: 0;
     right: 0;
     height: 1px;
-    background: var(--border-color);
+    background: var(--bg-secondary);
 }
 
 .project-title {
@@ -1697,13 +1675,13 @@ input:checked+.slider:before {
 }
 
 .highlight {
-    color: var(--accent-color);
+    color: var(--accent-primary);
     font-weight: 500;
 }
 
 @media screen and (max-width: 768px) {
     .cert-card {
-        padding: 1rem;
+        padding: var(--container-padding);
     }
     
     .cert-logo-wrapper {
