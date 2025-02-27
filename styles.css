@@ -50,9 +50,9 @@ body {
 
 .container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 0 var(--container-padding);
+    padding: 0 1.5rem;
     box-sizing: border-box;
 }
 
@@ -158,10 +158,8 @@ h2.section-title {
 .company-logo-wrapper {
     flex-shrink: 0;
     width: 200px;
-    height: 100px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 80px;
     padding: 8px;
-    border-radius: 8px;
 }
 
 .company-logo {
@@ -198,22 +196,21 @@ h2.section-title {
 
 .meta-info {
     display: flex;
-    align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
 }
 
 .meta-info span {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    color: #ffffff;
-    font-size: 0.9rem;
-    letter-spacing: 0.3px;
+    gap: 0.5rem;
 }
 
 .meta-info i {
-    margin-right: 8px;
+    color: var(--accent-color);
     font-size: 0.9rem;
-    opacity: 0.9;
 }
 
 .card-body:not(.bachelor) .meta-info span {
@@ -327,7 +324,13 @@ h2.section-title {
 
 @media (max-width: 768px) {
     .meta-info {
-        gap: 1.5rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .meta-info span {
+        justify-content: center;
     }
 
     .company-logo-wrapper {
@@ -903,88 +906,131 @@ input:checked+.slider:before {
     align-items: stretch;
 }
 
-.education-card {
-    height: 100%;
-    background: var(--card-bg);
+.edu-card {
+    background: var(--bg-primary);
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 1rem 2rem;
     display: flex;
-    flex-direction: column;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    align-items: center;
+    gap: 2.5rem;
+    min-height: 100px;
 }
 
-.education-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    border-color: var(--accent-color);
-}
-
-.card-header {
-    padding: 1rem;
-    height: 120px;
-
+.edu-logo-wrapper {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 0.5rem;
 }
 
-.logo-container {
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.institution-logo {
-    max-width: 100%;
-    max-height: 100%;
+.edu-logo {
+    width: 100%;
+    height: 100%;
     object-fit: contain;
 }
 
-.card-body {
+.edu-details {
     flex: 1;
-    padding: 1.5rem;
-
     display: flex;
     flex-direction: column;
-    background: var(--bg-secondary);
+    gap: 0.25rem;
 }
 
-.card-body h3,
-.card-body .degree-specialization,
-.card-body .institution,
-.card-body .organization,
-.card-body .certification-name,
-.meta-info span {
-    margin: 0;
-    line-height: 2;
-
-    display: block;
-}
-
-.card-body h3 {
-    font-size: 1.4rem;
-}
-
-.card-body .degree-specialization,
-.card-body .organization,
-.card-body .certification-name {
+.edu-degree {
     font-size: 1.1rem;
-}
-
-.meta-info {
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.2;
     margin: 0;
 }
 
-.meta-info span {
+.edu-branch {
+    color: var(--accent-color);
+    font-size: 0.95rem;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.edu-school {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.edu-meta {
+    margin-left: auto;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.edu-year, .edu-grade {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.2;
+}
+
+.edu-meta i {
+    color: var(--accent-color);
+    margin-right: 0.5rem;
     font-size: 0.9rem;
 }
 
-.card-body.bachelor {
-    background: var(--accent-color);
-    color: var(--bg-secondary);
+/* Mobile styles */
+@media screen and (max-width: 768px) {
+    .edu-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.5rem 1rem;
+        gap: 1.25rem;
+    }
+
+    .edu-logo-wrapper {
+        width: 80px;
+        height: 80px;
+    }
+
+    .edu-details {
+        align-items: center;
+        text-align: center;
+    }
+
+    .edu-degree {
+        text-align: center;
+    }
+
+    .edu-branch {
+        text-align: center;
+    }
+
+    .edu-school {
+        text-align: center;
+    }
+
+    .edu-meta {
+        margin-left: 0;
+        text-align: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .edu-year, .edu-grade {
+        justify-content: center;
+    }
+
+    .edu-meta span {
+        justify-content: center;
+    }
 }
 
 .certifications-grid {
@@ -1396,4 +1442,282 @@ input:checked+.slider:before {
 
 .card-details {
     margin-top: 1rem;
+}
+
+/* Education Section Specific CSS */
+.edu-section {
+    padding: 2rem 0;
+}
+
+.edu-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.edu-title {
+    text-align: center;
+    color: var(--accent-color);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.edu-card {
+    background: var(--bg-primary);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    min-height: 100px;
+}
+
+.edu-logo-wrapper {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 0.5rem;
+}
+
+.edu-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.edu-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.edu-degree {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin: 0;
+}
+
+.edu-branch {
+    color: var(--accent-color);
+    font-size: 0.95rem;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.edu-school {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.edu-meta {
+    margin-left: auto;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.edu-year, .edu-grade {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.2;
+}
+
+.edu-meta i {
+    color: var(--accent-color);
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* Education Section Media Queries */
+@media screen and (max-width: 768px) {
+    .edu-container {
+        padding: 0 1rem;
+    }
+
+    .edu-card {
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    .edu-logo-wrapper {
+        width: 56px;
+        height: 56px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .edu-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* Certification Section Styles */
+.cert-section {
+    padding: 4rem 0;
+    background: var(--bg-secondary);
+}
+
+.cert-title {
+    text-align: center;
+    color: var(--accent-color);
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    font-weight: 600;
+}
+
+.cert-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%; /* Full width of container */
+}
+
+.cert-card {
+    background: var(--bg-primary);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 1rem 1.5rem;
+    width: 100%;
+}
+
+.cert-card:hover {
+    transform: translateY(-4px);
+}
+
+.cert-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.cert-logo-wrapper {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cert-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.cert-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.cert-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.cert-issuer {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    margin: 0;
+}
+
+.cert-date {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+    background: var(--card-bg);
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.project-item {
+    position: relative;
+    padding: 1rem;
+    background: var(--card-bg);
+    border-left: 3px solid var(--accent-color);
+}
+
+.project-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -0.75rem;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--border-color);
+}
+
+.project-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.project-points {
+    padding-left: 1.5rem;
+}
+
+.project-points li {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.highlight {
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+    .cert-card {
+        padding: 1rem;
+    }
+    
+    .cert-logo-wrapper {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* Dark mode specific adjustments */
+[data-theme="dark"] .cert-card {
+    background: var(--bg-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .cert-logo-wrapper {
+    background: var(--bg-primary);
 }
