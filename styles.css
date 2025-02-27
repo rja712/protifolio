@@ -67,7 +67,7 @@ body {
 }
 
 h2.section-title {
-    font-size: 40px;
+    font-size: 28px;
     text-align: center;
     margin: 2rem 0;
     color: var(--accent-primary);
@@ -172,6 +172,8 @@ h2.section-title {
     width: 200px;
     height: 80px;
     padding: 8px;
+    background: #ffffff;
+    border-radius: var(--border-radius);
 }
 
 .company-logo {
@@ -536,21 +538,23 @@ input:checked + .slider:before {
 }
 
 .contact-info {
-    display: grid;
-    gap: calc(var(--section-gap) * 2);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: space-between;
 }
 
 .contact-item {
     display: flex;
     align-items: center;
-    gap: calc(var(--section-gap) * 2);
+    gap: 8px;
+    flex: 1 1 200px;
+    min-width: 150px;
 }
 
 .contact-item i {
     color: var(--accent-primary);
     font-size: 1.2rem;
-    width: 24px;  /* Fixed width for alignment */
-    text-align: center;
 }
 
 .contact-item a {
@@ -936,12 +940,12 @@ input:checked + .slider:before {
 
 .edu-logo-wrapper {
     flex-shrink: 0;
-    width: 64px;
-    height: 64px;
+    width: 80px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--bg-primary);
+    background: #ffffff;
     padding: 16px;
     border-radius: 8px;
 }
@@ -1454,12 +1458,12 @@ input:checked + .slider:before {
 
 .edu-logo-wrapper {
     flex-shrink: 0;
-    width: 64px;
-    height: 64px;
+    width: 80px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--bg-primary);
+    background: #ffffff;
     padding: 16px;
     border-radius: 8px;
 }
@@ -1532,8 +1536,8 @@ input:checked + .slider:before {
     }
 
     .edu-logo-wrapper {
-        width: 56px;
-        height: 56px;
+        width: 80px;
+        height: 80px;
     }
 }
 
@@ -1586,14 +1590,11 @@ input:checked + .slider:before {
 
 .cert-logo-wrapper {
     flex-shrink: 0;
-    width: 50px;
-    height: 50px;
-    background: var(--bg-secondary);
+    width: 80px;
+    height: 80px;
+    background: #ffffff;
+    padding: 16px;
     border-radius: var(--border-radius);
-    padding: calc(var(--container-padding) * 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .cert-logo {
@@ -1685,17 +1686,25 @@ input:checked + .slider:before {
     }
     
     .cert-logo-wrapper {
-        width: 45px;
-        height: 45px;
+        width: 80px;
+        height: 80px;
     }
 }
 
-/* Dark mode specific adjustments */
-[data-theme="dark"] .cert-card {
-    background: var(--bg-primary);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+.nextleap-logo-wrapper {
+    background: none; /* No background */
+    padding: 0;       /* No padding */
+    width: 80px;      /* Consistent width */
+    height: 80px;     /* Consistent height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius);
+    overflow: hidden;   /* Hide overflow to show rounded corners */
 }
 
-[data-theme="dark"] .cert-logo-wrapper {
-    background: var(--bg-primary);
+.nextleap-logo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover; /* Ensure the image covers the area */
 }
