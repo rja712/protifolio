@@ -517,6 +517,7 @@ input:checked + .slider:before {
 }
 
 .btn.primary {
+    border: 2px solid var(--accent-primary);
     background: var(--accent-primary);
     color: var(--bg-primary);
 }
@@ -875,15 +876,6 @@ input:checked + .slider:before {
     }
 }
 
-[data-theme="dark"] .btn.primary {
-    background: var(--accent-primary);
-    color: #2b2b2b;
-}
-
-[data-theme="dark"] .btn.secondary {
-    border: 2px solid var(--accent-primary);
-    color: var(--accent-primary);
-}
 
 .philosophy-content {
     display: flex;
