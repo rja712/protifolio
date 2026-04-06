@@ -1,497 +1,609 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ankit Raj - Software Engineer specializing in Java, Spring Boot, and AWS">
-    <meta name="keywords" content="Software Engineer, Java Developer, Spring Boot, AWS, Full Stack Developer">
+    <meta name="description" content="Ankit Raj — Senior Backend Engineer with 6+ years building distributed systems across Procurement, CRM, and FinTech. Java · Spring Boot · AWS · Microservices.">
+    <meta name="keywords" content="Senior Backend Engineer, Java, Spring Boot, Microservices, Distributed Systems, AWS, RabbitMQ, System Design">
     <meta name="author" content="Ankit Raj">
-    <title>Ankit Raj - Portfolio</title>
+    <meta name="theme-color" content="#0A0A0F">
+    <title>Ankit Raj — Senior Backend Engineer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
-    <!-- Add theme switch at the top right -->
-    <div class="theme-switch-wrapper">
-        <label class="theme-switch" for="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <div class="slider"></div>
-        </label>
-    </div>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-    <section id="home" class="hero section">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Hi, I'm Ankit Raj</h1>
-                <h2>Product Engineer</h2>
-                <p class="footnote">* not just-a-developer</p>
-                <div class="hero-cta">
-                    <a href="#contact" class="btn primary">Get in Touch</a>
-                    <a href="https://docs.google.com/document/d/1CLNiq6J4XQr7jyCQY264GZ_nfuFv_keUmUmM56WtKR8"
-                        target="_blank" class="btn secondary">View Resume</a>
-                    <a href="https://docs.google.com/document/u/2/d/1CLNiq6J4XQr7jyCQY264GZ_nfuFv_keUmUmM56WtKR8/export?format=pdf"
-                       target="_blank" class="btn secondary">Export Resume (PDF)</a>
+    <header class="nav" role="banner">
+        <nav class="nav-inner" aria-label="Primary">
+            <a href="#home" class="nav-brand" aria-label="Ankit Raj — home">AR<span class="nav-dot">.</span></a>
+            <ul class="nav-links" role="list">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">
+                    <i class="fas fa-sun" aria-hidden="true"></i>
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+                <a href="https://docs.google.com/document/d/1CLNiq6J4XQr7jyCQY264GZ_nfuFv_keUmUmM56WtKR8"
+                    target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">Resume</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section id="home" class="hero">
+            <div class="hero-bg" aria-hidden="true">
+                <div class="hero-blob hero-blob-1"></div>
+                <div class="hero-blob hero-blob-2"></div>
+            </div>
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <p class="eyebrow" data-reveal="up">
+                        <span class="eyebrow-dot"></span>
+                        Senior Backend Engineer · Hyderabad
+                    </p>
+                    <h1 class="hero-title" data-reveal="up" style="--delay:80ms">
+                        Backend systems<br>
+                        that ship,<br>
+                        <span class="grad-text">survive, and scale.</span>
+                    </h1>
+                    <p class="hero-sub" data-reveal="up" style="--delay:160ms">
+                        6+ years building distributed services across Procurement, CRM, and FinTech.
+                        I design for throughput, reliability, and the team that has to maintain it after me.
+                    </p>
+                    <div class="hero-cta" data-reveal="up" style="--delay:240ms">
+                        <a href="#projects" class="btn btn-primary">
+                            See my work <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://docs.google.com/document/d/1CLNiq6J4XQr7jyCQY264GZ_nfuFv_keUmUmM56WtKR8"
+                            target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                            <i class="fas fa-file-lines" aria-hidden="true"></i> View Resume
+                        </a>
+                        <a href="https://docs.google.com/document/u/2/d/1CLNiq6J4XQr7jyCQY264GZ_nfuFv_keUmUmM56WtKR8/export?format=pdf"
+                            target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+                            <i class="fas fa-download" aria-hidden="true"></i> Download PDF
+                        </a>
+                    </div>
+                    <p class="hero-footnote" data-reveal="up" style="--delay:320ms">
+                        <span class="status-dot"></span>
+                        Currently: Senior Software Engineer @ Jaggaer
+                    </p>
+                </div>
+                <div class="hero-image" data-reveal="scale" style="--delay:160ms">
+                    <div class="hero-image-ring">
+                        <img src="images/profile_pic.jpg?v=2"
+                            srcset="images/profile_pic.jpg?v=2 1x, images/profile_pic@2x.jpg?v=2 2x"
+                            alt="Portrait of Ankit Raj"
+                            width="480" height="480"
+                            loading="eager" fetchpriority="high" decoding="async">
+                    </div>
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="images/profile_pic.png" alt="Ankit Raj">
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">Why you should hire me?</h2>
-            <p>I'm a seasoned Product Engineer with strong backend development skills and a sharp product mindset. With
-                experience in FinTech and CRM projects, I've worked in fast-paced SaaS environments across both product
-                and engineering verticals. I not only understand what to build but also how to build it.😉</p>
-            <div class="about-content">
-                <div class="stats">
-                    <div class="stat-item">
-                        <span class="stat-number">5+ YoE</span>
-                        <span class="stat-label">Building scalable and efficient software solutions with best
-                            engineering practices.</span>
+        <section id="about" class="section">
+            <div class="container">
+                <p class="section-eyebrow" data-reveal="up">01 — About</p>
+                <h2 class="section-title" data-reveal="up" style="--delay:80ms">The short version.</h2>
+                <p class="section-lede" data-reveal="up" style="--delay:160ms">
+                    Senior backend engineer with 6+ years across Jaggaer, LeadSquared, and HighRadius.
+                    I build the services that handle the messy, high-volume work — third-party integrations,
+                    event-driven pipelines, payment processing — and own them through design, rollout,
+                    and on-call. Strong product instincts from time spent owning features end-to-end.
+                </p>
+
+                <div class="stats-grid">
+                    <div class="stat-card glass" data-reveal="up" style="--delay:80ms">
+                        <span class="stat-number" data-count="6" data-suffix="+">0</span>
+                        <span class="stat-label">years building production backend systems in SaaS</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">3+ YoE</span>
-                        <span class="stat-label">Empathizing and understanding clients' problems and building
-                            "solutions" (not just the features)</span>
+                    <div class="stat-card glass" data-reveal="up" style="--delay:160ms">
+                        <span class="stat-number" data-count="2000" data-suffix="+">0</span>
+                        <span class="stat-label">events/sec sustained on a live event-driven datasync pipeline</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">2+ YoE</span>
-                        <span class="stat-label">Designing and maintaining distributed cloud infrastructure (both
-                            monolithic and microservices)</span>
-                    </div>
-                </div>
-                <h2 class="sub-section-title">My Philosophy</h2>
-                <div class="philosophy-content">
-                    <div class="philosophy-item">
-                        <h3>Code is just a tool to solve problems</h3>
-                        <p>Analyze requirements, identify core problems, evaluate the impact on user as well as
-                            system and then build features that deliver real value.</p>
-                    </div>
-                    <div class="philosophy-item">
-                        <h3>Code should be self-explanatory and convey intent</h3>
-                        <p>Team collaboration starts with clean, readable, and maintainable code. Adhering to naming
-                            conventions and structured design is non-negotiable.</p>
-                    </div>
-                    <div class="philosophy-item">
-                        <h3>Negotiation, Communication & Delegation are essential skills</h3>
-                        <p>Applying first-order thinking and structured articulation of thoughts is essential to
-                            effectively negotiate, communicate and delegate.</p>
+                    <div class="stat-card glass" data-reveal="up" style="--delay:240ms">
+                        <span class="stat-number" data-count="1" data-suffix="B+">0</span>
+                        <span class="stat-label">records/year processed in payment &amp; reconciliation systems I've built</span>
                     </div>
                 </div>
-                <h2 class="sub-section-title">Skills</h2>
+
+                <h3 class="sub-title" data-reveal="up">Philosophy</h3>
+                <div class="philosophy-grid">
+                    <article class="philosophy-card glass" data-reveal="up" style="--delay:80ms">
+                        <div class="philosophy-num">i.</div>
+                        <h4>Code is the tool, not the goal.</h4>
+                        <p>Analyze the requirement, identify the real problem, evaluate impact on users
+                            and the system — then build features that move metrics, not just tickets.</p>
+                    </article>
+                    <article class="philosophy-card glass" data-reveal="up" style="--delay:160ms">
+                        <div class="philosophy-num">ii.</div>
+                        <h4>Readable code is a love letter to your team.</h4>
+                        <p>Collaboration starts with clean, intent-revealing code. Naming conventions
+                            and structured design aren't optional — they're how teams move fast.</p>
+                    </article>
+                    <article class="philosophy-card glass" data-reveal="up" style="--delay:240ms">
+                        <div class="philosophy-num">iii.</div>
+                        <h4>Engineers who can negotiate ship more.</h4>
+                        <p>First-order thinking and structured articulation beat heroics. Being able to
+                            communicate, negotiate, and delegate is part of the job, not above it.</p>
+                    </article>
+                </div>
+
+                <h3 class="sub-title" data-reveal="up">Skills</h3>
                 <div class="skills-grid">
-                    <!-- Core Technologies -->
-                    <div class="skill-category">
-                        <h3 class="category-title">Core Technologies</h3>
-                        <div class="skill-tags-container">
-                            <span class="skill-tag"><i class="fab fa-java"></i> Java</span>
-                            <span class="skill-tag"><i class="fas fa-leaf"></i> Spring</span>
-                            <span class="skill-tag"><i class="fas fa-database"></i> Hibernate</span>
-                            <span class="skill-tag"><i class="fas fa-database"></i> jOOQ</span>
-                            <span class="skill-tag"><i class="fas fa-network-wired"></i> REST APIs</span>
-                            <span class="skill-tag"><i class="fab fa-html5"></i> HTML</span>
-                            <span class="skill-tag"><i class="fab fa-css3-alt"></i> CSS</span>
-                            <span class="skill-tag"><i class="fas fa-database"></i> MySQL</span>
-                            <span class="skill-tag"><i class="fas fa-database"></i> Redis</span>
+                    <div class="skill-category" data-reveal="up">
+                        <h4 class="category-title">Backend</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag"><i class="fab fa-java" aria-hidden="true"></i>Java</span>
+                            <span class="skill-tag"><i class="fas fa-leaf" aria-hidden="true"></i>Spring Boot</span>
+                            <span class="skill-tag"><i class="fas fa-bolt" aria-hidden="true"></i>Webflux</span>
+                            <span class="skill-tag"><i class="fas fa-layer-group" aria-hidden="true"></i>JPA / Hibernate</span>
+                            <span class="skill-tag"><i class="fas fa-code" aria-hidden="true"></i>jOOQ</span>
+                            <span class="skill-tag"><i class="fas fa-arrows-rotate" aria-hidden="true"></i>Flyway</span>
+                            <span class="skill-tag"><i class="fas fa-network-wired" aria-hidden="true"></i>REST</span>
+                            <span class="skill-tag"><i class="fas fa-diagram-project" aria-hidden="true"></i>GraphQL</span>
+                            <span class="skill-tag"><i class="fas fa-vial" aria-hidden="true"></i>JUnit / Mockito</span>
                         </div>
                     </div>
-
-                    <!-- Auxiliary Technologies -->
-                    <div class="skill-category">
-                        <h3 class="category-title">Auxiliary Technologies</h3>
-                        <div class="skill-tags-container">
-                            <span class="skill-tag"><i class="fab fa-git-alt"></i> Git</span>
-                            <span class="skill-tag"><i class="fab fa-docker"></i> Docker</span>
-                            <span class="skill-tag"><i class="fab fa-jenkins"></i> Jenkins</span>
-                            <span class="skill-tag"><i class="fas fa-infinity"></i> Argo CI/CD</span>
-                            <span class="skill-tag"><i class="fas fa-chart-line"></i> Grafana</span>
-                            <span class="skill-tag"><i class="fas fa-project-diagram"></i> System design</span>
-                            <span class="skill-tag"><i class="fas fa-database"></i> Database design</span>
+                    <div class="skill-category" data-reveal="up" style="--delay:80ms">
+                        <h4 class="category-title">Data &amp; Messaging</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag"><i class="fas fa-database" aria-hidden="true"></i>MySQL</span>
+                            <span class="skill-tag"><i class="fas fa-bolt-lightning" aria-hidden="true"></i>Redis</span>
+                            <span class="skill-tag"><i class="fas fa-envelope-open-text" aria-hidden="true"></i>RabbitMQ</span>
+                            <span class="skill-tag"><i class="fab fa-aws" aria-hidden="true"></i>SQS / SNS</span>
+                            <span class="skill-tag"><i class="fas fa-bridge" aria-hidden="true"></i>EventBridge</span>
                         </div>
                     </div>
-
-                    <!-- Cloud Technologies -->
-                    <div class="skill-category">
-                        <h3 class="category-title">Cloud Technologies</h3>
-                        <div class="skill-tags-container">
-                            <span class="skill-tag"><i class="fab fa-aws"></i> S3</span>
-                            <span class="skill-tag"><i class="fab fa-aws"></i> SQS</span>
-                            <span class="skill-tag"><i class="fab fa-aws"></i> SNS</span>
-                            <span class="skill-tag"><i class="fab fa-aws"></i> SES</span>
-                            <span class="skill-tag"><i class="fas fa-route"></i> Route53</span>
-                            <span class="skill-tag"><i class="fab fa-aws"></i> EC2</span>
-                            <span class="skill-tag"><i class="fas fa-cloud"></i> CloudFront</span>
-                            <span class="skill-tag"><i class="fas fa-bridge"></i> EventBridge</span>
+                    <div class="skill-category" data-reveal="up" style="--delay:160ms">
+                        <h4 class="category-title">Cloud &amp; Infra</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag"><i class="fab fa-aws" aria-hidden="true"></i>EC2 / S3 / SES</span>
+                            <span class="skill-tag"><i class="fas fa-robot" aria-hidden="true"></i>Bedrock</span>
+                            <span class="skill-tag"><i class="fab fa-docker" aria-hidden="true"></i>Docker</span>
+                            <span class="skill-tag"><i class="fab fa-jenkins" aria-hidden="true"></i>Jenkins</span>
+                            <span class="skill-tag"><i class="fas fa-infinity" aria-hidden="true"></i>Argo CD</span>
+                            <span class="skill-tag"><i class="fas fa-chart-line" aria-hidden="true"></i>Grafana</span>
+                            <span class="skill-tag"><i class="fab fa-git-alt" aria-hidden="true"></i>Git</span>
                         </div>
                     </div>
-
-                    <!-- Miscellaneous -->
-                    <div class="skill-category">
-                        <h3 class="category-title">Miscellaneous</h3>
-                        <div class="skill-tags-container">
-                            <span class="skill-tag"><i class="fas fa-tasks"></i> Agile SDLC</span>
-                            <span class="skill-tag"><i class="fas fa-pencil-ruler"></i> Wireframing</span>
-                            <span class="skill-tag"><i class="fas fa-sort-amount-up"></i> Prioritisation</span>
-                            <span class="skill-tag"><i class="fas fa-lightbulb"></i> Product Sense</span>
+                    <div class="skill-category" data-reveal="up" style="--delay:240ms">
+                        <h4 class="category-title">Architecture</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag"><i class="fas fa-cubes" aria-hidden="true"></i>Microservices</span>
+                            <span class="skill-tag"><i class="fas fa-tower-broadcast" aria-hidden="true"></i>Event-driven design</span>
+                            <span class="skill-tag"><i class="fas fa-water" aria-hidden="true"></i>Reactive / Async</span>
+                            <span class="skill-tag"><i class="fas fa-microchip" aria-hidden="true"></i>Concurrency</span>
+                            <span class="skill-tag"><i class="fas fa-shield-halved" aria-hidden="true"></i>Resilience patterns</span>
+                            <span class="skill-tag"><i class="fas fa-sitemap" aria-hidden="true"></i>Distributed systems</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="experience" class="section">
-        <div class="container">
-            <h2 class="section-title">Experience</h2>
+        <section id="experience" class="section">
+            <div class="container">
+                <p class="section-eyebrow" data-reveal="up">02 — Experience</p>
+                <h2 class="section-title" data-reveal="up" style="--delay:80ms">Where I've shipped.</h2>
 
-            <!-- LeadSquared Experience -->
-            <div class="experience-item">
-                <!-- Company Header -->
-                <div class="experience-header">
-                    <div class="company-logo-wrapper">
-                        <a href="https://www.leadsquared.com/" class="company-logo" target="_blank"
-                            rel="noopener noreferrer">
-                            <img src="images/lsq.png" alt="LeadSquared">
-                        </a>
-                    </div>
-                    <div class="experience-content">
-                        <div class="top-row">
-                            <div class="role-company">Senior Software Engineer</div>
-                            <div class="meta-info">
-                                <span><i class="far fa-calendar"></i> Mar 2023 - Present</span>
-                                <span><i class="fas fa-map-marker-alt"></i> Bengaluru</span>
+                <div class="timeline">
+
+                    <article class="timeline-item" data-reveal="up">
+                        <div class="timeline-dot" aria-hidden="true"></div>
+                        <div class="timeline-card glass">
+                            <header class="timeline-head">
+                                <a href="https://www.jaggaer.com/" class="company-logo company-logo-text" target="_blank"
+                                    rel="noopener noreferrer" aria-label="Jaggaer website">
+                                    <span aria-hidden="true">J</span>
+                                </a>
+                                <div class="timeline-meta">
+                                    <h3 class="role">Senior Software Engineer</h3>
+                                    <p class="company">Jaggaer</p>
+                                    <p class="meta-line">
+                                        <span><i class="far fa-calendar" aria-hidden="true"></i> Aug 2025 — Present</span>
+                                        <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Hyderabad</span>
+                                    </p>
+                                    <p class="role-summary">Building Catelyze, a cross-platform integration system
+                                        powering admin configuration, real-time dashboards, and secure communication
+                                        for enterprise procurement.</p>
+                                </div>
+                            </header>
+
+                            <div class="achievements">
+                                <div class="achievement-col">
+                                    <h4 class="achievement-title">What I built</h4>
+                                    <ul>
+                                        <li>Re-architected <strong>third-party integrations</strong>
+                                            (Carbmee, Trustpair, Veem) into a dedicated microservice — phased
+                                            rollout with <strong>zero downtime</strong>.</li>
+                                        <li>Built an <strong>event-driven datasync pipeline</strong> streaming
+                                            procurement data (requisitions, bidding, auction events) from a legacy
+                                            system to the new platform at <strong>2,000+ events/sec</strong>.</li>
+                                        <li>Shipped an <strong>admin console</strong> + real-time insights
+                                            dashboard sitting behind a unified gateway handling
+                                            <strong>1,000+ RPS</strong>.</li>
+                                    </ul>
+                                </div>
+                                <div class="achievement-col">
+                                    <h4 class="achievement-title">Architecture &amp; impact</h4>
+                                    <ul>
+                                        <li>Authored a <strong>shared resilience library</strong> — retry,
+                                            rate-limiter, circuit-breaker, fallback, DLQ, and backpressure —
+                                            built on bucket4j, resilience4j, and RabbitMQ. Reused across services.</li>
+                                        <li><strong>100% reduction</strong> in third-party-integration production
+                                            incidents after the migration.</li>
+                                        <li>Decoupled integration logic from core business workflows, restoring
+                                            readability and aligning the codebase to <strong>SOLID principles</strong>.</li>
+                                    </ul>
+                                </div>
+                                <div class="achievement-col">
+                                    <h4 class="achievement-title">Tech</h4>
+                                    <ul>
+                                        <li>Java, Spring Boot, JPA, GraphQL, MySQL</li>
+                                        <li>RabbitMQ, ExecutorService, resilience4j, bucket4j</li>
+                                        <li>JUnit, Mockito, Docker, Argo CD</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                        <p class="description">Building Service CRM, ticketing, and helpdesk software to streamline
-                            clients' customer support process.</p>
-                    </div>
-                </div>
+                    </article>
 
-                <!-- Achievements -->
-                <div class="achievements-row">
-                    <!-- Technical -->
-                    <div class="achievement-section">
-                        <div class="achievement-header">Engineering Achievements</div>
-                        <div class="achievement-points">
-                            <div class="achievement-point">
-                                Built <strong>email service</strong> as a
-                                microservice for a ticketing system with integration with multiple ESPs
-                                like SendGrid, SES, Gmail, Outlook handling <strong> 10K+ emails per day</strong>.
-                            </div>
-                            <div class="achievement-point">
-                                Implemented advanced features like
-                                <strong>rate limiting</strong> (Bucket4j),
-                                <strong>AI spam detection</strong> (AWS Bedrock),
-                                <strong>monitoring</strong> (Micrometer), and
-                                <strong>automated failure retries</strong> (EventBridge & SQS).
-                            </div>
-                            <div class="achievement-point">
-                                Developed <strong>multi-channel notification</strong> service
-                                (Email, SMS, WhatsApp) using factory pattern handling <strong>50K+ notifications per
-                                    day</strong>.
+                    <article class="timeline-item" data-reveal="up">
+                        <div class="timeline-dot" aria-hidden="true"></div>
+                        <div class="timeline-card glass">
+                            <header class="timeline-head">
+                                <a href="https://www.leadsquared.com/" class="company-logo" target="_blank"
+                                    rel="noopener noreferrer" aria-label="LeadSquared website">
+                                    <img src="images/lsq.png" alt="LeadSquared" width="80" height="80"
+                                        loading="lazy" decoding="async">
+                                </a>
+                                <div class="timeline-meta">
+                                    <h3 class="role">Senior Software Engineer</h3>
+                                    <p class="company">LeadSquared</p>
+                                    <p class="meta-line">
+                                        <span><i class="far fa-calendar" aria-hidden="true"></i> Mar 2023 — Jul 2025</span>
+                                        <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Bengaluru</span>
+                                    </p>
+                                    <p class="role-summary">One of the founding engineers of an AI-enabled
+                                        Service CRM — a ticketing and helpdesk platform built to streamline
+                                        customer support for thousands of clients.</p>
+                                </div>
+                            </header>
+
+                            <div class="achievements">
+                                <div class="achievement-col">
+                                    <h4 class="achievement-title">What I built</h4>
+                                    <ul>
+                                        <li>An <strong>email service microservice</strong> integrated with
+                                            SendGrid, SES, Gmail, and Outlook — <strong>10K+ emails/day</strong>
+                                            with an automated integration API.</li>
+                                        <li>A <strong>multi-channel notification service</strong> (Email, SMS,
+                                            WhatsApp) built on the factory pattern, with monitoring and automated
+                                            retries — <strong>50K+ notifications/day</strong>.</li>
+                                        <li>An <strong>email metrics portal</strong> + SOPs that protect shared
+                                            IP reputation by quarantining risky client activity.</li>
+                                    </ul>
+                                </div>
+                                <div class="achievement-col">
+                                    <h4 class="achievement-title">Architecture &amp; impact</h4>
+                                    <ul>
+                                        <li>Layered <strong>rate limiting</strong> (Bucket4j),
+                                            <strong>AI-driven spam detection</strong> (AWS Bedrock),
+                                            <strong>Redis-backed draft caching</strong>, and SQS + EventBridge
+                                            retries to deliver high-throughput concurrency.</li>
+                                        <li>Standardised <strong>trunk-based development</strong> with weekly
+                                            releases and rollback playbooks — faster, safer deploys.</li>
+                                        <li>Led a <strong>cross-region environment migration</strong> with the
+                                            DevOps team — <strong>zero downtime</strong>. Mentored 3 interns.</li>
+                                    </ul>
+                                </div>
+                                <div class="achievement-col">
+                                    <h4 class="achievement-title">Tech</h4>
+                                    <ul>
+                                        <li>Java, Spring Boot, Bucket4j, Micrometer</li>
+                                        <li>AWS SES, SQS, EventBridge, Bedrock, EC2</li>
+                                        <li>Redis, MySQL, Jenkins, Argo CD, Python</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Business -->
-                    <div class="achievement-section">
-                        <div class="achievement-header">Techno-functional Achievements</div>
-                        <div class="achievement-points">
-                            <div class="achievement-point">
-                                Built a <strong>monitoring dashboard</strong> for email health metrics and established
-                                SOPs to <strong>protect shared IP reputation</strong> by quarantining risky client
-                                activities.
-                            </div>
-                            <div class="achievement-point">
-                                Automated <strong>client usage tracking</strong> script to monitor feature usage for
-                                usage-based pricing and improvements.
-                            </div>
-                            <div class="achievement-point">
-                                Built <strong>data migration</strong> script to move client data <strong>(1M+
-                                    tickets per day)</strong> from the existing system using Java, REST API & SQS.
+                    <article class="timeline-item" data-reveal="up">
+                        <div class="timeline-dot" aria-hidden="true"></div>
+                        <div class="timeline-card glass">
+                            <header class="timeline-head">
+                                <a href="https://www.highradius.com/" class="company-logo" target="_blank"
+                                    rel="noopener noreferrer" aria-label="HighRadius website">
+                                    <img src="images/hrc.jpg" alt="HighRadius" width="80" height="80"
+                                        loading="lazy" decoding="async">
+                                </a>
+                                <div class="timeline-meta">
+                                    <h3 class="role">Software Engineer &amp; Product Analyst</h3>
+                                    <p class="company">HighRadius</p>
+                                    <p class="meta-line">
+                                        <span><i class="far fa-calendar" aria-hidden="true"></i> May 2019 — Feb 2023</span>
+                                        <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Bhubaneswar</span>
+                                    </p>
+                                    <p class="role-summary">Built Electronic Invoicing and Cash Application
+                                        — payment processing and reconciliation systems automating accounts
+                                        receivable for global enterprises.</p>
+                                </div>
+                            </header>
+
+                            <div class="achievements">
+                                <div class="achievement-col">
+                                    <h4 class="achievement-title">What I built</h4>
+                                    <ul>
+                                        <li>A <strong>payment file processor &amp; parser</strong> handling
+                                            <strong>1B+ records/year</strong>, paired with a concurrent
+                                            <strong>rule engine</strong> built on ExecutorService.</li>
+                                        <li>An intelligent <strong>L3 credit-card payment</strong> flow and
+                                            tightened inter-service integration that
+                                            <strong>cut payment failures by 10–12%</strong>.</li>
+                                        <li>A <strong>correspondence configuration management service</strong>
+                                            (CRUD) handling <strong>1M+ records/year</strong>.</li>
+                                    </ul>
+                                </div>
+                                <div class="achievement-col">
+                                    <h4 class="achievement-title">Product ownership</h4>
+                                    <ul>
+                                        <li>Owned an <strong>internal utility product (1,000+ DAU)</strong>
+                                            end-to-end — stakeholder discovery, roadmap, MVP, and adoption.</li>
+                                        <li><strong>+10% bandwidth utilisation</strong> and
+                                            <strong>+5% implementation speed</strong> across the delivery org.</li>
+                                        <li>Drove adoption by tracking <strong>dashboard CTR</strong> and
+                                            iterating on the gaps it surfaced.</li>
+                                    </ul>
+                                </div>
+                                <div class="achievement-col">
+                                    <h4 class="achievement-title">Tech</h4>
+                                    <ul>
+                                        <li>Java, Spring, Hibernate, ExecutorService</li>
+                                        <li>MySQL, Redis, REST</li>
+                                        <li>Bash, Git, Jenkins</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Leadership -->
-                    <div class="achievement-section">
-                        <div class="achievement-header">Process Improvement</div>
-                        <div class="achievement-points">
-                            <div class="achievement-point">
-                                Standardized <strong>trunk-based development and weekly release</strong> (BitBucket,
-                                Jenkins & Argo CICD) with rollback strategies for faster and safer deployments.
-                            </div>
-                            <div class="achievement-point">
-                                Led <strong>environment migration across regions</strong> with DevOps team and
-                                documented
-                                process for future use.
-                            </div>
-                            <div class="achievement-point">
-                                Created developer portal with API documentation and guides (APIDog & Confluence) for external tools integration.
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
+        </section>
 
-            <!-- HighRadius Experience -->
-            <div class="experience-item">
-                <!-- Company Header -->
-                <div class="experience-header">
-                    <div class="company-logo-wrapper">
-                        <a href="https://www.highradius.com/" class="company-logo" target="_blank"
-                            rel="noopener noreferrer">
-                            <img src="images/hrc.jpg" alt="HighRadius">
-                        </a>
-                    </div>
-                    <div class="experience-content">
-                        <div class="top-row">
-                            <div class="role-company">Software Engineer & Product Analyst</div>
-                            <div class="meta-info">
-                                <span><i class="far fa-calendar"></i> May 2019 - Feb 2023</span>
-                                <span><i class="fas fa-map-marker-alt"></i> Bhubaneswar</span>
+        <section id="projects" class="section">
+            <div class="container">
+                <p class="section-eyebrow" data-reveal="up">03 — Selected Work</p>
+                <h2 class="section-title" data-reveal="up" style="--delay:80ms">Featured projects.</h2>
+
+                <div class="bento-grid">
+
+                    <article class="bento-card glass bento-full" data-reveal="up">
+                        <header class="bento-head">
+                            <div class="cert-logo-wrap cert-logo-icon" aria-hidden="true">
+                                <i class="fas fa-inbox"></i>
                             </div>
+                            <div>
+                                <h3 class="bento-title">Inbox Intelligence</h3>
+                                <p class="bento-issuer">Personal project · In progress</p>
+                            </div>
+                            <span class="cert-badge" aria-label="Project status">
+                                <i class="fas fa-flask" aria-hidden="true"></i>
+                                Side project
+                            </span>
+                        </header>
+                        <div class="project-list">
+                            <article class="project-item">
+                                <h4>The problem</h4>
+                                <ul>
+                                    <li>Personal inboxes drown in <strong>job alerts, banking, OTPs,
+                                        promotions, and newsletters</strong>. Built-in labels are static and
+                                        don't learn from how you actually triage.</li>
+                                    <li>I wanted a system that could <strong>read, group, and label emails
+                                        by meaning</strong> — not by sender or subject keywords — and adapt
+                                        as I gave it feedback.</li>
+                                </ul>
+                            </article>
+                            <article class="project-item">
+                                <h4>What I'm building</h4>
+                                <ul>
+                                    <li>A <strong>Spring Boot pipeline</strong> that pulls emails over the
+                                        Gmail API, sanitises HTML/markup down to clean text, and persists
+                                        the result alongside its embedding vector.</li>
+                                    <li>An <strong>embedding + clustering layer</strong> using Ollama
+                                        (<code>nomic-embed-text</code>) for vectors, <strong>pgvector</strong>
+                                        for storage, and cosine similarity + DBSCAN for auto-grouping.</li>
+                                    <li>An <strong>LLM labelling stage</strong> that names each cluster from
+                                        a handful of representative samples, then assigns the label back to
+                                        every member email.</li>
+                                    <li>A <strong>feedback loop</strong>: user actions (move, mark
+                                        important, mark spam) feed back into cluster boundaries and label
+                                        quality over time.</li>
+                                </ul>
+                            </article>
+                            <article class="project-item">
+                                <h4>Architecture thinking</h4>
+                                <ul>
+                                    <li><strong>Pipeline, not monolith.</strong>
+                                        <code>Clean → Store → Embed → Similarity → Cluster → Label → Feedback</code> —
+                                        each stage is its own service boundary so I can swap models or
+                                        storage independently.</li>
+                                    <li><strong>Local-first by default.</strong> Ollama runs the embedding
+                                        model on-device so no email content leaves the machine. Cloud LLMs
+                                        are an opt-in for the labelling stage only.</li>
+                                    <li><strong>Embeddings are the source of truth.</strong> Clustering and
+                                        labels are derived state — they can be rebuilt from vectors, so
+                                        experimenting with new clustering algorithms is cheap.</li>
+                                    <li><strong>Idempotent ingestion.</strong> Gmail's history-id watermark
+                                        plus deterministic content hashes mean re-runs and retries never
+                                        double-process an email.</li>
+                                </ul>
+                                <p class="project-note">
+                                    <i class="fas fa-circle-info" aria-hidden="true"></i>
+                                    Architecture diagrams and a deeper walkthrough are coming soon.
+                                </p>
+                            </article>
                         </div>
-                        <p class="description">Built E-invoicing and Cash Reconciliation system to automate clients'
-                            accounts receivable</p>
-                    </div>
-                </div>
+                    </article>
 
-
-                <div class="achievements-row">
-                    <div class="achievement-section">
-                        <div class="achievement-header">Engineering Achievements</div>
-                        <div class="achievement-points">
-                            <div class="achievement-point">
-                                <strong>Reduced payment failures by 10-12%</strong> by developing <strong>L3 credit card
-                                    payment</strong>
-                                functionality
-                                and improving integration between payment presentment and processing service.
+                    <article class="bento-card glass bento-large" data-reveal="up" style="--delay:120ms">
+                        <header class="bento-head">
+                            <div class="cert-logo-wrap">
+                                <img src="images/nextleap-logo.jpeg" alt="NextLeap" width="56" height="56"
+                                    loading="lazy" decoding="async">
                             </div>
-
-                            <div class="achievement-point">
-                                Developed <strong>payment file processor and parser(1B+ records per year)</strong>
-                                using Java, Spring,
-                                Redis, and MySQL, incorporating a rule engine, data pipelines, and parallel processing.
+                            <div>
+                                <h3 class="bento-title">Product Manager Fellowship</h3>
+                                <p class="bento-issuer">NextLeap · 2023</p>
                             </div>
-
-                            <div class="achievement-point">
-                                Built a <strong>correspondence configuration management service</strong> with
-                                Springboot, handling
-                                <strong>1M+
-                                    records per year</strong>.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="achievement-section">
-                        <div class="achievement-header">Product Outcomes</div>
-                        <div class="achievement-points">
-                            <div class="achievement-point">
-                                Researched and roadmapped an intelligent collection feature (5% increase)
-                                </strong> to address low
-                                collections for FMCG clients.
-                            </div>
-
-                            <div class="achievement-point">
-                                Built correspondence configuration management service, tracked <strong>delivery
-                                    rate</strong> and <strong>configuration save CTR</strong> as success metrics.
-
-                            </div>
-
-                            <div class="achievement-point">
-                                Developed an internal tool which <strong>increased bandwidth utilization by 10%</strong>
-                                and <strong>improved
-                                    implementation speed by 5%</strong>. Led user research, prioritised features,
-                                launched MVP and
-                                improved subsequently.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="achievement-section">
-                        <div class="achievement-header">Leadership & Collaboration</div>
-                        <div class="achievement-points">
-                            <div class="achievement-point">
-                                Coordinated and led the setup of training environment <strong>(99% uptime)</strong> for
-                                <strong>1,000+ concurrent</strong> users.
-                            </div>
-
-                            <div class="achievement-point">
-                                Established and led a cross-product implementation team of 7 members for fast-track
-                                    mid-size clients' requirements,<strong> 35% faster</strong> than the conventional
-                                    large clients.
-                            </div>
-
-                            <div class="achievement-point">
-                                <strong>Automated workspace setup</strong> using Bash and Docker, reducing new developers' onboarding time.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section id="certifications" class="section">
-        <div class="container">
-            <h2 class="section-title">Certifications & Projects</h2>
-            <div class="cert-cards">
-                <div class="cert-card">
-                    <div class="cert-header">
-                        <div class="cert-logo-wrapper">
-                            <img src="images/gfg.png" alt="GeeksForGeeks" class="cert-logo">
-                        </div>
-                        <div class="cert-info">
-                            <h3 class="cert-name">DevOps Certification</h3>
-                            <p class="cert-issuer">GeeksForGeeks</p>
-                            <span class="cert-date"><i class="far fa-calendar-alt"></i> Expected 2025</span>
-                        </div>
-                    </div>
-                    <div class="projects-container">
-                        <div class="project-item">
-                            <div class="project-title">
-                                <i class="fas fa-bookmark"></i>
-                                Automated CI/CD Pipeline for Portfolio Website Deployment
-                            </div>
-                            <ul class="project-points">
-                                <li>Implemented a CI/CD pipeline for automated deployment of a portfolio website using
-                                    <strong>GitHub Actions</strong>.
-                                </li>
-                                <li>Integrated <strong>S3</strong> for storage, <strong>CloudFront</strong> for caching and distribution, and
-                                    automated invalidation.
-                                </li>
-                                <li>Configured <strong>Route 53</strong> for DNS management and <strong>ACM</strong> for SSL
-                                    certification to ensure secure hosting.
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-header">
-                        <div class="cert-logo-wrapper nextleap-logo-wrapper">
-                            <img src="images/nextleap-logo.jpeg" alt="NextLeap" class="nextleap-logo">
-                        </div>
-                        <div class="cert-info">
-                            <h3 class="cert-name">Product Manager Fellowship</h3>
-                            <p class="cert-issuer">NextLeap</p>
-                            <span class="cert-date"><i class="far fa-calendar-alt"></i>2023</span>
-                        </div>
-                        <div class="cert-link">
-                            <a href="https://assets.nextleap.app/certificate/Cohort-17-075854042ea6a5640e4433ebd7251adc.pdf"
+                            <a class="cert-badge"
+                                href="https://assets.nextleap.app/certificate/Cohort-17-075854042ea6a5640e4433ebd7251adc.pdf"
                                 target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-certificate"></i>
-                                <span>View Certificate</span>
+                                <i class="fas fa-certificate" aria-hidden="true"></i>
+                                Certificate
                             </a>
+                        </header>
+                        <div class="project-list">
+                            <article class="project-item">
+                                <h4>
+                                    <a href="https://assets.nextleap.app/submissions/Zomato-e969563c-dd5d-4c3c-bd46-69bdc04cee5f.pdf"
+                                        target="_blank" rel="noopener noreferrer">
+                                        Increasing Reviews on Zomato <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                    </a>
+                                </h4>
+                                <ul>
+                                    <li>User research with <strong>100+ respondents</strong> showed
+                                        <strong>50% of frequent users</strong> lacked incentive to write reviews.</li>
+                                    <li>Designed a <strong>gamification system</strong> with redeemable
+                                        virtual coins targeting <strong>2.1M users</strong>, with spam-mitigation built in.</li>
+                                    <li>Wireframes, system architecture, and <strong>review-to-order ratio</strong>
+                                        as the success metric, with a long-term scaling plan.</li>
+                                </ul>
+                            </article>
+                            <article class="project-item">
+                                <h4>
+                                    <a href="https://assets.nextleap.app/submissions/NL_YouTube_Music-c49c2f59-02e3-48f3-a25f-a377e6c07147.pdf"
+                                        target="_blank" rel="noopener noreferrer">
+                                        Subscriber Growth for YouTube Music <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                    </a>
+                                </h4>
+                                <ul>
+                                    <li>Research with <strong>200+ respondents</strong> identified missing
+                                        equalizer/crossfade as a blocker for <strong>33% of upgrades</strong>
+                                        and a retention risk for <strong>40% of premium users</strong>.</li>
+                                    <li>Designed an <strong>AI-powered equalizer</strong> that adapts to
+                                        listening history.</li>
+                                    <li>Wireframes, architecture, completion-rate metric, and a plan for
+                                        the <strong>cold-start problem</strong>.</li>
+                                </ul>
+                            </article>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Projects Container -->
-                    <div class="projects-container">
-                        <!-- Project 1 -->
-                        <div class="project-item">
-                            <div class="project-title">
-                                <i class="fas fa-bookmark"></i>
-                                <a href="https://assets.nextleap.app/submissions/Zomato-e969563c-dd5d-4c3c-bd46-69bdc04cee5f.pdf"
-                                    target="_blank" rel="noopener noreferrer">
-                                    Increasing Number of Reviews on Zomato
-                                </a>
+                    <article class="bento-card glass" data-reveal="up" style="--delay:120ms">
+                        <header class="bento-head">
+                            <div class="cert-logo-wrap">
+                                <img src="images/gfg.png" alt="GeeksForGeeks" width="56" height="56"
+                                    loading="lazy" decoding="async">
                             </div>
-                            <ul class="project-points">
-                                <li>Conducted user research <strong>(100+ respondents)</strong> and identified that <strong>50% of frequent
-                                    Zomato users lacked incentive</strong> to write reviews, impacting engagement.
-                                </li>
-                                <li>Designed a <strong>gamification system</strong> with redeemable virtual coins, targeting <strong>2.1M users</strong>
-                                    to drive review submissions while mitigating risks like spam.
-                                </li>
-                                <li>Developed wireframes, system architecture, and success metrics (e.g.,
-                                <strong>review-to-order ratio</strong>) while planning for long-term scalability.
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- Project 2 -->
-                        <div class="project-item">
-                            <div class="project-title">
-                                <i class="fas fa-bookmark"></i>
-                                <a href="https://assets.nextleap.app/submissions/NL_YouTube_Music-c49c2f59-02e3-48f3-a25f-a377e6c07147.pdf"
-                                    target="_blank" rel="noopener noreferrer">
-                                    Increasing Number of Subscribers to YouTube Music
-                                </a>
+                            <div>
+                                <h3 class="bento-title">DevOps Certification</h3>
+                                <p class="bento-issuer">GeeksForGeeks · Expected 2025</p>
                             </div>
-                            <ul class="project-points">
-                                <li>Led user research <strong>(200+ respondents)</strong> and identified missing features (equalizer,
-                                    crossfade) as key blockers for <strong>free-tier upgrades (33%)</strong> and a retention risk for
-                                <strong>premium users (40%)</strong>.
-                                </li>
-                                <li>Developed an <strong>AI-powered equalizer</strong> that dynamically adjusts settings based on user
-                                    listening history to enhance engagement.
-                                </li>
-                                <li>Designed wireframes, system architecture, and success metrics (e.g., <strong>completion
-                                    rate</strong>) while addressing challenges like the <strong>cold start problem</strong>.
-                                </li>
-                            </ul>
+                        </header>
+                        <div class="project-list">
+                            <article class="project-item">
+                                <h4>Automated CI/CD Pipeline for Portfolio Deployment</h4>
+                                <ul>
+                                    <li><strong>GitHub Actions</strong> pipeline for automated portfolio deploys.</li>
+                                    <li><strong>S3</strong> for storage, <strong>CloudFront</strong> for CDN +
+                                        cache invalidation.</li>
+                                    <li><strong>Route 53</strong> for DNS, <strong>ACM</strong> for TLS — secure by default.</li>
+                                </ul>
+                            </article>
                         </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <div class="container">
+                <p class="section-eyebrow" data-reveal="up">04 — Education</p>
+                <h2 class="section-title" data-reveal="up" style="--delay:80ms">Where it started.</h2>
+                <article class="edu-card glass" data-reveal="up" style="--delay:160ms">
+                    <div class="edu-logo-wrap">
+                        <img src="images/kiit-logo.png" alt="KIIT University" width="80" height="80"
+                            loading="lazy" decoding="async">
                     </div>
-                </div>
+                    <div class="edu-body">
+                        <h3>Bachelor of Technology · Computer Science &amp; Engineering</h3>
+                        <p class="edu-school">Kalinga Institute Of Industrial Technology</p>
+                    </div>
+                    <div class="edu-meta">
+                        <span><i class="far fa-calendar-alt" aria-hidden="true"></i> 2016 — 2020</span>
+                        <span><i class="fas fa-graduation-cap" aria-hidden="true"></i> CGPA 8.71</span>
+                    </div>
+                </article>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Education Section -->
-    <section id="education" class="section">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="edu-card">
-                <div class="edu-logo-wrapper">
-                    <img src="images/kiit-logo.png" alt="KIIT University" class="edu-logo">
-                </div>
-                <div class="edu-details">
-                    <h3 class="edu-degree">Bachelor of Technology</h3>
-                    <p class="edu-branch">Computer Science & Engineering</p>
-                    <p class="edu-school">Kalinga Institute Of Industrial Technology</p>
-                </div>
-                <div class="edu-meta">
-                    <span class="edu-year"><i class="far fa-calendar-alt"></i>2016 - 2020</span>
-                    <span class="edu-grade"><i class="fas fa-graduation-cap"></i>CGPA: 8.71</span>
-                </div>
+        <section id="contact" class="section">
+            <div class="container contact-wrap">
+                <p class="section-eyebrow" data-reveal="up">05 — Contact</p>
+                <h2 class="section-title contact-title" data-reveal="up" style="--delay:80ms">
+                    Let's build <span class="grad-text">something good.</span>
+                </h2>
+                <p class="section-lede" data-reveal="up" style="--delay:160ms">
+                    Hiring for a backend role, scoping a hard distributed-systems problem, or just
+                    want to compare notes on resilience patterns? My inbox is open.
+                </p>
+                <a class="contact-email grad-text" href="mailto:rja.ankit@gmail.com" data-reveal="up" style="--delay:240ms">
+                    rja.ankit@gmail.com
+                </a>
+                <ul class="contact-links" data-reveal="up" style="--delay:320ms" role="list">
+                    <li>
+                        <a href="tel:+91-9038786528" aria-label="Phone">
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <span>+91 9038786528</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://linkedin.com/in/rja-ankit" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                            <span>/rja-ankit</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/rja712" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                            <span>/rja712</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">Get in Touch</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <a href="tel:+91-9038786528">+91 9038786528</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-linkedin-in"></i>
-                    <a href="https://linkedin.com/in/rja-ankit" target="_blank" rel="noopener noreferrer">/rja-ankit</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-github"></i>
-                    <a href="https://github.com/rja712" target="_blank" rel="noopener noreferrer">/rja712</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="mailto:ankitraj.secondary@gmail.com">ankitraj.secondary@gmail.com</a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Ankit Raj. All rights reserved</p>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; 2026 Ankit Raj</p>
+            <p class="footer-note">Built from scratch. No frameworks.</p>
         </div>
     </footer>
 
@@ -499,3 +611,5 @@
 </body>
 
 </html>
+</content>
+</invoke>
