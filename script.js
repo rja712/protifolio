@@ -10,8 +10,7 @@
     /* ---------- Theme ---------- */
     const themeBtn = document.querySelector('.theme-toggle');
     const stored = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialTheme = stored || (prefersDark ? 'dark' : 'light');
+    const initialTheme = stored || 'dark';
 
     const applyTheme = (theme) => {
         root.setAttribute('data-theme', theme);
