@@ -607,6 +607,19 @@ a:hover {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.8125rem;
     color: var(--text-muted);
+    margin: 0;
+}
+
+.hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--sp-4) var(--sp-8);
+    margin-top: var(--sp-6);
+}
+
+.hero-meta .eyebrow {
+    margin: 0;
 }
 
 .status-dot {
@@ -615,6 +628,12 @@ a:hover {
     border-radius: 50%;
     background: #10B981;
     box-shadow: 0 0 12px #10B981;
+}
+
+.status-icon {
+    color: #10B981;
+    font-size: 0.875rem;
+    text-shadow: 0 0 12px rgba(16, 185, 129, 0.55);
 }
 
 .hero-image {
@@ -685,11 +704,68 @@ a:hover {
     line-height: 1.6;
 }
 
+.section-lede strong {
+    font-weight: 700;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.contact-wrap .section-lede strong {
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    color: var(--text-primary);
+}
+
 .sub-title {
     font-size: var(--fs-h3);
     margin-top: var(--sp-16);
     margin-bottom: var(--sp-8);
     color: var(--text-primary);
+}
+
+/* ---------- About: Intro layout ---------- */
+.about-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr);
+    gap: var(--sp-6);
+    align-items: center;
+    margin-bottom: var(--sp-16);
+}
+
+.about-intro-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-intro-text .section-lede {
+    margin-bottom: var(--sp-6);
+    max-width: none;
+}
+
+.about-intro-text .section-lede:last-child {
+    margin-bottom: 0;
+}
+
+.about-intro .stats-grid {
+    grid-template-columns: 1fr;
+    margin-bottom: 0;
+}
+
+.about-intro .stat-card {
+    padding: var(--sp-8) var(--sp-8) var(--sp-8);
+    gap: var(--sp-4);
+}
+
+.about-intro .stat-number {
+    font-size: clamp(3rem, 5.5vw, 4.5rem);
+}
+
+.about-intro .stat-label {
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 /* ---------- About: Stats ---------- */
@@ -1293,6 +1369,102 @@ a:hover {
     margin-right: 0.375rem;
 }
 
+/* ---------- Resume modal ---------- */
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: grid;
+    place-items: center;
+    padding: var(--sp-4);
+}
+
+.modal[hidden] {
+    display: none;
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 5, 12, 0.72);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: modal-fade var(--dur-base) var(--ease-out);
+}
+
+.modal-card {
+    position: relative;
+    width: min(100%, 460px);
+    padding: var(--sp-8);
+    border-radius: var(--r-lg);
+    text-align: center;
+    animation: modal-pop var(--dur-base) var(--ease-out);
+    box-shadow: var(--shadow-card);
+}
+
+.modal-close {
+    position: absolute;
+    top: var(--sp-3);
+    right: var(--sp-3);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--text-secondary);
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    cursor: pointer;
+    transition: all var(--dur-fast) var(--ease-out);
+}
+
+.modal-close:hover {
+    color: var(--text-primary);
+    border-color: var(--accent-solid);
+}
+
+.modal-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--sp-2);
+    color: var(--text-primary);
+}
+
+.modal-lede {
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    margin-bottom: var(--sp-6);
+}
+
+.modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+}
+
+.modal-btn {
+    justify-content: center;
+    width: 100%;
+}
+
+@keyframes modal-fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes modal-pop {
+    from { opacity: 0; transform: translateY(8px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .modal-backdrop,
+    .modal-card { animation: none; }
+}
+
 /* ---------- Contact ---------- */
 .contact-wrap {
     text-align: center;
@@ -1397,6 +1569,11 @@ a:hover {
 
     .bento-grid {
         grid-template-columns: 1fr;
+    }
+
+    .about-intro {
+        grid-template-columns: 1fr;
+        gap: var(--sp-8);
     }
 
     .stats-grid,
