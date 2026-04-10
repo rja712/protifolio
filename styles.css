@@ -327,6 +327,17 @@ a:hover {
     }
 }
 
+/* ---------- Floating actions ---------- */
+.floating-actions {
+    position: fixed;
+    top: 20px;
+    right: clamp(2rem, 5vw, 4rem);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+}
+
 /* ---------- Nav ---------- */
 .nav {
     position: fixed;
@@ -419,7 +430,11 @@ a:hover {
     height: 36px;
     display: grid;
     place-items: center;
-    border-radius: var(--r-pill);
+    border-radius: 50%;
+    background: var(--bg-glass);
+    backdrop-filter: var(--blur-glass);
+    -webkit-backdrop-filter: var(--blur-glass);
+    border: 1px solid var(--border-strong);
     color: var(--text-secondary);
     transition: all var(--dur-base) var(--ease-out);
     position: relative;
@@ -462,7 +477,7 @@ a:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-block: clamp(7rem, 14vw, 9rem) var(--sp-6);
+    padding-block: clamp(5.5rem, 12vh, 10rem) clamp(1rem, 3vh, 3rem);
     position: relative;
     overflow: hidden;
 }
@@ -512,7 +527,7 @@ a:hover {
 .hero-grid {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
-    gap: var(--sp-12);
+    gap: clamp(1.5rem, 4vw, 4rem);
     align-items: center;
     position: relative;
     z-index: 1;
@@ -555,22 +570,22 @@ a:hover {
 
 .hero-name {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(3.5rem, 9vw, 6.75rem);
+    font-size: clamp(2.75rem, 6vw + 1rem, 6.75rem);
     font-weight: 700;
     line-height: 0.95;
     letter-spacing: -0.045em;
-    margin-bottom: var(--sp-4);
+    margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
     color: var(--text-primary);
 }
 
 .hero-tagline {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(1.375rem, 2.4vw, 1.875rem);
+    font-size: clamp(1.25rem, 1.8vw + 0.25rem, 1.875rem);
     font-weight: 500;
     line-height: 1.25;
     letter-spacing: -0.01em;
     color: var(--text-primary);
-    margin-bottom: var(--sp-5);
+    margin-bottom: clamp(0.5rem, 1.5vh, 1.25rem);
     max-width: 620px;
 }
 
@@ -583,9 +598,9 @@ a:hover {
 }
 
 .hero-sub {
-    font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+    font-size: clamp(0.9375rem, 1.2vw + 0.15rem, 1.25rem);
     color: var(--text-secondary);
-    margin-bottom: var(--sp-6);
+    margin-bottom: clamp(1rem, 2.5vh, 2rem);
     max-width: 540px;
     line-height: 1.55;
 }
@@ -594,7 +609,7 @@ a:hover {
     display: flex;
     flex-wrap: wrap;
     gap: var(--sp-3);
-    margin-bottom: var(--sp-4);
+    margin-bottom: clamp(0.5rem, 1.5vh, 1.5rem);
 }
 
 .hero-footnote {
@@ -611,8 +626,8 @@ a:hover {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--sp-4) var(--sp-8);
-    margin-top: var(--sp-3);
+    gap: var(--sp-3) var(--sp-6);
+    margin-top: clamp(0.25rem, 1vh, 1rem);
 }
 
 .hero-meta .eyebrow {
@@ -632,7 +647,7 @@ a:hover {
 
 .hero-image-ring {
     position: relative;
-    width: clamp(240px, 32vw, 380px);
+    width: clamp(200px, min(32vw, 45vh), 380px);
     aspect-ratio: 1;
     border-radius: 50%;
     padding: 4px;
@@ -853,15 +868,15 @@ a:hover {
 .skills-strip {
     position: relative;
     z-index: 1;
-    margin-top: var(--sp-16);
-    padding-top: 0;
+    margin-top: auto;
+    padding-top: clamp(1rem, 3vh, 3rem);
 }
 
 .skills-flat {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: var(--sp-2);
+    gap: var(--sp-3) var(--sp-2);
     padding: 0;
 }
 
