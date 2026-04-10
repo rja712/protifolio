@@ -31,40 +31,6 @@
         localStorage.setItem('theme', next);
     });
 
-    /* ---------- Resume modal ---------- */
-    const resumeModal = document.getElementById('resume-modal');
-    if (resumeModal) {
-        let lastFocus = null;
-        const openModal = (trigger) => {
-            lastFocus = trigger || document.activeElement;
-            resumeModal.hidden = false;
-            document.body.style.overflow = 'hidden';
-            const firstBtn = resumeModal.querySelector('.modal-btn');
-            firstBtn?.focus();
-        };
-        const closeModal = () => {
-            if (resumeModal.hidden) return;
-            resumeModal.hidden = true;
-            document.body.style.overflow = '';
-            lastFocus?.focus?.();
-        };
-        document.querySelectorAll('[data-resume-trigger]').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                openModal(btn);
-            });
-        });
-        resumeModal.querySelectorAll('[data-resume-close]').forEach(el => {
-            el.addEventListener('click', () => {
-                // Let external links fire naturally; close on next tick
-                setTimeout(closeModal, 0);
-            });
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !resumeModal.hidden) closeModal();
-        });
-    }
-
     /* ---------- Sticky nav scroll state ---------- */
     const nav = document.querySelector('.nav');
     const onScroll = () => {
