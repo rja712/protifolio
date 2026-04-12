@@ -131,8 +131,7 @@
                 <span class="skill-tag"><i aria-hidden="true" class="devicon-argocd-plain"></i>Argo CD</span>
                 <span class="skill-tag"><i aria-hidden="true" class="devicon-grafana-plain"></i>Grafana</span>
                 <span class="skill-tag"><i aria-hidden="true" class="devicon-prometheus-original"></i>Prometheus</span>
-                <span class="skill-tag"><i aria-hidden="true"
-                                           class="devicon-opentelemetry-plain"></i>OpenTelemetry</span>
+                <span class="skill-tag"><i aria-hidden="true" class="devicon-opentelemetry-plain"></i>OpenTelemetry</span>
 
                 <span class="skill-tag"><i aria-hidden="true" class="fas fa-cubes"></i>Microservices</span>
                 <span class="skill-tag"><i aria-hidden="true" class="fas fa-tower-broadcast"></i>Event-driven</span>
@@ -148,7 +147,6 @@
                 <span class="skill-tag"><i aria-hidden="true" class="fas fa-circle-nodes"></i>Semantic Search</span>
                 <span class="skill-tag"><i aria-hidden="true" class="fas fa-object-group"></i>Clustering</span>
                 <span class="skill-tag"><i aria-hidden="true" class="fas fa-wave-square"></i>Cosine Similarity</span>
-                <span class="skill-tag"><i aria-hidden="true" class="fas fa-link"></i>LangChain</span>
                 <span class="skill-tag"><i aria-hidden="true" class="fas fa-comment-dots"></i>Prompt Engineering</span>
 
             </div>
@@ -212,17 +210,19 @@
     <section class="section" id="experience">
         <div class="container">
             <p class="section-eyebrow" data-reveal="up">02 — Experience</p>
-            <h2 class="section-title" data-reveal="up" style="--delay:80ms">Where I've shipped.</h2>
+            <h2 class="section-title" data-reveal="up" style="--delay:80ms">What I've shipped.</h2>
 
             <div class="timeline">
 
+                <!-- ── Jaggaer ── -->
                 <article class="timeline-item" data-reveal="up">
                     <div aria-hidden="true" class="timeline-dot"></div>
                     <div class="timeline-card glass">
                         <header class="timeline-head">
-                            <a aria-label="Jaggaer website" class="company-logo company-logo-text" href="https://www.jaggaer.com/"
+                            <a aria-label="Jaggaer website" class="company-logo" href="https://www.jaggaer.com/"
                                rel="noopener noreferrer" target="_blank">
-                                <span aria-hidden="true">J</span>
+                                <img src="https://www.jaggaer.com/wp-content/uploads/JAGGAER-Logo-Red.png" alt="Jaggaer"
+                                    width="140" height="40" loading="lazy" decoding="async">
                             </a>
                             <div class="timeline-meta">
                                 <h3 class="role">Senior Software Engineer</h3>
@@ -231,65 +231,66 @@
                                     <span><i aria-hidden="true" class="far fa-calendar"></i> Aug 2025 — Present</span>
                                     <span><i aria-hidden="true" class="fas fa-map-marker-alt"></i> Hyderabad</span>
                                 </p>
-                                <p class="role-summary">Building Catelyze, a cross-platform integration system
-                                    powering admin configuration, real-time dashboards, and secure communication
-                                    for enterprise procurement.</p>
                             </div>
                         </header>
 
-                        <div class="achievements">
-                            <div class="achievement-col">
-                                <h4 class="achievement-title">What I built</h4>
+                        <p class="exp-headline">Building <strong>Catelyze</strong> — a scalable cross-platform
+                            integration system enabling seamless admin configuration, real-time dashboards, and
+                            high-throughput data flow across services.</p>
+
+                        <div class="project-grid">
+                            <div class="exp-block">
+                                <h4 class="exp-block-title">Re-architecting a Fragile Legacy System</h4>
+                                <p>Identified tight coupling between third-party integrations and core business
+                                    logic as a major source of production instability. Re-architected the system by
+                                    extracting integrations into a dedicated microservice layer, enabling isolation,
+                                    independent scaling, and failure containment.</p>
+                                <p>Built a <strong>shared resilience library</strong> adopted across microservices:</p>
+                                <ul class="exp-tags">
+                                    <li>Retry strategies</li>
+                                    <li>Rate limiting</li>
+                                    <li>Circuit breakers</li>
+                                    <li>Fallback mechanisms</li>
+                                    <li>Dead Letter Queues</li>
+                                    <li>Backpressure handling</li>
+                                </ul>
+                                <p class="exp-impact"><i aria-hidden="true" class="fas fa-chart-line"></i>
+                                    Reduced third-party integration-related production incidents by <strong>~99%</strong>.</p>
+                            </div>
+
+                            <div class="exp-block">
+                                <h4 class="exp-block-title">High-Throughput Event-Driven Data Pipeline</h4>
+                                <p>Engineered an event-driven data sync pipeline to migrate and stream
+                                    procurement data (requisitions, bidding, auctions) from legacy to new systems.</p>
                                 <ul>
-                                    <li>Re-architected <strong>third-party integrations</strong>
-                                        (Carbmee, Trustpair, Veem) into a dedicated microservice — phased
-                                        rollout with <strong>zero downtime</strong>.
-                                    </li>
-                                    <li>Built an <strong>event-driven datasync pipeline</strong> streaming
-                                        procurement data (requisitions, bidding, auction events) from a legacy
-                                        system to the new platform at <strong>2,000+ events/sec</strong>.
-                                    </li>
-                                    <li>Shipped an <strong>admin console</strong> + real-time insights
-                                        dashboard sitting behind a unified gateway handling
-                                        <strong>1,000+ RPS</strong>.
-                                    </li>
+                                    <li>Handled <strong>2,000+ events/sec</strong> reliably</li>
+                                    <li>Built using <strong>ExecutorService + RabbitMQ</strong> for concurrent processing and fault tolerance</li>
+                                    <li>Designed for idempotency, ordering, and failure recovery</li>
                                 </ul>
                             </div>
-                            <div class="achievement-col">
-                                <h4 class="achievement-title">Architecture &amp; impact</h4>
+
+                            <div class="exp-block">
+                                <h4 class="exp-block-title">Admin Console &amp; Real-Time Insights</h4>
+                                <p>Developed a centralised admin console for configuration management and operational visibility.</p>
                                 <ul>
-                                    <li>Authored a <strong>shared resilience library</strong> — retry,
-                                        rate-limiter, circuit-breaker, fallback, DLQ, and backpressure —
-                                        built on bucket4j, resilience4j, and RabbitMQ. Reused across services.
-                                    </li>
-                                    <li><strong>100% reduction</strong> in third-party-integration production
-                                        incidents after the migration.
-                                    </li>
-                                    <li>Decoupled integration logic from core business workflows, restoring
-                                        readability and aligning the codebase to <strong>SOLID principles</strong>.
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="achievement-col">
-                                <h4 class="achievement-title">Tech</h4>
-                                <ul>
-                                    <li>Java, Spring Boot, JPA, GraphQL, MySQL</li>
-                                    <li>RabbitMQ, ExecutorService, resilience4j, bucket4j</li>
-                                    <li>JUnit, Mockito, Docker, Argo CD</li>
+                                    <li>Real-time dashboards powered by core services behind a gateway</li>
+                                    <li>Handled <strong>1,000+ RPS</strong> with optimised APIs and caching strategies</li>
+                                    <li>Enabled non-engineering teams to manage configurations without deployments</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </article>
 
+                <!-- ── LeadSquared ── -->
                 <article class="timeline-item" data-reveal="up">
                     <div aria-hidden="true" class="timeline-dot"></div>
                     <div class="timeline-card glass">
                         <header class="timeline-head">
                             <a aria-label="LeadSquared website" class="company-logo" href="https://www.leadsquared.com/"
                                rel="noopener noreferrer" target="_blank">
-                                <img alt="LeadSquared" decoding="async" height="80" loading="lazy"
-                                     src="images/lsq.png" width="80">
+                                <img src="https://www.leadsquared.com/wp-content/uploads/2023/12/340-x-156-300x138-1.png" alt="LeadSquared"
+                                    width="140" height="40" loading="lazy" decoding="async">
                             </a>
                             <div class="timeline-meta">
                                 <h3 class="role">Senior Software Engineer</h3>
@@ -298,65 +299,60 @@
                                     <span><i aria-hidden="true" class="far fa-calendar"></i> Mar 2023 — Jul 2025</span>
                                     <span><i aria-hidden="true" class="fas fa-map-marker-alt"></i> Bengaluru</span>
                                 </p>
-                                <p class="role-summary">One of the founding engineers of an AI-enabled
-                                    Service CRM — a ticketing and helpdesk platform built to streamline
-                                    customer support for thousands of clients.</p>
                             </div>
                         </header>
 
-                        <div class="achievements">
-                            <div class="achievement-col">
-                                <h4 class="achievement-title">What I built</h4>
+                        <p class="exp-headline">Built <strong>Service CRM</strong> — a ticketing and helpdesk
+                            system to streamline client customer support workflows across multiple communication channels.</p>
+
+                        <div class="project-grid">
+                            <div class="exp-block">
+                                <h4 class="exp-block-title">Event-Driven Email Communication System</h4>
+                                <p>Built a high-throughput email microservice integrating multiple ESPs like
+                                    SendGrid, AWS SES, and Gmail.</p>
                                 <ul>
-                                    <li>An <strong>email service microservice</strong> integrated with
-                                        SendGrid, SES, Gmail, and Outlook — <strong>10K+ emails/day</strong>
-                                        with an automated integration API.
-                                    </li>
-                                    <li>A <strong>multi-channel notification service</strong> (Email, SMS,
-                                        WhatsApp) built on the factory pattern, with monitoring and automated
-                                        retries — <strong>50K+ notifications/day</strong>.
-                                    </li>
-                                    <li>An <strong>email metrics portal</strong> + SOPs that protect shared
-                                        IP reputation by quarantining risky client activity.
-                                    </li>
+                                    <li>Processed <strong>10K+ emails/day</strong> with high reliability</li>
+                                    <li>Implemented <strong>rate limiting</strong> (Bucket4j) to prevent provider throttling</li>
+                                    <li>Designed automated retry and failure handling using <strong>EventBridge, SNS, and SQS</strong></li>
+                                    <li>Added <strong>AI-driven spam detection</strong> to improve deliverability</li>
+                                    <li>Integrated monitoring (Micrometer) and observability dashboards</li>
+                                    <li>Used <strong>Redis caching</strong> for draft management and performance optimisation</li>
                                 </ul>
                             </div>
-                            <div class="achievement-col">
-                                <h4 class="achievement-title">Architecture &amp; impact</h4>
+
+                            <div class="exp-block">
+                                <h4 class="exp-block-title">Multi-Channel Notification Platform</h4>
+                                <p>Developed a factory-pattern-based notification service supporting Email, SMS, and WhatsApp.</p>
                                 <ul>
-                                    <li>Layered <strong>rate limiting</strong> (Bucket4j),
-                                        <strong>AI-driven spam detection</strong> (AWS Bedrock),
-                                        <strong>Redis-backed draft caching</strong>, and SQS + EventBridge
-                                        retries to deliver high-throughput concurrency.
-                                    </li>
-                                    <li>Standardised <strong>trunk-based development</strong> with weekly
-                                        releases and rollback playbooks — faster, safer deploys.
-                                    </li>
-                                    <li>Led a <strong>cross-region environment migration</strong> with the
-                                        DevOps team — <strong>zero downtime</strong>. Mentored 3 interns.
-                                    </li>
+                                    <li>Handled <strong>50K+ notifications/day</strong> across channels</li>
+                                    <li>Unified abstraction layer for easy extensibility of new providers</li>
+                                    <li>Built-in retry, monitoring, and failure recovery mechanisms</li>
+                                    <li>Delivered operational visibility via a centralised dashboard</li>
                                 </ul>
                             </div>
-                            <div class="achievement-col">
-                                <h4 class="achievement-title">Tech</h4>
+
+                            <div class="exp-block">
+                                <h4 class="exp-block-title">Operational &amp; Product Improvements</h4>
+                                <p>Focused on system reliability, cost efficiency, and product scalability:</p>
                                 <ul>
-                                    <li>Java, Spring Boot, Bucket4j, Micrometer</li>
-                                    <li>AWS SES, SQS, EventBridge, Bedrock, EC2</li>
-                                    <li>Redis, MySQL, Jenkins, Argo CD, Python</li>
+                                    <li>Protected email IP reputation by detecting risky usage patterns and quarantining abusive accounts</li>
+                                    <li>Built automated client usage tracking enabling <strong>usage-based pricing</strong> and data-driven product decisions</li>
+                                    <li>Standardised <strong>trunk-based development</strong> with weekly releases, including rollback strategies for safer and faster deployments</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </article>
 
+                <!-- ── HighRadius ── -->
                 <article class="timeline-item" data-reveal="up">
                     <div aria-hidden="true" class="timeline-dot"></div>
                     <div class="timeline-card glass">
                         <header class="timeline-head">
                             <a aria-label="HighRadius website" class="company-logo" href="https://www.highradius.com/"
                                rel="noopener noreferrer" target="_blank">
-                                <img alt="HighRadius" decoding="async" height="80" loading="lazy"
-                                     src="images/hrc.jpg" width="80">
+                                <img src="https://cdn.highradius.com/wp-content/uploads/2024/06/HighRadius-Updated.svg" alt="HighRadius"
+                                    width="140" height="40" loading="lazy" decoding="async">
                             </a>
                             <div class="timeline-meta">
                                 <h3 class="role">Software Engineer &amp; Product Analyst</h3>
@@ -365,49 +361,32 @@
                                     <span><i aria-hidden="true" class="far fa-calendar"></i> May 2019 — Feb 2023</span>
                                     <span><i aria-hidden="true" class="fas fa-map-marker-alt"></i> Bhubaneswar</span>
                                 </p>
-                                <p class="role-summary">Built Electronic Invoicing and Cash Application
-                                    — payment processing and reconciliation systems automating accounts
-                                    receivable for global enterprises.</p>
                             </div>
                         </header>
 
-                        <div class="achievements">
-                            <div class="achievement-col">
-                                <h4 class="achievement-title">What I built</h4>
+                        <p class="exp-headline"><strong>Electronic Invoicing &amp; Cash Application</strong>
+                            — contributed to building systems that automate Accounts Receivable workflows,
+                            improving payment processing efficiency and reducing manual intervention.</p>
+
+                        <div class="project-grid">
+                            <div class="exp-block">
+                                <h4 class="exp-block-title">Engineering Impact</h4>
+                                <p>Focused on reliability, scale, and correctness in high-volume financial systems:</p>
                                 <ul>
-                                    <li>A <strong>payment file processor &amp; parser</strong> handling
-                                        <strong>1B+ records/year</strong>, paired with a concurrent
-                                        <strong>rule engine</strong> built on ExecutorService.
-                                    </li>
-                                    <li>An intelligent <strong>L3 credit-card payment</strong> flow and
-                                        tightened inter-service integration that
-                                        <strong>cut payment failures by 10–12%</strong>.
-                                    </li>
-                                    <li>A <strong>correspondence configuration management service</strong>
-                                        (CRUD) handling <strong>1M+ records/year</strong>.
-                                    </li>
+                                    <li>Reduced payment failures by <strong>10–12%</strong> by implementing L3 credit card payment flows and fixing inter-service integration gaps</li>
+                                    <li>Built a high-throughput payment file parser processing <strong>1B+ records/year</strong>, coupled with a concurrent rule engine using ExecutorService</li>
+                                    <li>Developed a correspondence configuration management service handling <strong>1M+ records/year</strong>, enabling flexible client-specific workflows</li>
                                 </ul>
                             </div>
-                            <div class="achievement-col">
-                                <h4 class="achievement-title">Product ownership</h4>
+
+                            <div class="exp-block">
+                                <h4 class="exp-block-title">Product Ownership &amp; Execution</h4>
+                                <p>Stepped beyond engineering to drive product outcomes end-to-end:</p>
                                 <ul>
-                                    <li>Owned an <strong>internal utility product (1,000+ DAU)</strong>
-                                        end-to-end — stakeholder discovery, roadmap, MVP, and adoption.
-                                    </li>
-                                    <li><strong>+10% bandwidth utilisation</strong> and
-                                        <strong>+5% implementation speed</strong> across the delivery org.
-                                    </li>
-                                    <li>Drove adoption by tracking <strong>dashboard CTR</strong> and
-                                        iterating on the gaps it surfaced.
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="achievement-col">
-                                <h4 class="achievement-title">Tech</h4>
-                                <ul>
-                                    <li>Java, Spring, Hibernate, ExecutorService</li>
-                                    <li>MySQL, Redis, REST</li>
-                                    <li>Bash, Git, Jenkins</li>
+                                    <li>Owned and built an <strong>internal utility product (1,000+ DAU)</strong> from problem discovery to MVP and scale</li>
+                                    <li>Led stakeholder discussions, requirement shaping, and feature prioritisation</li>
+                                    <li>Improved bandwidth utilisation by <strong>10%</strong> and implementation speed by <strong>5%</strong></li>
+                                    <li>Drove adoption by stabilising the product post-launch and optimising based on dashboard CTR and usage metrics</li>
                                 </ul>
                             </div>
                         </div>
@@ -439,67 +418,48 @@
                                 Side project
                             </span>
                     </header>
-                    <div class="project-list">
-                        <article class="project-item">
-                            <h4>The problem</h4>
+
+                    <p class="exp-headline">An end-to-end email intelligence pipeline that
+                        <strong>ingests</strong>, <strong>processes</strong>, and <strong>understands</strong>
+                        emails — grouping and labelling them by meaning, not keywords. Built to replace
+                        static inbox rules with adaptive, AI-driven organisation.</p>
+
+                    <div class="project-grid">
+                        <div class="exp-block">
+                            <h4 class="exp-block-title"><i aria-hidden="true" class="fas fa-database"></i> Ingester</h4>
+                            <p class="exp-block-sub">Gmail Pipeline &amp; Data Extraction</p>
                             <ul>
-                                <li>Personal inboxes drown in <strong>job alerts, banking, OTPs,
-                                    promotions, and newsletters</strong>. Built-in labels are static and
-                                    don't learn from how you actually triage.
-                                </li>
-                                <li>I wanted a system that could <strong>read, group, and label emails
-                                    by meaning</strong> — not by sender or subject keywords — and adapt
-                                    as I gave it feedback.
-                                </li>
+                                <li><strong>Idempotent ingestion</strong> via Gmail's history-id watermark
+                                    and deterministic content hashes</li>
+                                <li>HTML/markup <strong>sanitisation</strong> — strips noise,
+                                    extracts meaningful text</li>
+                                <li>Persists cleaned emails + metadata for downstream embedding</li>
                             </ul>
-                        </article>
-                        <article class="project-item">
-                            <h4>What I'm building</h4>
+                        </div>
+
+                        <div class="exp-block">
+                            <h4 class="exp-block-title"><i aria-hidden="true" class="fas fa-microchip"></i> Processor</h4>
+                            <p class="exp-block-sub">Embeddings, Similarity &amp; Clustering</p>
                             <ul>
-                                <li>A <strong>Spring Boot pipeline</strong> that pulls emails over the
-                                    Gmail API, sanitises HTML/markup down to clean text, and persists
-                                    the result alongside its embedding vector.
-                                </li>
-                                <li>An <strong>embedding + clustering layer</strong> using Ollama
-                                    (<code>nomic-embed-text</code>) for vectors, <strong>pgvector</strong>
-                                    for storage, and cosine similarity + DBSCAN for auto-grouping.
-                                </li>
-                                <li>An <strong>LLM labelling stage</strong> that names each cluster from
-                                    a handful of representative samples, then assigns the label back to
-                                    every member email.
-                                </li>
-                                <li>A <strong>feedback loop</strong>: user actions (move, mark
-                                    important, mark spam) feed back into cluster boundaries and label
-                                    quality over time.
-                                </li>
+                                <li><strong>Ollama</strong> (<code>nomic-embed-text</code>) for on-device
+                                    embedding — no data leaves the machine</li>
+                                <li><strong>pgVector</strong> storage + cosine similarity search</li>
+                                <li><strong>DBSCAN clustering</strong> — automatic group discovery,
+                                    no predefined categories</li>
                             </ul>
-                        </article>
-                        <article class="project-item">
-                            <h4>Architecture thinking</h4>
+                        </div>
+
+                        <div class="exp-block">
+                            <h4 class="exp-block-title"><i aria-hidden="true" class="fas fa-brain"></i> AI Layer</h4>
+                            <p class="exp-block-sub">Labelling, Feedback &amp; Future</p>
                             <ul>
-                                <li><strong>Pipeline, not monolith.</strong>
-                                    <code>Clean → Store → Embed → Similarity → Cluster → Label → Feedback</code> —
-                                    each stage is its own service boundary so I can swap models or
-                                    storage independently.
-                                </li>
-                                <li><strong>Local-first by default.</strong> Ollama runs the embedding
-                                    model on-device so no email content leaves the machine. Cloud LLMs
-                                    are an opt-in for the labelling stage only.
-                                </li>
-                                <li><strong>Embeddings are the source of truth.</strong> Clustering and
-                                    labels are derived state — they can be rebuilt from vectors, so
-                                    experimenting with new clustering algorithms is cheap.
-                                </li>
-                                <li><strong>Idempotent ingestion.</strong> Gmail's history-id watermark
-                                    plus deterministic content hashes mean re-runs and retries never
-                                    double-process an email.
-                                </li>
+                                <li><strong>LLM-powered labelling</strong> from representative cluster samples</li>
+                                <li><strong>Adaptive feedback loop</strong> — user actions refine clusters over time</li>
+                                <li><strong>Local-first</strong>, cloud LLMs opt-in for labelling only</li>
                             </ul>
-                            <p class="project-note">
-                                <i aria-hidden="true" class="fas fa-circle-info"></i>
-                                Architecture diagrams and a deeper walkthrough are coming soon.
-                            </p>
-                        </article>
+                            <p class="exp-block-planned"><i aria-hidden="true" class="fas fa-rocket"></i>
+                                Smart summaries, priority scoring, auto-triage rules</p>
+                        </div>
                     </div>
                 </article>
 
