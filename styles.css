@@ -71,12 +71,12 @@ ul {
     --sp-2: 0.5rem;
     --sp-3: 0.75rem;
     --sp-4: 1rem;
+    --sp-5: 1.25rem;
     --sp-6: 1.5rem;
     --sp-8: 2rem;
+    --sp-10: 2.5rem;
     --sp-12: 3rem;
     --sp-16: 4rem;
-    --sp-5: 1.25rem;
-    --sp-10: 2.5rem;
     --sp-20: 5rem;
     --sp-24: 6rem;
     --sp-32: 8rem;
@@ -674,10 +674,7 @@ a:hover {
     height: calc(100% - 8px);
     border-radius: 50%;
     object-fit: cover;
-    object-position: 50% 28%;
     background: var(--bg-elevated);
-    transform: scale(1.55);
-    clip-path: circle(32.2% at 50% 50%);
 }
 
 @keyframes floatY {
@@ -980,8 +977,8 @@ a:hover {
     display: flex;
     align-items: flex-start;
     gap: var(--sp-6);
-    margin-bottom: var(--sp-4);
-    padding-bottom: var(--sp-4);
+    margin-bottom: var(--sp-2);
+    padding-bottom: var(--sp-2);
     border-bottom: 1px solid var(--border-glass);
 }
 
@@ -1010,7 +1007,6 @@ a:hover {
     object-fit: contain;
 }
 
-
 .timeline-meta {
     flex: 1;
     min-width: 0;
@@ -1034,7 +1030,7 @@ a:hover {
     gap: var(--sp-4);
     font-size: 0.8125rem;
     color: var(--text-muted);
-    margin-bottom: var(--sp-3);
+    margin-bottom: 0;
 }
 
 .meta-line i {
@@ -1042,24 +1038,11 @@ a:hover {
     color: var(--accent-solid);
 }
 
-.role-summary {
-    font-size: 0.9375rem;
-    line-height: 1.55;
-    color: var(--text-secondary);
-}
-
 /* -- Experience card content -- */
-.exp-sections {
-    display: flex;
-    flex-direction: column;
-    gap: var(--sp-8);
-}
-
 .exp-headline {
     font-size: 0.9375rem;
     line-height: 1.7;
     color: var(--text-secondary);
-    max-width: 72ch;
 }
 
 .exp-headline strong {
@@ -1215,13 +1198,6 @@ a:hover {
 
 .project-grid .exp-block {
     padding: var(--sp-4) var(--sp-5);
-    border-left: 3px solid var(--accent-solid);
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 0 var(--r-sm) var(--r-sm) 0;
-}
-
-[data-theme="light"] .project-grid .exp-block {
-    background: rgba(0, 0, 0, 0.02);
 }
 
 .project-grid .exp-block-title {
@@ -1438,23 +1414,6 @@ a:hover {
     font-weight: 600;
 }
 
-.project-note {
-    margin-top: var(--sp-4);
-    padding: var(--sp-3) var(--sp-4);
-    background: var(--bg-glass);
-    border: 1px dashed var(--border-glass);
-    border-radius: var(--r-md);
-    font-size: 0.8125rem;
-    color: var(--text-muted);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.project-note i {
-    color: var(--accent-solid);
-}
-
 .bento-full {
     grid-column: 1 / -1;
 }
@@ -1649,8 +1608,6 @@ a:hover {
         order: -1;
     }
 
-
-
     .bento-grid {
         grid-template-columns: 1fr;
     }
@@ -1680,6 +1637,25 @@ a:hover {
 
     .nav-links {
         display: none;
+    }
+
+    .floating-actions {
+        right: 0.75rem;
+    }
+
+    .floating-actions .btn-sm span {
+        display: none;
+    }
+
+    .floating-actions .btn-sm {
+        padding: 0.5rem;
+        width: 36px;
+        height: 36px;
+        justify-content: center;
+    }
+
+    .floating-actions .btn-sm i {
+        margin: 0;
     }
 
     .hero {
@@ -1744,6 +1720,10 @@ a:hover {
 
     .project-grid {
         grid-template-columns: 1fr;
+    }
+
+    .project-grid > * {
+        grid-area: auto !important;
     }
 
     .edu-card {
