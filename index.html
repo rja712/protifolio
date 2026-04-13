@@ -241,21 +241,13 @@
                         <div class="project-grid">
                             <div class="exp-block">
                                 <h4 class="exp-block-title">Re-architecting a Fragile Legacy System</h4>
-                                <p>Identified tight coupling between third-party integrations and core business
-                                    logic as a major source of production instability. Re-architected the system by
-                                    extracting integrations into a dedicated microservice layer, enabling isolation,
-                                    independent scaling, and failure containment.</p>
-                                <p>Built a <strong>shared resilience library</strong> adopted across microservices:</p>
-                                <ul class="exp-tags">
-                                    <li>Retry strategies</li>
-                                    <li>Rate limiting</li>
-                                    <li>Circuit breakers</li>
-                                    <li>Fallback mechanisms</li>
-                                    <li>Dead Letter Queues</li>
-                                    <li>Backpressure handling</li>
+                                <p>Re-architected tightly coupled third-party integrations into a dedicated
+                                    microservice layer — enabling isolation, independent scaling, and failure containment.</p>
+                                <ul>
+                                    <li>Built a <strong>shared resilience library</strong> adopted across microservices: retry strategies, rate limiting, circuit breakers, and DLQs</li>
+                                    <li>Introduced backpressure handling and fallback mechanisms for external API calls</li>
+                                    <li>Reduced integration-related <strong>production incidents by ~99%</strong></li>
                                 </ul>
-                                <p class="exp-impact"><i aria-hidden="true" class="fas fa-chart-line"></i>
-                                    Reduced third-party integration-related production incidents by <strong>~99%</strong>.</p>
                             </div>
 
                             <div class="exp-block">
@@ -307,16 +299,14 @@
 
                         <div class="project-grid">
                             <div class="exp-block">
-                                <h4 class="exp-block-title">Event-Driven Email Communication System</h4>
+                                <h4 class="exp-block-title">Event-Driven Email System</h4>
                                 <p>Built a high-throughput email microservice integrating multiple ESPs like
                                     SendGrid, AWS SES, and Gmail.</p>
                                 <ul>
-                                    <li>Processed <strong>10K+ emails/day</strong> with high reliability</li>
-                                    <li>Implemented <strong>rate limiting</strong> (Bucket4j) to prevent provider throttling</li>
-                                    <li>Designed automated retry and failure handling using <strong>EventBridge, SNS, and SQS</strong></li>
-                                    <li>Added <strong>AI-driven spam detection</strong> to improve deliverability</li>
+                                    <li>Processed <strong>10K+ emails/day</strong> with <strong>rate limiting</strong> (Bucket4j) to prevent provider throttling</li>
+                                    <li>Automated retry and failure handling using <strong>EventBridge, SNS, and SQS</strong></li>
+                                    <li>Added <strong>AI-driven spam detection</strong> and <strong>Redis caching</strong> for deliverability and performance</li>
                                     <li>Integrated monitoring (Micrometer) and observability dashboards</li>
-                                    <li>Used <strong>Redis caching</strong> for draft management and performance optimisation</li>
                                 </ul>
                             </div>
 
@@ -455,7 +445,6 @@
                             <ul>
                                 <li><strong>LLM-powered labelling</strong> from representative cluster samples</li>
                                 <li><strong>Adaptive feedback loop</strong> — user actions refine clusters over time</li>
-                                <li><strong>Local-first</strong>, cloud LLMs opt-in for labelling only</li>
                             </ul>
                             <p class="exp-block-planned"><i aria-hidden="true" class="fas fa-rocket"></i>
                                 Smart summaries, priority scoring, auto-triage rules</p>
@@ -480,9 +469,14 @@
                             Certificate
                         </a>
                     </header>
-                    <div class="project-list">
-                        <article class="project-item">
-                            <h4>
+
+                    <p class="exp-headline">Product skills complement engineering capabilities — hence this certification.
+                        Solved real-world product problems through strong <strong>product thinking</strong>,
+                        <strong>user research</strong>, and <strong>metric-driven execution</strong>.</p>
+
+                    <div class="project-grid">
+                        <div class="exp-block">
+                            <h4 class="exp-block-title">
                                 <a href="https://assets.nextleap.app/submissions/Zomato-e969563c-dd5d-4c3c-bd46-69bdc04cee5f.pdf"
                                    rel="noopener noreferrer" target="_blank">
                                     Increasing Reviews on Zomato <i aria-hidden="true"
@@ -491,18 +485,15 @@
                             </h4>
                             <ul>
                                 <li>User research with <strong>100+ respondents</strong> showed
-                                    <strong>50% of frequent users</strong> lacked incentive to write reviews.
-                                </li>
+                                    <strong>50% of frequent users</strong> lacked incentive to write reviews</li>
                                 <li>Designed a <strong>gamification system</strong> with redeemable
-                                    virtual coins targeting <strong>2.1M users</strong>, with spam-mitigation built in.
-                                </li>
-                                <li>Wireframes, system architecture, and <strong>review-to-order ratio</strong>
-                                    as the success metric, with a long-term scaling plan.
-                                </li>
+                                    virtual coins targeting <strong>2.1M users</strong>, with spam-mitigation built in</li>
+                                <li>End-to-end solution: wireframes, system architecture, and <strong>review-to-order ratio</strong>
+                                    as the success metric</li>
                             </ul>
-                        </article>
-                        <article class="project-item">
-                            <h4>
+                        </div>
+                        <div class="exp-block">
+                            <h4 class="exp-block-title">
                                 <a href="https://assets.nextleap.app/submissions/NL_YouTube_Music-c49c2f59-02e3-48f3-a25f-a377e6c07147.pdf"
                                    rel="noopener noreferrer" target="_blank">
                                     Subscriber Growth for YouTube Music <i aria-hidden="true"
@@ -511,17 +502,13 @@
                             </h4>
                             <ul>
                                 <li>Research with <strong>200+ respondents</strong> identified missing
-                                    equalizer/crossfade as a blocker for <strong>33% of upgrades</strong>
-                                    and a retention risk for <strong>40% of premium users</strong>.
-                                </li>
+                                    equalizer/crossfade as a blocker for <strong>33% of upgrades</strong></li>
                                 <li>Designed an <strong>AI-powered equalizer</strong> that adapts to
-                                    listening history.
-                                </li>
+                                    listening history</li>
                                 <li>Wireframes, architecture, completion-rate metric, and a plan for
-                                    the <strong>cold-start problem</strong>.
-                                </li>
+                                    the <strong>cold-start problem</strong></li>
                             </ul>
-                        </article>
+                        </div>
                     </div>
                 </article>
 
@@ -533,21 +520,22 @@
                         </div>
                         <div>
                             <h3 class="bento-title">DevOps Certification</h3>
-                            <p class="bento-issuer">GeeksForGeeks · Expected 2026</p>
+                            <p class="bento-issuer">GeeksForGeeks · 2025</p>
                         </div>
                     </header>
-                    <div class="project-list">
-                        <article class="project-item">
-                            <h4>Automated CI/CD Pipeline for Portfolio Deployment</h4>
+
+                    <p class="exp-headline">Exposure to Cloud &amp; DevOps practices, so that I don't sound like a fool in team meetings.</p>
+
+                    <div class="project-grid">
+                        <div class="exp-block">
+                            <h4 class="exp-block-title">Automated CI/CD Pipeline for Portfolio Deployment</h4>
                             <ul>
-                                <li><strong>GitHub Actions</strong> pipeline for automated portfolio deploys.</li>
+                                <li><strong>GitHub Actions</strong> pipeline for automated portfolio deploys</li>
                                 <li><strong>S3</strong> for storage, <strong>CloudFront</strong> for CDN +
-                                    cache invalidation.
-                                </li>
-                                <li><strong>Route 53</strong> for DNS, <strong>ACM</strong> for TLS — secure by default.
-                                </li>
+                                    cache invalidation</li>
+                                <li><strong>Route 53</strong> for DNS, <strong>ACM</strong> for TLS — secure by default</li>
                             </ul>
-                        </article>
+                        </div>
                     </div>
                 </article>
 
