@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InboxIntelligence — backend case study · Ankit Raj</title>
+  <link crossorigin="anonymous"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        rel="stylesheet">
+  <link rel="stylesheet" href="inbox-intelligence.css" />
+</head>
+<body>
+  <!-- ============ FLOATING BRAND (left) ============ -->
+  <div class="brand brand-floating">⚡ InboxIntelligence</div>
+
+  <!-- ============ FLOATING ACTIONS (right) ============ -->
+  <div class="floating-actions">
+    <a class="fa-btn" href="index.html" aria-label="Back to portfolio">
+      <i class="fas fa-arrow-left" aria-hidden="true"></i>
+      <span>Portfolio</span>
+    </a>
+    <button class="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">
+      <i class="fas fa-sun" aria-hidden="true"></i>
+      <i class="fas fa-moon" aria-hidden="true"></i>
+    </button>
+    <a class="fa-btn"
+       href="https://docs.google.com/document/u/2/d/1CLNiq6J4XQr7jyCQY264GZ_nfuFv_keUmUmM56WtKR8/export?format=pdf"
+       target="_blank" rel="noopener noreferrer">
+      <i class="fas fa-download" aria-hidden="true"></i>
+      <span>Resume</span>
+    </a>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero" id="problem">
+    <div class="hero-inner">
+      <div class="tag">Backend engineering case study · 4-service distributed system</div>
+      <h1>Event-driven backend &mdash; built to demonstrate
+        <span class="hl">distributed-systems</span> depth.</h1>
+
+      <p class="lead">
+        Four Spring Boot services, a topic-exchange message bus, vector search,
+        a distributed lock, and a resilient AI provider layer &mdash; all the
+        moving parts senior backend interviews actually drill into. Each
+        engineering choice below is paired with the file in the repo that
+        implements it, so the work can be verified, not just claimed.
+      </p>
+
+      <div class="chips chips-keywords" aria-label="Core skills">
+        <span>Java 21</span><span>Spring Boot 3.5</span>
+        <span>Distributed systems</span><span>Microservices</span>
+        <span>Event-driven architecture</span>
+        <span>RabbitMQ · DLQ</span><span>OAuth2</span>
+        <span>Postgres + pgvector · HNSW</span><span>Redis · distributed lock</span>
+        <span>AWS Bedrock</span><span>AWS S3</span>
+        <span>Resilience4j · Retry · Circuit breaker</span>
+        <span>Idempotency · State machine</span>
+        <span>Hibernate 6.5 · JPA</span><span>Flyway</span>
+        <span>Smile DBSCAN · Clustering</span>
+        <span>Docker · docker-compose</span>
+      </div>
+
+      <div class="cta">
+        <a href="#challenges" class="btn primary">Engineering problems solved</a>
+        <a href="#architecture" class="btn">Architecture</a>
+        <a href="#real-code" class="btn">Code highlights</a>
+        <a href="#demo" class="btn">▶ Pipeline demo</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ ENGINEERING CHALLENGES ============ -->
+  <section id="challenges" class="section">
+    <h2>Engineering problems &amp; how I solved them</h2>
+    <p class="sub">
+      Each card is a real interview-grade problem this system had to answer.
+      The blue tag is the technical pattern; the file path lets you verify the implementation.
+    </p>
+
+    <div class="challenge-grid">
+
+      <article class="challenge-card">
+        <div class="ch-num">01</div>
+        <h3>At-least-once safe ingestion under Pub/Sub redelivery and crashes</h3>
+        <p class="ch-problem">Gmail Pub/Sub may redeliver the same <code>historyId</code> on transient errors. Workers can crash between any two side-effects. The pipeline must never drop an email and never write a row twice.</p>
+        <p class="ch-solution"><strong>Two-layer dedup.</strong> (1) DB unique constraint <code>uq_email_content_message(mailbox_id, message_id)</code> — Gmail's message id is the natural idempotency key. (2) Explicit <code>existsByGmailMailboxIdAndMessageId</code> check before the API fetch, so a redelivery doesn't even spend a quota call. Every stage progresses <code>processed_status</code> <em>after</em> the durable write, never before — so a crash mid-stage replays from the last persisted state.</p>
+        <div class="ch-tags">
+          <span>Event-driven</span><span>Idempotency</span><span>State machine</span><span>At-least-once</span><span>Unique constraints</span><span>GCP Pub/Sub</span>
+        </div>
+        <p class="ch-cite">→ <code>ingester/.../GmailMessageProcessingService.java</code>, <code>EmailContent.java</code></p>
+      </article>
+
+      <article class="challenge-card">
+        <div class="ch-num">02</div>
+        <h3>Bursty Gmail events coalesced into one sync per mailbox</h3>
+        <p class="ch-problem">Gmail can fire many Pub/Sub events per mailbox in seconds. Naively syncing each one wastes API quota and risks racing into duplicate work.</p>
+        <p class="ch-solution"><strong>Per-mailbox <code>ReentrantLock</code> + high-watermark coalescing.</strong> Events <code>merge(eventHistoryId, Math::max)</code> into a per-mailbox watermark; only the first event acquires the lock and runs a paginated sync that catches up to the latest watermark. Subsequent events <code>tryLock()</code>, see it's held, and exit immediately. Bounded by <code>MAX_SYNC_ITERATIONS = 50</code> to prevent unbounded catch-up loops.</p>
+        <div class="ch-tags">
+          <span>ReentrantLock</span><span>High-watermark</span><span>Coalescing</span><span>ConcurrentHashMap</span><span>Quota efficiency</span>
+        </div>
+        <p class="ch-cite">→ <code>ingester/.../GmailMessageSyncService.java</code></p>
+      </article>
+
+      <article class="challenge-card">
+        <div class="ch-num">03</div>
+        <h3>One slow stage can't starve the others</h3>
+        <p class="ch-problem">Sanitize is microseconds; the LLM normalization call is seconds; Bedrock embedding is hundreds of milliseconds. A single queue means the slowest stage back-pressures the entire pipeline.</p>
+        <p class="ch-solution"><strong>RabbitMQ topic exchange with 4 isolated stage queues</strong> (sanitization · normalization · embedding · clustering), each declared with <code>x-dead-letter-exchange</code> + <code>x-dead-letter-routing-key</code> at bean construction — every queue gets a sibling <code>.dlq</code>. Each listener factory carries its own retry interceptor (<code>maxAttempts=3</code>, exponential <code>1s → 2s → 4s</code> capped at 10s) with <code>RejectAndDontRequeueRecoverer</code>, prefetch 10, concurrent consumers 4–8.</p>
+        <div class="ch-tags">
+          <span>RabbitMQ</span><span>Topic exchange</span><span>DLQ per stage</span><span>Backpressure</span><span>Prefetch tuning</span>
+        </div>
+        <p class="ch-cite">→ <code>processor/.../config/RabbitMQConfig.java</code></p>
+      </article>
+
+      <article class="challenge-card">
+        <div class="ch-num">04</div>
+        <h3>Classify failures so retries don't waste budget</h3>
+        <p class="ch-problem">Bedrock 5xx, 429 throttling, and socket I/O errors should retry — they pass. A 400 malformed request or a revoked refresh token will <em>never</em> succeed — retrying just delays the DLQ and burns rate limit.</p>
+        <p class="ch-solution"><strong>Exception classification at the HTTP boundary.</strong> <code>HttpServerErrorException</code>, <code>HttpClientErrorException.TooManyRequests</code>, and <code>ResourceAccessException</code> wrap to <code>RetryableAIException</code> → handled by <code>@Retry(name="aiRetry")</code> (3 attempts, 2s base, 2× backoff, 0.5 jitter). All other 4xx wrap to <code>IllegalStateException</code> → fails fast to DLQ. The Pub/Sub subscriber detects <code>invalid_grant</code> and marks the mailbox <code>DISCONNECTED</code> instead of nacking forever.</p>
+        <div class="ch-tags">
+          <span>Resilience4j</span><span>Retry classification</span><span>Exponential backoff</span><span>Jitter</span><span>Fault tolerance</span>
+        </div>
+        <p class="ch-cite">→ <code>processor/.../BedrockModelProvider.java</code>, <code>ingester/.../GmailPubSubSubscriber.java</code></p>
+      </article>
+
+      <article class="challenge-card">
+        <div class="ch-num">05</div>
+        <h3>Dual-mode clustering: hot path stays sub-second, cold path discovers structure</h3>
+        <p class="ch-problem">Every new email needs a cluster <em>now</em> for live labelling — but you also need the system to discover <em>new</em> clusters as the inbox evolves. Doing DBSCAN per email is too slow; doing only periodic batch leaves new emails uncategorised for hours.</p>
+        <p class="ch-solution"><strong>Two cooperating clusterers.</strong> Incremental: cosine vs existing centroids, assign if similarity ≥ configurable threshold, else mark <code>CLUSTER_ASSIGNMENT_COMPLETED</code> and defer to batch. Batch: full <code>@Transactional</code> Smile DBSCAN over <em>all</em> embeddings — flushes old assignments and re-creates them atomically. Coordinated by <code>BatchClusteringLock.isActive()</code>: incremental skips while batch runs, so a re-cluster doesn't race with hot-path writes. Each assignment records <code>cluster_assignment_type</code> = <code>INCREMENTAL</code> or <code>BATCH</code> for downstream reasoning.</p>
+        <div class="ch-tags">
+          <span>Hot/cold path</span><span>DBSCAN</span><span>Cosine similarity</span><span>@Transactional</span><span>Atomic re-cluster</span><span>Smile</span>
+        </div>
+        <p class="ch-cite">→ <code>processor/.../EmailClusteringService.java</code>, <code>taxonomy-engine/.../BatchClusteringService.java</code></p>
+      </article>
+
+      <article class="challenge-card">
+        <div class="ch-num">06</div>
+        <h3>Multi-replica safety on a destructive batch job</h3>
+        <p class="ch-problem">Batch re-clustering deletes every cluster and assignment for a mailbox, then re-creates them inside one transaction. Two replicas running simultaneously could orphan rows or corrupt the centroid set. A worker that crashes mid-job must not leave the lock held forever.</p>
+        <p class="ch-solution"><strong>Redis <code>setIfAbsent</code> + 1-hour TTL.</strong> Atomic acquire; second replica fails fast with no spin. TTL guarantees release on crash. Plus belt-and-braces: an <code>ApplicationRunner</code> sweeps stale keys matching <code>&lt;prefix&gt;:mailbox:*</code> on startup; <code>@PreDestroy</code> releases on graceful shutdown.</p>
+        <div class="ch-tags">
+          <span>Redis</span><span>Distributed lock</span><span>SETNX</span><span>TTL</span><span>Lifecycle hooks</span><span>Multi-replica</span>
+        </div>
+        <p class="ch-cite">→ <code>taxonomy-engine/.../BatchClusteringLock.java</code>, <code>BatchClusteringLockCleanerConfig.java</code></p>
+      </article>
+
+      <article class="challenge-card">
+        <div class="ch-num">07</div>
+        <h3>Sub-10ms ANN search via Postgres, not a separate vector DB</h3>
+        <p class="ch-problem">Each new email needs its nearest cluster centroid in real time. Naive cosine over an entire table is O(n·d). A separate vector DB (Pinecone, Weaviate) means two-phase commits and a second operational surface.</p>
+        <p class="ch-solution"><strong>Postgres + pgvector with HNSW + cosine_ops.</strong> Partial index <code>WHERE embedding IS NOT NULL</code> keeps the index lean during the gap between insert and embed. Hibernate 6.5 maps Java <code>float[]</code> directly via <code>@JdbcTypeCode(SqlTypes.VECTOR)</code> + <code>@Array(length=1024)</code> — no custom converter, no dialect hack. One transaction commits the embedding, the cluster assignment, and the status flip together.</p>
+        <div class="ch-tags">
+          <span>pgvector</span><span>HNSW</span><span>Partial index</span><span>ANN</span><span>Hibernate 6.5</span><span>SqlTypes.VECTOR</span>
+        </div>
+        <p class="ch-cite">→ <code>db-migrations/.../V1.005__create_email_enrichment.sql</code>, <code>persistence-lib/.../EmailEnrichment.java</code></p>
+      </article>
+
+      <article class="challenge-card">
+        <div class="ch-num">08</div>
+        <h3>LLM that justifies its answers, not just emits them</h3>
+        <p class="ch-problem">Naive prompts ("classify this email") invent urgency from words like <em>verify</em>, <em>alert</em>, <em>action</em>. The LLM picks a label first and rationalises later. Output drifts and is non-deterministic.</p>
+        <p class="ch-solution"><strong>Reason-before-rate JSON schema</strong>: the model writes <code>importance_reason</code> <em>before</em> <code>importance</code>, <code>category_reason</code> before <code>category</code>. Override rules baked into the prompt (all bank transaction alerts → LOW UPDATES; all OTPs → LOW UPDATES). Job-hunt persona override promotes named recruiter outreach to HIGH. 8 worked examples cover real edge cases (Axis Bank UPI, LinkedIn InMail vs Job Alerts, IRCTC booking, ATS receipts). Defensive parsing: regex-extracts the JSON block even if the model adds prose; <code>READ_UNKNOWN_ENUM_VALUES_AS_NULL</code> falls back to <code>LOW</code> / <code>PRIMARY</code> on garbage. Temperature 0.0, top-p 1.0 — deterministic. Bedrock prompt capped at <code>MAX_PROMPT_CHARS = 24_000</code>.</p>
+        <div class="ch-tags">
+          <span>Prompt engineering</span><span>Structured output</span><span>Defensive parsing</span><span>Determinism</span><span>Override rules</span><span>Bedrock Converse</span>
+        </div>
+        <p class="ch-cite">→ <code>processor/.../NormalizationPromptHelper.java</code></p>
+      </article>
+
+      <article class="challenge-card">
+        <div class="ch-num">09</div>
+        <h3>Email sanitization as a pluggable pipeline, not a god method</h3>
+        <p class="ch-problem">Real email HTML is hostile: tracking pixels, hidden divs, fancy quotes, zero-width chars, table-shaped layouts, CID inline images. A single regex pass either misses cases or becomes unreadable.</p>
+        <p class="ch-solution"><strong>Annotation-driven pipeline registry.</strong> Each step is a <code>@SanitizationStep(order=N)</code> Spring bean; <code>ContentSanitizationPipelineRegistry</code> discovers and sorts them at startup — adding a new step is one new class. Steps include: jsoup HTML→text (preserves block boundaries as newlines, list items as <code>- </code>, table cells as <code> | </code>, appends <code>(href)</code> when anchor text ≠ url); inline-reference remover; <code>CharacterNormalizer</code> with 30+ curly-quote / em-dash / arrow / ellipsis / TM mappings, six regex passes for Unicode spaces / invisible chars / pipe-only rows / multi-space / trailing-space / excessive-newline collapse. Skips parsing entirely when no HTML hints are present.</p>
+        <div class="ch-tags">
+          <span>Plugin architecture</span><span>Spring annotations</span><span>jsoup</span><span>Regex pipeline</span><span>Unicode normalization</span>
+        </div>
+        <p class="ch-cite">→ <code>processor/.../sanitization/pipeline/</code></p>
+      </article>
+
+      <article class="challenge-card">
+        <div class="ch-num">10</div>
+        <h3>Hierarchy from cosine: reuse → merge → create</h3>
+        <p class="ch-problem">Each batch re-cluster invents fresh cluster IDs but the user already has labels in Gmail. Naively creating a new label per cluster floods their sidebar and the system drifts further with every run.</p>
+        <p class="ch-solution"><strong>Three-stage label decision.</strong> (1) Sort cluster members by cosine-to-centroid, take top 8, send to LLM with the existing label-name pool — model is biased toward suggesting an existing name. (2) Case-insensitive string match → reuse. (3) Otherwise embed the suggestion (Titan v2) and find nearest existing label by cosine; if ≥ <code>MERGE_THRESHOLD = 0.80</code>, merge into it; else create a new <code>Label</code> with the suggestion's embedding stored as <code>reference_embedding</code>. The pool grows monotonically across runs.</p>
+        <div class="ch-tags">
+          <span>Embedding dedup</span><span>Cosine threshold</span><span>Representative sampling</span><span>Sidebar hygiene</span>
+        </div>
+        <p class="ch-cite">→ <code>taxonomy-engine/.../ClusterLabelingService.java</code></p>
+      </article>
+
+      <article class="challenge-card">
+        <div class="ch-num">11</div>
+        <h3>Same code in prod and on a laptop with zero cloud</h3>
+        <p class="ch-problem">Bedrock costs money and needs IAM. Local dev and CI shouldn't burn either. Hard-coding a provider makes the test loop painful and the architecture vendor-locked.</p>
+        <p class="ch-solution"><strong><code>ModelProvider</code> interface with Bedrock and Ollama implementations.</strong> Selected by config (<code>embedding-provider-name</code>, <code>llm-provider-name</code>). Same call shape; Titan v2-specific knobs (<code>dimensions</code>, <code>normalize</code>) only set when model id matches. Both Bedrock and the local Ollama embedding return 1024-d so swapping providers doesn't invalidate the vector index. Same trick applied to <code>EmailStorageProvider</code> — Local for dev, S3 for prod, one interface.</p>
+        <div class="ch-tags">
+          <span>AWS Bedrock</span><span>Ollama</span><span>Dependency inversion</span><span>Spring config</span><span>S3 / Local storage</span>
+        </div>
+        <p class="ch-cite">→ <code>processor/.../model/factory/</code>, <code>persistence-lib/.../storage/</code></p>
+      </article>
+
+      <article class="challenge-card">
+        <div class="ch-num">12</div>
+        <h3>One schema across three services, zero drift</h3>
+        <p class="ch-problem">JPA entities are needed by ingester, processor, and taxonomy-engine. Copy-pasting guarantees silent drift; a data-access microservice adds a network hop per query.</p>
+        <p class="ch-solution"><strong>Shared <code>persistence-lib</code> published as a private Maven package</strong> (GitHub Packages). Pinned versions force conscious upgrades. The <em>only</em> cross-service contract for data shape lives in one place. <code>EmailStorageProvider</code> and 7 Flyway migrations ride along in the same library. Hibernate uses <code>ddl-auto: validate</code> in every service — schema mismatches fail at startup, not at runtime.</p>
+        <div class="ch-tags">
+          <span>Maven multi-module</span><span>JPA / Hibernate</span><span>Private package registry</span><span>Schema-as-code</span><span>Flyway</span>
+        </div>
+        <p class="ch-cite">→ <code>persistence-lib/.../entity/</code>, <code>db-migrations/.../V1.001 … V1.007</code></p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ IDEMPOTENT STATE MACHINE DIAGRAM ============ -->
+  <section id="idempotency" class="section dark">
+    <h2>Idempotent state machine</h2>
+    <p class="sub">
+      Every email carries a <code>processed_status</code>. The 5 stages each have
+      4 sub-states (<code>PUBLISHED_FOR_X</code> → <code>X_STARTED</code> →
+      <code>X_COMPLETED</code> / <code>X_FAILED</code>) — 20 states total in the
+      <code>ProcessedStatus</code> enum. Transitions happen <strong>after</strong>
+      the side-effect (publish, save, embed), never before. A crash mid-stage is
+      replayed cleanly on restart; Pub/Sub redeliveries see a later state and
+      no-op.
+    </p>
+
+    <div class="diagram-wrapper">
+      <svg viewBox="0 0 1100 340" class="diagram-svg" xmlns="http://www.w3.org/2000/svg" aria-label="processed_status state machine">
+        <defs>
+          <marker id="sm-arrow" viewBox="0 0 10 10" refX="9" refY="5"
+                  markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" class="sm-arrow-head"/>
+          </marker>
+        </defs>
+
+        <!-- state pills -->
+        <g class="sm-state"><rect x="20"   y="130" width="150" height="60" rx="30"/><text x="95"   y="158">EMAIL</text><text x="95" y="178">RECEIVED</text></g>
+        <g class="sm-state"><rect x="200"  y="130" width="170" height="60" rx="30"/><text x="285"  y="158">SANITIZATION</text><text x="285" y="178">COMPLETED</text></g>
+        <g class="sm-state"><rect x="400"  y="130" width="170" height="60" rx="30"/><text x="485"  y="158">NORMALIZATION</text><text x="485" y="178">COMPLETED</text></g>
+        <g class="sm-state"><rect x="600"  y="130" width="170" height="60" rx="30"/><text x="685"  y="158">EMBEDDING</text><text x="685" y="178">GENERATED</text></g>
+        <g class="sm-state sm-terminal"><rect x="800"  y="130" width="170" height="60" rx="30"/><text x="885" y="158">CLUSTER</text><text x="885" y="178">ASSIGNED ✓</text></g>
+
+        <!-- transitions -->
+        <path d="M170,160 L200,160" class="sm-edge" marker-end="url(#sm-arrow)"/>
+        <path d="M370,160 L400,160" class="sm-edge" marker-end="url(#sm-arrow)"/>
+        <path d="M570,160 L600,160" class="sm-edge" marker-end="url(#sm-arrow)"/>
+        <path d="M770,160 L800,160" class="sm-edge" marker-end="url(#sm-arrow)"/>
+
+        <!-- side-effect labels above edges -->
+        <text x="185" y="115" class="sm-label">jsoup +</text>
+        <text x="185" y="128" class="sm-label">normalizer</text>
+        <text x="385" y="115" class="sm-label">LLM summary</text>
+        <text x="385" y="128" class="sm-label">+ importance</text>
+        <text x="585" y="115" class="sm-label">Bedrock Titan</text>
+        <text x="585" y="128" class="sm-label">1024-d</text>
+        <text x="785" y="115" class="sm-label">cosine vs</text>
+        <text x="785" y="128" class="sm-label">centroids</text>
+
+        <!-- replay loops -->
+        <path d="M285,190 Q285,260 95,260 Q55,260 95,190" class="sm-edge sm-replay" marker-end="url(#sm-arrow)"/>
+        <text x="190" y="280" class="sm-label sm-replay-label">crash before publish → replay from RECEIVED</text>
+
+        <path d="M685,190 Q685,310 485,310 Q445,310 485,190" class="sm-edge sm-replay" marker-end="url(#sm-arrow)"/>
+        <text x="585" y="330" class="sm-label sm-replay-label">crash before Bedrock call → replay from NORMALIZED</text>
+      </svg>
+    </div>
+
+    <ul class="diagram-key">
+      <li><strong>The invariant:</strong> a status only advances after the next stage durably accepted the work (DB save committed, Rabbit publish ack'd).</li>
+      <li><strong>On crash:</strong> the listener reads the row, sees the previous <code>COMPLETED</code> state, re-publishes the next-stage event. Downstream stages no-op on observing a later state.</li>
+      <li><strong>On Pub/Sub redelivery:</strong> the <code>uq_email_content_message(mailbox_id, message_id)</code> constraint blocks duplicate inserts; the listener acks and exits.</li>
+      <li><strong>On revoked OAuth token:</strong> <code>invalid_grant</code> is caught at the subscriber, the mailbox is marked <code>DISCONNECTED</code>, the message is acked — no infinite nack loop.</li>
+    </ul>
+  </section>
+
+  <!-- ============ RETRY / DLQ FLOW DIAGRAM ============ -->
+  <section id="resilience" class="section">
+    <h2>Retry &amp; DLQ flow per stage</h2>
+    <p class="sub">
+      How a transient failure (Bedrock 5xx, Gmail 429) escalates from
+      Resilience4j retries to a stage-specific Dead Letter Queue —
+      without ever blocking the other stages.
+    </p>
+
+    <div class="diagram-wrapper">
+      <svg viewBox="0 0 1000 360" class="diagram-svg" xmlns="http://www.w3.org/2000/svg" aria-label="Retry and DLQ flow">
+        <defs>
+          <marker id="dlq-arrow" viewBox="0 0 10 10" refX="9" refY="5"
+                  markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" class="sm-arrow-head"/>
+          </marker>
+        </defs>
+
+        <!-- nodes -->
+        <g class="sm-state"><rect x="20"  y="40"  width="170" height="60" rx="14"/><text x="105" y="76">Producer</text></g>
+        <g class="sm-state"><rect x="240" y="40"  width="190" height="60" rx="14"/><text x="335" y="68">Stage queue</text><text x="335" y="86" class="sm-label-sm">email.embedding</text></g>
+        <g class="sm-state sm-worker"><rect x="480" y="40"  width="200" height="60" rx="14"/><text x="580" y="76">Worker (Bedrock call)</text></g>
+        <g class="sm-state sm-success"><rect x="730" y="40"  width="240" height="60" rx="14"/><text x="850" y="68">✓ success</text><text x="850" y="86" class="sm-label-sm">advance state machine</text></g>
+
+        <g class="sm-state sm-retry"><rect x="480" y="160" width="200" height="60" rx="14"/><text x="580" y="184">Resilience4j @Retry</text><text x="580" y="202" class="sm-label-sm">3× exponential backoff</text></g>
+        <g class="sm-state sm-dlq"><rect x="480" y="280" width="200" height="60" rx="14"/><text x="580" y="304">Stage DLQ</text><text x="580" y="322" class="sm-label-sm">email.embedding.dlq</text></g>
+
+        <g class="sm-state"><rect x="760" y="280" width="220" height="60" rx="14"/><text x="870" y="304">Ops alert + manual replay</text></g>
+
+        <!-- happy path -->
+        <path d="M190,70 L240,70"  class="sm-edge" marker-end="url(#dlq-arrow)"/>
+        <path d="M430,70 L480,70"  class="sm-edge" marker-end="url(#dlq-arrow)"/>
+        <path d="M680,70 L730,70"  class="sm-edge sm-edge-good" marker-end="url(#dlq-arrow)"/>
+
+        <!-- failure → retry -->
+        <path d="M580,100 L580,160" class="sm-edge sm-edge-bad" marker-end="url(#dlq-arrow)"/>
+        <text x="595" y="135" class="sm-label sm-bad-label">5xx / timeout</text>
+
+        <!-- retry succeeds → loop back up -->
+        <path d="M680,190 Q780,190 780,130 Q780,70 730,70" class="sm-edge sm-edge-good" marker-end="url(#dlq-arrow)"/>
+        <text x="790" y="180" class="sm-label sm-good-label">retry ok</text>
+
+        <!-- retry exhausted → DLQ -->
+        <path d="M580,220 L580,280" class="sm-edge sm-edge-bad" marker-end="url(#dlq-arrow)"/>
+        <text x="595" y="255" class="sm-label sm-bad-label">3 attempts exhausted</text>
+
+        <!-- DLQ → ops -->
+        <path d="M680,310 L760,310" class="sm-edge" marker-end="url(#dlq-arrow)"/>
+      </svg>
+    </div>
+
+    <ul class="diagram-key">
+      <li><strong>Stage isolation:</strong> DLQ is per-stage. Embed failures don't slow sanitize.</li>
+      <li><strong>State machine never advances</strong> while the message is in retry — so manual replay from the DLQ resumes exactly where the failure happened.</li>
+      <li><strong>Retry budget is bounded:</strong> Resilience4j caps wait time so a single message can't tie up a consumer.</li>
+    </ul>
+  </section>
+
+  <!-- ============ ARCHITECTURE ============ -->
+  <section id="architecture" class="section">
+    <h2>Architecture</h2>
+    <p class="sub">Three services + a shared persistence library. Click any node or edge for the reasoning behind it.</p>
+
+    <div class="arch-wrapper">
+      <svg id="arch" viewBox="0 0 1000 520" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+                  markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#7c8cff" />
+          </marker>
+        </defs>
+
+        <g class="node ext" data-key="gmail">
+          <rect x="20" y="40" width="160" height="60" rx="10"/>
+          <text x="100" y="76">Gmail</text>
+        </g>
+        <g class="node ext" data-key="pubsub">
+          <rect x="20" y="140" width="160" height="60" rx="10"/>
+          <text x="100" y="176">GCP Pub/Sub</text>
+        </g>
+
+        <g class="node svc" data-key="ingester">
+          <rect x="260" y="80" width="180" height="80" rx="12"/>
+          <text x="350" y="115">Ingester</text>
+          <text x="350" y="138" class="sub-t">owns Gmail credentials</text>
+        </g>
+
+        <g class="node svc" data-key="processor">
+          <rect x="520" y="60" width="220" height="200" rx="12"/>
+          <text x="630" y="90">Processor</text>
+          <text x="630" y="118" class="sub-t">sanitize · normalize</text>
+          <text x="630" y="138" class="sub-t">embed · cluster</text>
+          <line x1="540" y1="160" x2="720" y2="160" class="dash"/>
+          <text x="630" y="190" class="sub-t">4 queues · per-stage DLQ</text>
+          <text x="630" y="220" class="sub-t">idempotent on replay</text>
+        </g>
+
+        <g class="node svc" data-key="taxonomy">
+          <rect x="520" y="320" width="220" height="100" rx="12"/>
+          <text x="630" y="355">Taxonomy Engine</text>
+          <text x="630" y="380" class="sub-t">DBSCAN + LLM naming</text>
+        </g>
+
+        <g class="node infra" data-key="postgres">
+          <rect x="820" y="60" width="160" height="70" rx="10"/>
+          <text x="900" y="90">Postgres</text>
+          <text x="900" y="112" class="sub-t">pgvector + HNSW</text>
+        </g>
+        <g class="node infra" data-key="redis">
+          <rect x="820" y="160" width="160" height="60" rx="10"/>
+          <text x="900" y="196">Redis</text>
+        </g>
+        <g class="node infra" data-key="rabbit">
+          <rect x="820" y="250" width="160" height="60" rx="10"/>
+          <text x="900" y="286">RabbitMQ</text>
+        </g>
+        <g class="node infra" data-key="storage">
+          <rect x="820" y="340" width="160" height="60" rx="10"/>
+          <text x="900" y="376">Object Storage</text>
+        </g>
+
+        <g class="node lib" data-key="persistence">
+          <rect x="260" y="430" width="480" height="60" rx="10"/>
+          <text x="500" y="466">persistence-lib · shared via private Maven package</text>
+        </g>
+
+        <path d="M180,70 C220,70 240,110 260,115" class="edge" data-key="e1" marker-end="url(#arrow)"/>
+        <path d="M180,170 C220,170 240,135 260,130" class="edge" data-key="e2" marker-end="url(#arrow)"/>
+        <path d="M440,120 C480,120 490,150 520,155" class="edge" data-key="e3" marker-end="url(#arrow)"/>
+        <path d="M740,160 C780,160 800,100 820,95" class="edge" data-key="e4" marker-end="url(#arrow)"/>
+        <path d="M740,200 C780,200 800,195 820,190" class="edge" data-key="e5" marker-end="url(#arrow)"/>
+        <path d="M740,230 C780,230 800,275 820,280" class="edge" data-key="e6" marker-end="url(#arrow)"/>
+        <path d="M630,260 C630,290 630,300 630,320" class="edge" data-key="e7" marker-end="url(#arrow)"/>
+        <path d="M520,370 C480,370 470,200 440,150" class="edge curl" data-key="e8" marker-end="url(#arrow)"/>
+        <path d="M740,370 C780,370 800,370 820,370" class="edge" data-key="e9" marker-end="url(#arrow)"/>
+      </svg>
+
+      <aside id="inspector" class="inspector"></aside>
+    </div>
+  </section>
+
+  <!-- ============ ENGINEERING HIGHLIGHTS ============ -->
+  <section id="real-code" class="section">
+    <h2>Engineering highlights</h2>
+    <p class="sub">The non-obvious pieces — verbatim from the repo, with file paths so they can be verified.</p>
+
+    <div class="code-tabs" id="codeTabs"></div>
+    <div class="code-show" id="codeShow"></div>
+  </section>
+
+  <!-- ============ PIPELINE DEMO ============ -->
+  <section id="demo" class="section dark">
+    <h2>Pipeline demo — 3 emails, end to end</h2>
+    <p class="sub">
+      Three sample emails enter the pipeline. Watch each one get sanitized, normalized, embedded,
+      and assigned a cluster. At the end, DBSCAN groups them and the LLM picks names.
+      The code panel shows the <em>real</em> Java method running at each stage.
+    </p>
+
+    <div class="demo-controls">
+      <button id="playBtn" class="btn primary">▶ Run demo</button>
+      <button id="resetBtn" class="btn">Reset</button>
+      <span id="demoStatus" class="step-label">Idle</span>
+    </div>
+
+    <!-- Pipeline lanes -->
+    <div class="lanes">
+      <div class="lane" data-lane="inbox">
+        <div class="lane-head">📥 Inbox</div>
+        <div class="lane-body" id="lane-inbox"></div>
+      </div>
+      <div class="lane" data-lane="sanitize">
+        <div class="lane-head">🧹 Sanitize<span class="lane-sub">jsoup</span></div>
+        <div class="lane-body" id="lane-sanitize"></div>
+      </div>
+      <div class="lane" data-lane="normalize">
+        <div class="lane-head">✂️ Normalize<span class="lane-sub">5000-char cap</span></div>
+        <div class="lane-body" id="lane-normalize"></div>
+      </div>
+      <div class="lane" data-lane="embed">
+        <div class="lane-head">🧬 Embed<span class="lane-sub">Bedrock 1024-d</span></div>
+        <div class="lane-body" id="lane-embed"></div>
+      </div>
+      <div class="lane" data-lane="cluster">
+        <div class="lane-head">🎯 Cluster<span class="lane-sub">cosine vs centroids</span></div>
+        <div class="lane-body" id="lane-cluster"></div>
+      </div>
+    </div>
+
+    <!-- Live code panel -->
+    <div class="code-panel">
+      <div class="code-head">
+        <span class="code-label">Now executing</span>
+        <span class="code-file" id="codeFile">—</span>
+      </div>
+      <pre><code id="codeBody">Press “Run demo” to see the code that processes each email at every stage.</code></pre>
+    </div>
+
+    <!-- Final stage -->
+    <div class="final-stage">
+      <h3>📚 Taxonomy result</h3>
+      <p class="sub">After DBSCAN re-clusters globally and the LLM names each group:</p>
+      <div id="finalClusters" class="final-clusters"></div>
+    </div>
+  </section>
+
+  <!-- ============ RUN IT / DEPLOY ============ -->
+  <section id="deploy" class="section">
+    <h2>Run it · Deploy</h2>
+    <p class="sub">Source code and how to run the stack locally.</p>
+
+    <div class="resource-grid">
+      <a class="resource-card" href="https://github.com/Inbox-intelligence"
+         target="_blank" rel="noopener noreferrer">
+        <div class="resource-icon"><i class="fab fa-github" aria-hidden="true"></i></div>
+        <h3>Source on GitHub</h3>
+        <p>Three Spring Boot services + a shared persistence library + Flyway migrations. Each service is its own repo under the <code>Inbox-intelligence</code> org.</p>
+        <p class="resource-link">github.com/Inbox-intelligence →</p>
+      </a>
+
+      <a class="resource-card"
+         href="https://github.com/Inbox-intelligence/.github/blob/main/README.md"
+         target="_blank" rel="noopener noreferrer">
+        <div class="resource-icon">⚙</div>
+        <h3>Deployment guide</h3>
+        <p>End-to-end runbook: GCP project + Gmail OAuth + Pub/Sub setup, docker-compose for Postgres/RabbitMQ/Redis, Bedrock credentials, Flyway migrate, service start order.</p>
+        <p class="resource-link">Read the runbook on GitHub →</p>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>InboxIntelligence · Ankit Raj</p>
+    <p class="tiny">Vanilla HTML / CSS / JS. No framework, no build step.</p>
+  </footer>
+
+  <script src="inbox-intelligence.js"></script>
+</body>
+</html>
