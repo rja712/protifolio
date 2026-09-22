@@ -804,7 +804,7 @@ function wireTheme() {
    BOOT
    ========================================================= */
 document.addEventListener("DOMContentLoaded", () => {
-  wireTheme();
+  // Theme is owned by script.js now that this page is part of index.html.
   wireArch();
   wireDemo();
   renderRealCode();
