@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Ankit Raj — Senior Backend Engineer with 6+ years building distributed systems across Procurement, CRM, and FinTech. Java · Spring Boot · AWS · Microservices."
+    <meta content="Ankit Raj, Senior Backend Engineer. Six years building distributed systems across Procurement, CRM and Receivables. Java, Spring Boot, AWS, Microservices, RabbitMQ."
           name="description">
     <meta content="Senior Backend Engineer, Java, Spring Boot, Microservices, Distributed Systems, AWS, RabbitMQ, System Design"
           name="keywords">
@@ -32,6 +32,9 @@
         <i class="fas fa-sun" aria-hidden="true"></i>
         <i class="fas fa-moon" aria-hidden="true"></i>
     </button>
+    <a class="btn btn-ghost btn-sm" href="systems.html">
+        <i class="fas fa-diagram-project" aria-hidden="true"></i> <span>Systems</span>
+    </a>
     <a class="btn btn-ghost btn-sm"
         href="https://docs.google.com/document/u/2/d/1CLNiq6J4XQr7jyCQY264GZ_nfuFv_keUmUmM56WtKR8/export?format=pdf"
         target="_blank" rel="noopener noreferrer">
@@ -58,8 +61,8 @@
                     6+ years building distributed systems across Procurement, Receivables & CRM.
                 </p>
                 <div class="hero-cta" data-reveal="up" style="--delay:240ms">
-                    <a class="btn btn-primary" href="#projects">
-                        See my work <i aria-hidden="true" class="fas fa-arrow-right"></i>
+                    <a class="btn btn-primary" href="systems.html">
+                        See how I build <i aria-hidden="true" class="fas fa-arrow-right"></i>
                     </a>
                     <a class="btn btn-ghost"
                        href="https://docs.google.com/document/u/2/d/1CLNiq6J4XQr7jyCQY264GZ_nfuFv_keUmUmM56WtKR8/export?format=pdf"
@@ -91,7 +94,6 @@
         <div class="container skills-strip">
             <div class="skills-flat" data-reveal="up">
                 <span class="skill-tag"><i aria-hidden="true" class="devicon-java-plain"></i>Java</span>
-                <span class="skill-tag"><i aria-hidden="true" class="devicon-python-plain"></i>Python</span>
                 <span class="skill-tag"><i aria-hidden="true" class="devicon-spring-plain"></i>Spring Boot</span>
                 <span class="skill-tag"><i aria-hidden="true" class="devicon-spring-plain"></i>Webflux</span>
                 <span class="skill-tag"><i aria-hidden="true" class="devicon-hibernate-plain"></i>JPA / Hibernate</span>
@@ -131,7 +133,6 @@
                 <span class="skill-tag"><i aria-hidden="true" class="devicon-argocd-plain"></i>Argo CD</span>
                 <span class="skill-tag"><i aria-hidden="true" class="devicon-grafana-plain"></i>Grafana</span>
                 <span class="skill-tag"><i aria-hidden="true" class="devicon-prometheus-original"></i>Prometheus</span>
-                <span class="skill-tag"><i aria-hidden="true" class="devicon-opentelemetry-plain"></i>OpenTelemetry</span>
 
                 <span class="skill-tag"><i aria-hidden="true" class="fas fa-cubes"></i>Microservices</span>
                 <span class="skill-tag"><i aria-hidden="true" class="fas fa-tower-broadcast"></i>Event-driven</span>
@@ -160,16 +161,16 @@
             <div class="about-intro">
                 <div class="about-intro-text">
                     <p class="section-lede" data-reveal="up" style="--delay:160ms">
-                        Seasoned backend engineer with diverse experience across SaaS teams like <strong>Jaggaer</strong>,
-                        <strong>LeadSquared</strong>, and <strong>HighRadius</strong>. I specialise in building systems
-                        that handle messy data, third-party integrations, event-driven pipelines, and legacy system
-                        migrations.
+                        Backend engineer, six years in, across <strong>Jaggaer</strong>,
+                        <strong>LeadSquared</strong> and <strong>HighRadius</strong>. Most of my work has been on
+                        systems that other teams depend on, and that changes the bar. It is not about whether the
+                        happy path works. It is about what happens when something upstream breaks.
                     </p>
                     <p class="section-lede" data-reveal="up" style="--delay:160ms">
-                        I bring a <strong>strong product mindset</strong> and solid proficiency in
-                        <strong>cloud</strong>,
-                        <strong>DevOps</strong>, and <strong>AI</strong>, enabling me to collaborate effectively and
-                        deliver end-to-end solutions.
+                        I like the parts nobody demos. What happens when the same message arrives twice. What a
+                        customer sees when a background job fails at two in the morning. I started as a
+                        <strong>product analyst</strong> before moving into engineering, and I still ask what a
+                        feature is for before I ask how to build it.
                     </p>
                 </div>
                 <div class="stats-grid">
@@ -186,7 +187,7 @@
                     <div class="philosophy-num">i.</div>
                     <h4>Don't romanticize code.</h4>
                     <p>The real job is breaking down problems, spotting patterns, and delivering
-                        the right solution — code or otherwise.
+                        the right solution, code or otherwise.
                     </p>
                 </article>
                 <article class="philosophy-card glass" data-reveal="up" style="--delay:160ms">
@@ -211,6 +212,10 @@
         <div class="container">
             <p class="section-eyebrow" data-reveal="up">02 — Experience</p>
             <h2 class="section-title" data-reveal="up" style="--delay:80ms">What I've shipped.</h2>
+            <p class="section-lede" data-reveal="up" style="--delay:120ms">
+                If you want the shape of these systems rather than the summary,
+                <a href="systems.html" style="color:var(--accent-solid);text-decoration:underline">the diagrams and the reasoning are here</a>.
+            </p>
 
             <div class="timeline">
 
@@ -234,40 +239,58 @@
                             </div>
                         </header>
 
-                        <p class="exp-headline">Building <strong>Catelyze</strong> — a scalable cross-platform
-                            integration system enabling seamless admin configuration, real-time dashboards, and
-                            high-throughput data flow across services.</p>
+                        <p class="exp-headline">Building <strong>Catelyze</strong>, the platform layer that lets
+                            several acquired procurement products behave like one. Seven business modules now talk to
+                            Catelyze instead of to each other.</p>
 
                         <div class="project-grid">
                             <div class="exp-block">
-                                <h4 class="exp-block-title">Re-architecting a Fragile Legacy System</h4>
-                                <p>Re-architected tightly coupled third-party integrations into a dedicated
-                                    microservice layer — enabling isolation, independent scaling, and failure containment.</p>
+                                <h4 class="exp-block-title">Event-Driven Data Sync</h4>
+                                <p>The pipeline that moves business objects between modules. An application layer over
+                                    RabbitMQ, and the only service in the platform with no database of its own.</p>
                                 <ul>
-                                    <li>Built a <strong>shared resilience library</strong> adopted across microservices: retry strategies, rate limiting, circuit breakers, and DLQs</li>
-                                    <li>Introduced backpressure handling and fallback mechanisms for external API calls</li>
-                                    <li>Reduced integration-related <strong>production incidents by ~99%</strong></li>
+                                    <li>Inbound is one exchange with a single queue bound to it. Outbound is one exchange
+                                        per business object, with routing keys taken from tenant configuration. The dumb
+                                        side and the rich side, on purpose.</li>
+                                    <li>Every exchange, queue, binding and routing key is declared at application startup,
+                                        so onboarding a new business object is a configuration change and not an
+                                        infrastructure ticket.</li>
+                                    <li>Consume, look up config, gate, transform, publish, and only then acknowledge.
+                                        <strong>At-least-once</strong>, with redelivery on nack.</li>
+                                    <li>The pipeline holds no business keys. The consuming modules dedupe, because the
+                                        business meaning belongs to them.</li>
+                                    <li>Peaks above <strong>10K+ events/sec</strong> at business hours, measured at inbound.</li>
                                 </ul>
                             </div>
 
                             <div class="exp-block">
-                                <h4 class="exp-block-title">High-Throughput Event-Driven Data Pipeline</h4>
-                                <p>Engineered an event-driven data sync pipeline to migrate and stream
-                                    procurement data (requisitions, bidding, auctions) from legacy to new systems.</p>
+                                <h4 class="exp-block-title">Configuration Console</h4>
+                                <p>The single source of truth for tenant configuration, replacing settings that used to
+                                    live twice, once inside a product and once in that product's own platform layer.</p>
                                 <ul>
-                                    <li>Handled <strong>2,000+ events/sec</strong> reliably</li>
-                                    <li>Built using <strong>ExecutorService + RabbitMQ</strong> for concurrent processing and fault tolerance</li>
-                                    <li>Designed for idempotency, ordering, and failure recovery</li>
+                                    <li>Led the low-level design and built a large share of the APIs.</li>
+                                    <li>Everyone pulls and caches, nothing is pushed. The cache sits in the shared Redis
+                                        with a one hour TTL, plus a force-invalidate for when an hour is too long.</li>
+                                    <li>Mostly <strong>GraphQL</strong> inside the platform, REST where the outside world
+                                        dictates it.</li>
+                                    <li>Lets non-engineering teams change behaviour without a deployment.</li>
                                 </ul>
                             </div>
 
                             <div class="exp-block">
-                                <h4 class="exp-block-title">Admin Console &amp; Real-Time Insights</h4>
-                                <p>Developed a centralised admin console for configuration management and operational visibility.</p>
+                                <h4 class="exp-block-title">Third-Party Integration &amp; On-Call</h4>
+                                <p>One service per outside vendor, so an external API can never reach into core business
+                                    logic.</p>
                                 <ul>
-                                    <li>Real-time dashboards powered by core services behind a gateway</li>
-                                    <li>Handled <strong>1,000+ RPS</strong> with optimised APIs and caching strategies</li>
-                                    <li>Enabled non-engineering teams to manage configurations without deployments</li>
+                                    <li>Carbon data, supplier account verification and e-invoicing networks, each isolated
+                                        behind its own service and its own database.</li>
+                                    <li><strong>Resilience4j</strong> retry, circuit breaker and rate limiter on every
+                                        outbound call.</li>
+                                    <li>I take on-call, which is where you find out what a design is really worth. Found
+                                        the root causes of recurring legacy failures and built guardrails into the new
+                                        platform so the same failure cannot happen twice.</li>
+                                    <li>Across <strong>100+ migrated tenants</strong>, production incidents went from
+                                        <strong>30+ a month to 2-3 a month</strong>.</li>
                                 </ul>
                             </div>
                         </div>
@@ -294,40 +317,58 @@
                             </div>
                         </header>
 
-                        <p class="exp-headline">Built <strong>Service CRM</strong> — a ticketing and helpdesk
-                            system to streamline client customer support workflows across multiple communication channels.</p>
+                        <p class="exp-headline">Built the communication side of <strong>Service CRM</strong>, a ticketing
+                            and helpdesk product. Notifications going out, support mail coming in, and the AI that helps
+                            agents answer.</p>
 
                         <div class="project-grid">
                             <div class="exp-block">
-                                <h4 class="exp-block-title">Event-Driven Email System</h4>
-                                <p>Built a high-throughput email microservice integrating multiple ESPs like
-                                    SendGrid, AWS SES, and Gmail.</p>
+                                <h4 class="exp-block-title">Notification Platform</h4>
+                                <p>Designed and built end to end. Every other module in the product publishes into it over
+                                    <strong>Redis Streams</strong>, used here as the message bus and not as a cache.</p>
                                 <ul>
-                                    <li>Processed <strong>10K+ emails/day</strong> with <strong>rate limiting</strong> (Bucket4j) to prevent provider throttling</li>
-                                    <li>Automated retry and failure handling using <strong>EventBridge, SNS, and SQS</strong></li>
-                                    <li>Added <strong>AI-driven spam detection</strong> and <strong>Redis caching</strong> for deliverability and performance</li>
-                                    <li>Integrated monitoring (Micrometer) and observability dashboards</li>
+                                    <li>Resolves templates through per-channel <strong>factories</strong> and dispatches to
+                                        the channel service by configuration. Email, SMS and WhatsApp.</li>
+                                    <li>The event carries everything the notification needs. The service never calls back
+                                        to the publisher for missing data, it fails the request. That is what keeps the
+                                        cost flat at volume.</li>
+                                    <li>Persist, then acknowledge, then process. The database is the record, the stream is
+                                        only a handoff.</li>
+                                    <li>Peaks above <strong>10K+ notifications/sec</strong>.</li>
                                 </ul>
                             </div>
 
                             <div class="exp-block">
-                                <h4 class="exp-block-title">Multi-Channel Notification Platform</h4>
-                                <p>Developed a factory-pattern-based notification service supporting Email, SMS, and WhatsApp.</p>
+                                <h4 class="exp-block-title">Inbound Mail &amp; the AI Layer</h4>
+                                <p>The business rules for email. Which ticket does this mail belong to, should it reopen
+                                    one, and what can the agent be helped with.</p>
                                 <ul>
-                                    <li>Handled <strong>50K+ notifications/day</strong> across channels</li>
-                                    <li>Unified abstraction layer for easy extensibility of new providers</li>
-                                    <li>Built-in retry, monitoring, and failure recovery mechanisms</li>
-                                    <li>Delivered operational visibility via a centralised dashboard</li>
+                                    <li>Two spam layers on purpose. The provider's own score first, because it costs
+                                        nothing, then a cheap AI pass over the content for whatever got through.</li>
+                                    <li>User-triggered retrieval over the tenant's own documents and their past resolved
+                                        cases, on <strong>AWS Bedrock</strong>. Suggestions are shown to the agent and then
+                                        gone. Nothing is stored as a draft.</li>
+                                    <li>Thread level vendor affinity, so a reply leaves through the provider the
+                                        conversation arrived on.</li>
+                                    <li>Attaches every inbound mail to the right ticket and applies the reopen rules.</li>
                                 </ul>
                             </div>
 
                             <div class="exp-block">
-                                <h4 class="exp-block-title">Operational &amp; Product Improvements</h4>
-                                <p>Focused on system reliability, cost efficiency, and product scalability:</p>
+                                <h4 class="exp-block-title">The Provider Layer</h4>
+                                <p>The only door to the outside. Three email providers, three completely different ways of
+                                    receiving mail, one internal model.</p>
                                 <ul>
-                                    <li>Protected email IP reputation by detecting risky usage patterns and quarantining abusive accounts</li>
-                                    <li>Built automated client usage tracking enabling <strong>usage-based pricing</strong> and data-driven product decisions</li>
-                                    <li>Standardised <strong>trunk-based development</strong> with weekly releases, including rollback strategies for safer and faster deployments</li>
+                                    <li>A webhook from one, a queue from another, a push subscription from the third.
+                                        Normalised so nothing downstream knows which provider a mail came from.</li>
+                                    <li>Persists the mail to the database and the raw body to object storage
+                                        <strong>before</strong> acknowledging the provider, so nothing is lost at the
+                                        boundary.</li>
+                                    <li>Dedupes on the email <strong>Message-ID</strong>. The key comes from the domain,
+                                        not from us.</li>
+                                    <li>Peaks above <strong>1000+ emails/sec</strong> on large payloads.</li>
+                                    <li>The dual write between the database and object storage was never solved. I know
+                                        where it bites and what I would do about it.</li>
                                 </ul>
                             </div>
                         </div>
@@ -354,29 +395,50 @@
                             </div>
                         </header>
 
-                        <p class="exp-headline"><strong>Electronic Invoicing &amp; Cash Application</strong>
-                            — contributed to building systems that automate Accounts Receivable workflows,
-                            improving payment processing efficiency and reducing manual intervention.</p>
+                        <p class="exp-headline"><strong>Cash reconciliation and invoice presentment.</strong> Accounts
+                            receivable software, where being right about money is the product. I started here on the
+                            product side and moved into engineering.</p>
 
                         <div class="project-grid">
                             <div class="exp-block">
-                                <h4 class="exp-block-title">Engineering Impact</h4>
-                                <p>Focused on reliability, scale, and correctness in high-volume financial systems:</p>
+                                <h4 class="exp-block-title">Cash Reconciliation</h4>
+                                <p>Payment and remittance file parsers on a scheduled clearance pipeline, and the rules
+                                    that turn those files into settled invoices.</p>
                                 <ul>
-                                    <li>Reduced payment failures by <strong>10–12%</strong> by implementing L3 credit card payment flows and fixing inter-service integration gaps</li>
-                                    <li>Built a high-throughput payment file parser processing <strong>1B+ records/year</strong>, coupled with a concurrent rule engine using ExecutorService</li>
-                                    <li>Developed a correspondence configuration management service handling <strong>1M+ records/year</strong>, enabling flexible client-specific workflows</li>
+                                    <li>Up to <strong>100GB/day</strong> of payment and remittance files, parsed in
+                                        parallel on an <strong>ExecutorService</strong> pool with a fixed core size and a
+                                        maximum.</li>
+                                    <li>Reconciled payment, remittance and invoice data into settled invoices, and
+                                        extended the settlement rule set inside an existing
+                                        <strong>Strategy-pattern</strong> framework.</li>
+                                    <li>Bank file formats are where theory meets reality. Most of the work was in what the
+                                        files actually contain, not in what the spec says they contain.</li>
                                 </ul>
                             </div>
 
                             <div class="exp-block">
-                                <h4 class="exp-block-title">Product Ownership &amp; Execution</h4>
-                                <p>Stepped beyond engineering to drive product outcomes end-to-end:</p>
+                                <h4 class="exp-block-title">Invoice Presentment</h4>
+                                <p>Replaced the legacy <strong>SOAP and RPC</strong> integration between the invoicing and
+                                    payment systems with <strong>REST</strong> APIs.</p>
                                 <ul>
-                                    <li>Owned and built an <strong>internal utility product (1,000+ DAU)</strong> from problem discovery to MVP and scale</li>
-                                    <li>Led stakeholder discussions, requirement shaping, and feature prioritisation</li>
-                                    <li>Improved bandwidth utilisation by <strong>10%</strong> and implementation speed by <strong>5%</strong></li>
-                                    <li>Drove adoption by stabilising the product post-launch and optimising based on dashboard CTR and usage metrics</li>
+                                    <li>Found and fixed <strong>Level 3</strong> card payments that were silently
+                                        downgrading to Level 2. A quiet classification bug like that costs the customer on
+                                        every single transaction, and nothing in the system was complaining about it.</li>
+                                    <li>Built the configuration console for post-payment correspondence.</li>
+                                    <li>This is where I learned to read a failure properly instead of just retrying it.</li>
+                                </ul>
+                            </div>
+
+                            <div class="exp-block">
+                                <h4 class="exp-block-title">Product Ownership</h4>
+                                <p>Before engineering I was a product analyst here, and the habit stuck.</p>
+                                <ul>
+                                    <li>Owned an internal delivery-tracking product from problem discovery to a working
+                                        version, after the implementation team grew from under a hundred people to over
+                                        fifteen hundred.</li>
+                                    <li>Replaced spreadsheet based tracking for <strong>1000+ internal users</strong>.</li>
+                                    <li>Led the stakeholder conversations, shaped the requirements, and decided what
+                                        shipped first.</li>
                                 </ul>
                             </div>
                         </div>
@@ -412,7 +474,7 @@
 
                     <p class="exp-headline">An end-to-end email intelligence pipeline that
                         <strong>ingests</strong>, <strong>processes</strong>, and <strong>understands</strong>
-                        emails — grouping and labelling them by meaning, not keywords. Built to replace
+                        emails, grouping and labelling them by meaning, not keywords. Built to replace
                         static inbox rules with adaptive, AI-driven organisation.</p>
 
                     <div class="project-grid">
@@ -422,7 +484,7 @@
                             <ul>
                                 <li><strong>Idempotent ingestion</strong> via Gmail's history-id watermark
                                     and deterministic content hashes</li>
-                                <li>HTML/markup <strong>sanitisation</strong> — strips noise,
+                                <li>HTML/markup <strong>sanitisation</strong>, strips noise,
                                     extracts meaningful text</li>
                                 <li>Persists cleaned emails + metadata for downstream embedding</li>
                             </ul>
@@ -433,9 +495,9 @@
                             <p class="exp-block-sub">Embeddings, Similarity &amp; Clustering</p>
                             <ul>
                                 <li><strong>Ollama</strong> (<code>nomic-embed-text</code>) for on-device
-                                    embedding — no data leaves the machine</li>
+                                    embedding, so no data leaves the machine</li>
                                 <li><strong>pgVector</strong> storage + cosine similarity search</li>
-                                <li><strong>DBSCAN clustering</strong> — automatic group discovery,
+                                <li><strong>DBSCAN clustering</strong>, automatic group discovery,
                                     no predefined categories</li>
                             </ul>
                         </div>
@@ -445,8 +507,8 @@
                             <p class="exp-block-sub">Labelling, Feedback &amp; Future</p>
                             <ul>
                                 <li><strong>LLM-powered labelling</strong> from representative cluster samples</li>
-                                <li><strong>Adaptive labelling</strong> — biased toward reusing existing labels over creating new ones</li>
-                                <li><strong>Deterministic guard-rails</strong> — cosine-similarity thresholds decide whether to merge, nest, or drop a suggested label</li>
+                                <li><strong>Adaptive labelling</strong>, biased toward reusing existing labels over creating new ones</li>
+                                <li><strong>Deterministic guard-rails</strong>. Cosine-similarity thresholds decide whether to merge, nest, or drop a suggested label</li>
                             </ul>
                         </div>
                     </div>
@@ -477,7 +539,7 @@
                         </a>
                     </header>
 
-                    <p class="exp-headline">Product skills complement engineering capabilities — hence this certification.
+                    <p class="exp-headline">Product skills complement engineering capabilities, hence this certification.
                         Solved real-world product problems through strong <strong>product thinking</strong>,
                         <strong>user research</strong>, and <strong>metric-driven execution</strong>.</p>
 
@@ -540,7 +602,7 @@
                                 <li><strong>GitHub Actions</strong> pipeline for automated portfolio deploys</li>
                                 <li><strong>S3</strong> for storage, <strong>CloudFront</strong> for CDN +
                                     cache invalidation</li>
-                                <li><strong>Route 53</strong> for DNS, <strong>ACM</strong> for TLS — secure by default</li>
+                                <li><strong>Route 53</strong> for DNS, <strong>ACM</strong> for TLS, secure by default</li>
                             </ul>
                         </div>
                     </div>
@@ -616,7 +678,7 @@
         <p class="footer-note">
             <img alt="Claude" class="footer-claude-logo" height="14" src="https://cdn.simpleicons.org/claude/D97757"
                  width="14">
-            Crafted by Claude — I build distributed systems, no way I'm writing HTML gibberish myself!
+            Crafted by Claude. I build distributed systems, no way I'm writing HTML gibberish myself!
         </p>
     </div>
 </footer>
